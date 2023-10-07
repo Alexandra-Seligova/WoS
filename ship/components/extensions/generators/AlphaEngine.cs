@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WoS.ship.components.extensions.weapons
+namespace WoS.ship.components.extensions.generators
 {
-    public class balisticCanon
+    public class AlphaEngine : GeneratorBase
     {
         /*
 *** Přehled vlastností a metod třídy ElementBase ***
@@ -25,12 +25,11 @@ float ShieldMax            // Maximální hodnota štítu objektu
 
 *** Přehled vlastností a metod třídy shipExtensionBase ***
 
-*** Přehled vlastností a metod třídy WeaponBase ***
+*** Přehled vlastností a metod třídy GeneratorBase ***
+
 
 
 */
-
-
 
     }
 }

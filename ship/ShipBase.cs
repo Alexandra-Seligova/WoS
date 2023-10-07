@@ -18,16 +18,44 @@ namespace WoS.ship
     // Tato třída obsahuje také metody pro pohyb lodě, střelbu, atd.
     public abstract class ShipBase : CollisionDetection
     {
-
         /*
-        public Texture2D Texture { get; set; }        // Textura pro objekt
-        public Vector2 PositionOnMap { get; set; }    // Globální pozice objektu na mapě
-        public Vector2 PositionOnScreen { get; set; } // Místní pozice objektu na obrazovce
-        public int Width { get; set; }                // Šířka objektu
-        public int Height { get; set; }               // Výška objektu
-        public bool SupportsCollision { get; set; }   // Podpora pro detekci kolize
-        public bool HasAutomaticMovement { get; set; } // Podpora pro automatický pohyb
+         *** Přehled vlastností a metod třídy ElementBase ***
+                 Texture2D Texture          // Textura pro objekt
+                 Vector2 Position           // Základní vlastnost pozice
+                 Vector2 PositionOnMap      // Globální pozice objektu na mapě
+                 Vector2 PositionOnScreen   // Místní pozice objektu na obrazovce
+                 float   Rotation           // Rotace objektu v prostoru
+                 int     Width              // Šířka objektu
+                 int     Height             // Výška objektu
+
+                // Vlastnosti zdraví a štítu
+                 float Hp                   // Aktuální zdraví objektu
+                 float HpMax                // Maximální zdraví objektu
+                 float Shield               // Aktuální hodnota štítu objektu
+                 float ShieldMax            // Maximální hodnota štítu objektu
+
+
+        *** Přehled vlastností a metod třídy MovementBase ***
+
+                 Texture2D
+                 string     Designation      // Název či označení lodi
+                 float      Rotation
+                 Vector2    Velocity         // Aktuální rychlost lodi
+                 float      Acceleration     // Zrychlení lodi
+                 int        MaxSpeed         // Maximální rychlost lodi
+                 float      ShipWidth        // Šířka lodi
+                 float      ShipHeight       // Výška lodi
+                 Vector2    Target           // Cíl lodi pro pohyb
+                 Vector2    SpawnPlace       // Místo, kde se loď objevila
+
+
+        *** Přehled vlastností a metod třídy CollisionDetection ***
+
+
+                // metody
+                bool       IsCollidingWith(ElementBase other)
         */
+
         protected Texture2D texture;
 
         public Vector2 Target { get; set; }

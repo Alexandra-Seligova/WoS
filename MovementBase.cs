@@ -5,11 +5,25 @@ namespace WoS
 {
     public abstract class MovementBase : ElementBase
     {
+        /*
+         *** Přehled vlastností a metod třídy ElementBase ***
+                 Texture2D Texture          // Textura pro objekt
+                 Vector2 Position           // Základní vlastnost pozice
+                 Vector2 PositionOnMap      // Globální pozice objektu na mapě
+                 Vector2 PositionOnScreen   // Místní pozice objektu na obrazovce
+                 float   Rotation           // Rotace objektu v prostoru
+                 int     Width              // Šířka objektu
+                 int     Height             // Výška objektu
+
+                // Vlastnosti zdraví a štítu
+                 float Hp                   // Aktuální zdraví objektu
+                 float HpMax                // Maximální zdraví objektu
+                 float Shield               // Aktuální hodnota štítu objektu
+                 float ShieldMax            // Maximální hodnota štítu objektu
+
+        */
         // Název či označení lodi
         public string Designation { get; set; }
-
-        // Rotace lodi v prostoru
-        public float Rotation { get; set; }
 
         // Fyzikální parametry lodi
         public Vector2 Velocity { get; set; }          // Aktuální rychlost lodi
@@ -20,11 +34,6 @@ namespace WoS
         public float ShipWidth { get; set; }           // Šířka lodi
         public float ShipHeight { get; set; }          // Výška lodi
 
-        // Zdraví a štíty lodi
-        public float Health { get; set; }              // Aktuální zdraví lodi
-        public float MaxHealth { get; set; }           // Maximální zdraví lodi
-        public float Shield { get; set; }              // Aktuální hodnota štítu lodi
-        public float MaxShield { get; set; }           // Maximální hodnota štítu lodi
 
         // Cíl lodi pro pohyb
         public Vector2 Target { get; set; }
@@ -32,6 +41,41 @@ namespace WoS
         // Místo, kde se loď objevila
         public Vector2 SpawnPlace { get; set; }
 
-        // Další vlastnosti a metody mohou být přidány podle potřeby
+
     }
+
+
 }
+/*
+ *** Přehled vlastností a metod třídy ElementBase ***
+         Texture2D Texture          // Textura pro objekt
+         Vector2 Position           // Základní vlastnost pozice
+         Vector2 PositionOnMap      // Globální pozice objektu na mapě
+         Vector2 PositionOnScreen   // Místní pozice objektu na obrazovce
+         float   Rotation           // Rotace objektu v prostoru
+         int     Width              // Šířka objektu
+         int     Height             // Výška objektu
+
+        // Vlastnosti zdraví a štítu
+         float Hp                   // Aktuální zdraví objektu
+         float HpMax                // Maximální zdraví objektu
+         float Shield               // Aktuální hodnota štítu objektu
+         float ShieldMax            // Maximální hodnota štítu objektu
+
+
+*** Přehled vlastností a metod třídy MovementBase ***
+
+         Texture2D
+         string     Designation      // Název či označení lodi
+         float      Rotation
+         Vector2    Velocity         // Aktuální rychlost lodi
+         float      Acceleration     // Zrychlení lodi
+         int        MaxSpeed         // Maximální rychlost lodi
+         float      ShipWidth        // Šířka lodi
+         float      ShipHeight       // Výška lodi
+         Vector2    Target           // Cíl lodi pro pohyb
+         Vector2    SpawnPlace       // Místo, kde se loď objevila
+
+         // metody
+         bool       IsCollidingWith(ElementBase other)
+*/
