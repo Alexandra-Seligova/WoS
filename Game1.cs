@@ -4,11 +4,17 @@ using Microsoft.Xna.Framework.Input;
 using WoS.Camera;
 using WoS.map;
 using WoS.ship;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+using System;
+using System.Text;
 
 namespace WoS
 {
     public class Game1 : Game
     {
+        private MqttClient client;
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch _spriteBatch;
 
@@ -37,6 +43,7 @@ namespace WoS
 
         protected override void Initialize()
         {
+            InitializeMqtt();
             base.Initialize();
         }
 
@@ -98,5 +105,35 @@ namespace WoS
             _spriteBatch.End();
             base.Draw(gameTime);
         }
+
+        public void InitializeMqtt()
+        {
+            // Vytvořte nový MQTT klient a připojte se k brokeru.
+            client = new MqttClient("192.168.0.167");
+            string clientId = Guid.NewGuid().ToString();
+            client.Connect(clientId);
+
+            // Předplaťte se k tématu, pokud chcete přijímat zprávy.
+            client.Subscribe(new string[] { "/game/" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+
+            // Přiřaďte události pro přijímání zpráv.
+            client.MqttMsgPublishReceived += CallBack;
+        }
+        private void CallBack(object sender, MqttMsgPublishEventArgs e)
+        {
+            // Tady zpracujte přijaté zprávy.
+            string receivedMessage = Encoding.UTF8.GetString(e.Message);
+            Console.WriteLine("Received: " + receivedMessage);
+        }
+        public void SendMqttMessage(string topic, string message)
+        {
+            client.Publish(topic, Encoding.UTF8.GetBytes(message));
+        }
+        protected override void UnloadContent()
+        {
+            client.Disconnect();
+            base.UnloadContent();
+        }
+
     }
 }
