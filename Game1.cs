@@ -44,19 +44,21 @@ namespace WoS
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             //Mapa
-
             Texture2D mapTexture = Content.Load<Texture2D>("maps/background/map1");     // Načtení textury pro mapu
             mapAlpha = new MapAlpha(mapTexture);                                        // Inicializace mapy
-
+            //ship
             shipTexture = Content.Load<Texture2D>("spaceShips/Egla");                   // Načtení textury pro ship
             ship = new ShipEgla(shipTexture, new Vector2(100, 100), 100f);              // Inicializace ship
+
+
+
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (!isGUIInteraction)
             {
-                camera.Follow(ship.Position);
+                camera.Follow(ship.PositionOnMap);
             }
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -64,7 +66,6 @@ namespace WoS
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-                //ship.SetTarget(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
 
                 // Získání aktuální pozice myši
                 MouseState mouseState = Mouse.GetState();
@@ -89,14 +90,12 @@ namespace WoS
 
             // Vykreslení mapy
             mapAlpha.Draw(_spriteBatch);
-
-
+            // Vykreslení ship
             ship.Draw(_spriteBatch);
 
 
 
             _spriteBatch.End();
-
             base.Draw(gameTime);
         }
     }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using WoS.Utility;
 
 namespace WoS.ship
 {
@@ -15,10 +16,20 @@ namespace WoS.ship
     // Tato třída obsahuje základní charakteristiky lodě, jako je zdraví, štíty, rychlost, pozice, rotace, atd.
     // Dále obsahuje seznamy pro jednotlivé moduly, jako jsou kanóny, generátory, atd.
     // Tato třída obsahuje také metody pro pohyb lodě, střelbu, atd.
-    public abstract class ShipBase
+    public abstract class ShipBase : CollisionDetection
     {
+
+        /*
+        public Texture2D Texture { get; set; }        // Textura pro objekt
+        public Vector2 PositionOnMap { get; set; }    // Globální pozice objektu na mapě
+        public Vector2 PositionOnScreen { get; set; } // Místní pozice objektu na obrazovce
+        public int Width { get; set; }                // Šířka objektu
+        public int Height { get; set; }               // Výška objektu
+        public bool SupportsCollision { get; set; }   // Podpora pro detekci kolize
+        public bool HasAutomaticMovement { get; set; } // Podpora pro automatický pohyb
+        */
         protected Texture2D texture;
-        public Vector2 Position { get; set; }
+
         public Vector2 Target { get; set; }
         public float Speed { get; set; }
 
@@ -73,9 +84,11 @@ namespace WoS.ship
         public string msg;                     // Zpráva
         public int seq;                        // Sekvenční číslo
         public int casOmezovac = 0;            // Časový omezovač
-        public ShipBase(Texture2D shipTexture, Vector2 startPosition, float speed)
-        {
 
+        public ShipBase(Texture2D shipTexture, Vector2 startPosition, float speed)
+        : base(startPosition) // Volání konstruktoru z třídy ElementBase pro nastavení pozice
+        {
+            texture = shipTexture;
         }
 
         public void SetTarget(Vector2 newTarget)
@@ -85,7 +98,7 @@ namespace WoS.ship
         // Výpočet rotace lodi směrem k cíli
         public void UpdateRotation()
         {
-            Vector2 direction = Target - Position;
+            Vector2 direction = Target - PositionOnMap;
             rotace = (float)Math.Atan2(direction.Y, direction.X) + MathHelper.PiOver2; // +PiOver2, protože chceme, aby vrch lodi byl směrován k cíli
         }
         public void SetMouseTarget(Vector2 mousePosition, Vector2 screenSize, Vector2 cameraPosition)
@@ -94,28 +107,28 @@ namespace WoS.ship
             Vector2 globalMousePosition = mousePosition + cameraPosition - (screenSize * 0.5f);
 
             Target = globalMousePosition;
-            rotace = (float)Math.Atan2(Target.Y - Position.Y, Target.X - Position.X) + MathHelper.PiOver2;
+            rotace = (float)Math.Atan2(Target.Y - PositionOnMap.Y, Target.X - PositionOnMap.X) + MathHelper.PiOver2;
         }
 
         public void Update(GameTime gameTime)
         {
-            if (Vector2.Distance(Position, Target) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
+            if (Vector2.Distance(PositionOnMap, Target) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
             {
-                Vector2 direction = Vector2.Normalize(Target - Position);
+                Vector2 direction = Vector2.Normalize(Target - PositionOnMap);
                 Vector2 velocity = direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                Position += velocity;
+                PositionOnMap += velocity;
 
                 // Pokud je loď velmi blízko cíli, nastavte její pozici přímo na cíl
-                if (Vector2.Distance(Position, Target) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
+                if (Vector2.Distance(PositionOnMap, Target) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
                 {
-                    Position = Target;
+                    PositionOnMap = Target;
                 }
             }
         }
         // Upravená metoda pro vykreslení
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Position, null, Color.White, rotace, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, PositionOnMap, null, Color.White, rotace, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
         }
 
 

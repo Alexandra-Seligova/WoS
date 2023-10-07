@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WoS.Utility; // Předpokládá se, že OrbitalMovement je v tomto namespace
 
-namespace WoS.GUI
+namespace WoS.map.Asteroids
 {
-    internal class GuiBase
+    public abstract class AsteroidBase : OrbitalMovement
     {
+        // Zde můžete přidat specifické vlastnosti a metody pro AsteroidBase
+
         /*
 public Texture2D Texture { get; set; }        // Textura pro objekt
 public Vector2 PositionOnMap { get; set; }    // Globální pozice objektu na mapě

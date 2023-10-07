@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WoS.Utility;  // Pro přístup k třídě OrbitalMovement
 
-namespace WoS.GUI
+namespace WoS.map.moon
 {
-    internal class GuiBase
+    public abstract class MoonBase : OrbitalMovement
     {
+        // Zde můžete přidat specifické vlastnosti a metody pro moonBase
         /*
 public Texture2D Texture { get; set; }        // Textura pro objekt
 public Vector2 PositionOnMap { get; set; }    // Globální pozice objektu na mapě

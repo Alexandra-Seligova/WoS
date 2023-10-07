@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WoS.Utility;
 
-namespace WoS.GUI
+namespace WoS.map.Planet
 {
-    internal class GuiBase
+    public abstract class PlanetBase : OrbitalMovement
     {
         /*
 public Texture2D Texture { get; set; }        // Textura pro objekt

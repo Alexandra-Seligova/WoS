@@ -34,14 +34,14 @@ namespace WoS.ship
 
 
             texture = shipTexture;
-            Position = startPosition;
+            PositionOnMap = startPosition;
             Speed = speed;
             Target = startPosition;
         }
         // Přetížení metody Draw
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, Position, null, Color.White, rotace, new Vector2(texture.Width / 2, texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
+            spriteBatch.Draw(texture, PositionOnMap, null, Color.White, rotace, new Vector2(texture.Width / 2, texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
         }
     }
 }

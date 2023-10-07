@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WoS.GUI
+namespace WoS.map.Station
 {
-    internal class GuiBase
+    internal class StationBase
     {
         /*
 public Texture2D Texture { get; set; }        // Textura pro objekt
