@@ -38,7 +38,7 @@ namespace WoS
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             shipTexture = Content.Load<Texture2D>("spaceShips/Egla");
-            ship = new ShipBase(shipTexture, new Vector2(100, 100), 100f);
+            ship = new ShipEgla(shipTexture, new Vector2(100, 100), 100f);
         }
 
         protected override void Update(GameTime gameTime)
