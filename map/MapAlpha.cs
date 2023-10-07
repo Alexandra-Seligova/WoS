@@ -12,6 +12,40 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.map
 {
+    public class MapAlpha : MapBase
+    {
+        // Konstruktor pro MapAlpha s předdefinovanými hodnotami
+        public MapAlpha(Texture2D backgroundImage)
+        : base(backgroundImage, 1920, 1080, "Alpha Map", "This is the description for the Alpha map.")
+        {
+            // Zde můžete přidat další konkrétní nastavení pro MapAlpha, pokud je potřebujete
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     public class MapAlpha
     {

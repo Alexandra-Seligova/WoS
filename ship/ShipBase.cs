@@ -54,8 +54,8 @@ namespace WoS.ship
         public bool sebrano = false;           // Bylo něco sebráno?
 
         // Moduly a vybavení lodě
-        public int doplnky_poc;                // Počet doplňků (standardní moduly)
-        public int zbrane_poc;                 // Počet zbraní (útočné moduly)
+        public int generatorsNumber;                // Počet doplňků (standardní moduly)
+        public int weaponsNumber;                 // Počet zbraní (útočné moduly)
         public Vector2[] kanony = new Vector2[6];   // Pozice kanónů
         public Vector2[] dela = new Vector2[2];     // Pozice del
         public Vector2[] generatory = new Vector2[6]; // Pozice generátorů
@@ -88,18 +88,24 @@ namespace WoS.ship
             Vector2 direction = Target - Position;
             rotace = (float)Math.Atan2(direction.Y, direction.X) + MathHelper.PiOver2; // +PiOver2, protože chceme, aby vrch lodi byl směrován k cíli
         }
+        public void SetMouseTarget(Vector2 mousePosition, Vector2 screenSize, Vector2 cameraPosition)
+        {
+            // Převede místní pozici myši na obrazovce na globální pozici na mapě
+            Vector2 globalMousePosition = mousePosition + cameraPosition - (screenSize * 0.5f);
 
-        // Upravená metoda pro aktualizaci
+            Target = globalMousePosition;
+            rotace = (float)Math.Atan2(Target.Y - Position.Y, Target.X - Position.X) + MathHelper.PiOver2;
+        }
+
         public void Update(GameTime gameTime)
         {
-            if (Position != Target)
+            if (Vector2.Distance(Position, Target) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
             {
-                UpdateRotation();
-
                 Vector2 direction = Vector2.Normalize(Target - Position);
-                Position += direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Vector2 velocity = direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Position += velocity;
 
-                // Pokud jsme blízko cíle, nastavíme pozici přímo na cíl, aby se loď nepřesouvala zpět a dopředu.
+                // Pokud je loď velmi blízko cíli, nastavte její pozici přímo na cíl
                 if (Vector2.Distance(Position, Target) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
                 {
                     Position = Target;
@@ -111,8 +117,6 @@ namespace WoS.ship
         {
             spriteBatch.Draw(texture, Position, null, Color.White, rotace, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
         }
-
-
 
 
 

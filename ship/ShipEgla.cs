@@ -21,15 +21,15 @@ namespace WoS.ship
             hp = 700;
             speed = 500;
             // Moduly a vybavení lodě
-            doplnky_poc = 2;
-            zbrane_poc = 2;
+            generatorsNumber = 2;
+            weaponsNumber = 1;
 
             // Pozice jednotlivých modulů na lodi
-            Vector2 kan1 = new Vector2(-18, -21);
-            Vector2 kan2 = new Vector2(18, -21);
-            Vector2 gen1 = new Vector2(0, 20);
-            Vector2 doplnky1 = new Vector2(-10, -11);
-            Vector2 doplnky2 = new Vector2(10, -11);
+            Vector2 canon1Position = new Vector2(0, 0);
+
+            Vector2 generator1Position = new Vector2(0, 20);
+            Vector2 extension1Position = new Vector2(-10, -11);
+            Vector2 extension2Position = new Vector2(10, -11);
 
 
 
