@@ -37,7 +37,7 @@ namespace WoS
 /*
  *** Přehled vlastností a metod třídy ElementBase ***
          Texture2D Texture          // Textura pro objekt
-         Vector2 Position           // Základní vlastnost pozice 
+         Vector2 Position           // Základní vlastnost pozice
          Vector2 PositionOnMap      // Globální pozice objektu na mapě
          Vector2 PositionOnScreen   // Místní pozice objektu na obrazovce
          float   Rotation           // Rotace objektu v prostoru

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WoS.ship.components.extensions.weapons
 {
-    internal class WeaponBase : shipExtensionBase
+    internal class WeaponBase : ShipExtensionBase
     {
         /*
  *** Přehled vlastností a metod třídy ElementBase ***

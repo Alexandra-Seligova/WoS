@@ -13,7 +13,7 @@ namespace WoS.map
         /*
          *** Přehled vlastností a metod třídy ElementBase ***
          Texture2D Texture          // Textura pro objekt
-         Vector2 Position           // Základní vlastnost pozice 
+         Vector2 Position           // Základní vlastnost pozice
          Vector2 PositionOnMap      // Globální pozice objektu na mapě
          Vector2 PositionOnScreen   // Místní pozice objektu na obrazovce
          int Width                  // Šířka objektu
@@ -31,7 +31,7 @@ namespace WoS.map
         protected Texture2D backgroundTexture;
 
         // Rozměry mapy
-       
+
         // Ostatní běžné atributy
         public string Name { get; set; }  // Jméno nebo název mapy
         public string Description { get; set; } // Popis nebo krátký přehled o mapě

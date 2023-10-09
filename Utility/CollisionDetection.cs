@@ -9,7 +9,7 @@ using WoS;
 
 namespace WoS.Utility
 {
-    public abstract class CollisionDetection : MovementBase
+    public abstract class CollisionDetection : ElementBase
     {
         /*
          *** Přehled vlastností a metod třídy ElementBase ***
@@ -46,10 +46,10 @@ namespace WoS.Utility
 
 
         // Konstruktor pro inicializaci pozice.
-        public CollisionDetection(Vector2 position)
-        {
-            Position = position;
-        }
+    //    public CollisionDetection(Vector2 position)
+     //   {
+     //       Position = position;
+     //   }
         public virtual bool IsCollidingWith(ElementBase other)
         {
             if (Position.X + Width > other.Position.X &&

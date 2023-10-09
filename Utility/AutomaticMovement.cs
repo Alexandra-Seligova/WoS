@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;  // Pro použití Vector2
 
 namespace WoS.Utility
 {
-    public abstract class AutomaticMovement : CollisionDetection
+    public abstract class AutomaticMovement : MovementBase
     {
         /*
  *** Přehled vlastností a metod třídy ElementBase ***

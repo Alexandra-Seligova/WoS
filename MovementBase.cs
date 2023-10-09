@@ -1,9 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using WoS.Utility;
 
 namespace WoS
 {
-    public abstract class MovementBase : ElementBase
+    public abstract class MovementBase : CollisionDetection
     {
         /*
          *** Přehled vlastností a metod třídy ElementBase ***

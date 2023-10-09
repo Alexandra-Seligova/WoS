@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WoS.ship.components.extensions.generators
 {
-    public abstract class GeneratorBase : shipExtensionBase
+    public abstract class GeneratorBase : ShipExtensionBase
     {
         /*
 *** Přehled vlastností a metod třídy ElementBase ***
