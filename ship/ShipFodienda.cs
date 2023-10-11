@@ -17,7 +17,7 @@ namespace WoS.ship
 
         public ShipFodienda(Texture2D shipTexture, Vector2 startPosition, float speed)
             : base(shipTexture, startPosition, speed)
-        {
+        {/*
             // Zdraví a rychlost lodě
             hp = 700;
             speed = 500;
@@ -37,12 +37,12 @@ namespace WoS.ship
             texture = shipTexture;
             PositionOnMap = startPosition;
             Speed = speed;
-            Target = startPosition;
+            Target = startPosition;*/
         }
         // Přetížení metody Draw
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, PositionOnMap, null, Color.White, rotace, new Vector2(texture.Width / 2, texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
+            spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
         }
     }
 }

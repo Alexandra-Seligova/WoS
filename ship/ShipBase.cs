@@ -16,39 +16,49 @@ namespace WoS.ship
     // Tato třída obsahuje základní charakteristiky lodě, jako je zdraví, štíty, rychlost, pozice, rotace, atd.
     // Dále obsahuje seznamy pro jednotlivé moduly, jako jsou kanóny, generátory, atd.
     // Tato třída obsahuje také metody pro pohyb lodě, střelbu, atd.
+
+    /*
+ *** Přehled vlastností a metod třídy ElementBase ***
+         Texture2D Texture          // Textura pro objekt
+         Vector2 Position           // Základní vlastnost pozice
+         Vector2 PositionOnMap      // Globální pozice objektu na mapě
+         Vector2 PositionOnScreen   // Místní pozice objektu na obrazovce
+         float   Rotation           // Rotace objektu v prostoru
+         int     Width              // Šířka objektu
+         int     Height             // Výška objektu
+
+        // Vlastnosti zdraví a štítu
+         float Hp                   // Aktuální zdraví objektu
+         float HpMax                // Maximální zdraví objektu
+         float Shield               // Aktuální hodnota štítu objektu
+         float ShieldMax            // Maximální hodnota štítu objektu
+
+
+*** Přehled vlastností a metod třídy MovementBase ***
+
+         Texture2D
+         string     Designation      // Název či označení lodi
+         float      Rotation
+         Vector2    Velocity         // Aktuální rychlost lodi
+         float      Acceleration     // Zrychlení lodi
+         int        MaxSpeed         // Maximální rychlost lodi
+         float      ShipWidth        // Šířka lodi
+         float      ShipHeight       // Výška lodi
+         Vector2    Target           // Cíl lodi pro pohyb
+         Vector2    SpawnPlace       // Místo, kde se loď objevila
+
+         // metody
+         bool       IsCollidingWith(ElementBase other)
+*/
     public abstract class ShipBase : MovementBase
     {
-
-        protected Texture2D texture;
-
-
-        public float Speed { get; set; }
-
-        //*************************************
-
         // Základní charakteristiky lodě
-        public string oznaceni;                // Označení lodě
-        public Vector2 pozice;                 // Pozice lodě
-        public float rotace;                   // Rotace lodě v prostoru
-        public Texture2D obrazek;              // Obrazek lodě
+        public string oznaceni;                // Označení lodě (Pokud "Designation" v MovementBase není totéž, pak tento atribut může zůstat)
 
         // Fyzikální parametry lodě
-        public Vector2 rychlost;               // Aktuální rychlost lodě
         public float zrychleni = 50;           // Zrychlení lodě
-        public int speed;                      // Rychlost lodě
-
-        // Velikost lodě
-        public float velikost_sirka;           // Šířka lodě
-        public float velikost_vyska;           // Výška lodě
-
-        // Zdraví a štíty lodě
-        public float hp;                       // Aktuální zdraví (strukturální integrita) lodě
-        public float max_hp;                   // Maximální zdraví lodě
-        public float shield;                   // Aktuální hodnota štítu lodě
-        public float max_shield;               // Maximální hodnota štítu lodě
 
         // Cílová pozice a stav přenosu
-        public Vector2 cil;                    // Cílová pozice pro pohyb lodě
         bool tran = false;              // Stav přenosu
         public bool budeTran = false;          // Bude probíhat přenos?
         public bool jeTran = false;            // Probíhá právě přenos?
@@ -63,23 +73,22 @@ namespace WoS.ship
         public Vector2[] generatory = new Vector2[6]; // Pozice generátorů
         public Vector2[] doplnky = new Vector2[6];  // Pozice doplňků
 
-
-
-        // Seznamy pro různé komponenty lodě
-        // List<Kanon> kanonyList;         // Seznam kanónů lodě
-        // List<Munice> municeList;        // Seznam munice lodě
-        // List<Anime> animaceList;        // Seznam animací lodě
-
         // Ostatní
         public bool prvni_spusteni = true;     // Pro nastavení prvního statusu
         public string msg;                     // Zpráva
         public int seq;                        // Sekvenční číslo
         public int casOmezovac = 0;            // Časový omezovač
 
+        // Seznamy pro různé komponenty lodě
+        // List<Kanon> kanonyList;         // Seznam kanónů lodě
+        // List<Munice> municeList;        // Seznam munice lodě
+        // List<Anime> animaceList;        // Seznam animací lodě
+
+
         public ShipBase(Texture2D shipTexture, Vector2 startPosition, float speed)
-        : base(startPosition) // Volání konstruktoru z třídy ElementBase pro nastavení pozice
+        : base() // Volání konstruktoru z třídy ElementBase pro nastavení pozice
         {
-            texture = shipTexture;
+            Texture = shipTexture;
         }
 
         public void SetTarget(Vector2 newTarget)
@@ -90,7 +99,7 @@ namespace WoS.ship
         public void UpdateRotation()
         {
             Vector2 direction = Target - PositionOnMap;
-            rotace = (float)Math.Atan2(direction.Y, direction.X) + MathHelper.PiOver2; // +PiOver2, protože chceme, aby vrch lodi byl směrován k cíli
+            Rotation = (float)Math.Atan2(direction.Y, direction.X) + MathHelper.PiOver2; // +PiOver2, protože chceme, aby vrch lodi byl směrován k cíli
         }
         public void SetMouseTarget(Vector2 mousePosition, Vector2 screenSize, Vector2 cameraPosition)
         {
@@ -98,7 +107,7 @@ namespace WoS.ship
             Vector2 globalMousePosition = mousePosition + cameraPosition - (screenSize * 0.5f);
 
             Target = globalMousePosition;
-            rotace = (float)Math.Atan2(Target.Y - PositionOnMap.Y, Target.X - PositionOnMap.X) + MathHelper.PiOver2;
+            Rotation = (float)Math.Atan2(Target.Y - PositionOnMap.Y, Target.X - PositionOnMap.X) + MathHelper.PiOver2;
         }
 
         public void Update(GameTime gameTime)
@@ -106,11 +115,11 @@ namespace WoS.ship
             if (Vector2.Distance(PositionOnMap, Target) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
             {
                 Vector2 direction = Vector2.Normalize(Target - PositionOnMap);
-                Vector2 velocity = direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Vector2 velocity = direction * MaxSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 PositionOnMap += velocity;
 
                 // Pokud je loď velmi blízko cíli, nastavte její pozici přímo na cíl
-                if (Vector2.Distance(PositionOnMap, Target) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
+                if (Vector2.Distance(PositionOnMap, Target) < MaxSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds)
                 {
                     PositionOnMap = Target;
                 }
@@ -119,7 +128,7 @@ namespace WoS.ship
         // Upravená metoda pro vykreslení
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, PositionOnMap, null, Color.White, rotace, new Vector2(texture.Width / 2, texture.Height / 2), 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), 1.0f, SpriteEffects.None, 0);
         }
 
 

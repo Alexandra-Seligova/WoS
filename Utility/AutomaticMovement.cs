@@ -48,7 +48,7 @@ namespace WoS.Utility
 */
 
         // Konstruktor, který přebírá pozici a deleguje ji na nadřazený konstruktor.
-        public AutomaticMovement(Vector2 position) : base(position)
+        public AutomaticMovement(Vector2 position) : base()
         {
             // Zde můžete inicializovat další vlastnosti a metody pro AutomaticMovement
         }
