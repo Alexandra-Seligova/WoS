@@ -19,8 +19,22 @@ namespace WoS.map
 {
     public class MapBase : ElementBase
     {
+        public class MapElementGroup<T> where T : class
+        {
+            public List<T> Elements { get; set; }
+            public int Count => Elements.Count;
+            public int[] TypeCount { get; set; }
+            public Vector2[] Positions { get; set; }
 
-             // Atributy
+            public MapElementGroup(int typeCountLength, List<T> elements, Vector2[] positions)
+            {
+                TypeCount = new int[typeCountLength];
+                Elements = elements ?? new List<T>();
+                Positions = positions ?? new Vector2[0];
+            }
+        }
+
+        // Atributy
         public int Id { get; set; }
         public int Stav { get; set; }
         public Vector2 ImageSize { get; set; }
@@ -58,6 +72,29 @@ namespace WoS.map
         public int UserFleetCount { get; set; }
         public int EnemyFleetCount { get; set; }
         public int MoonCount { get; set; }
+
+        public int[] NpcTypeCount { get; set; } = new int[5];// Počet jednotlivých druhů NPC na mapě
+
+
+
+
+        public MapElementGroup<SunBase> Suns { get; set; } = new MapElementGroup<SunBase>(0, new List<SunBase>(), null);
+        public MapElementGroup<PlanetBase> Planets { get; set; } = new MapElementGroup<PlanetBase>(0, new List<PlanetBase>(), null);
+        public MapElementGroup<BoxBase> Boxes { get; set; } = new MapElementGroup<BoxBase>(0, new List<BoxBase>(), null);
+        public MapElementGroup<NpcBase> Npcs { get; set; } = new MapElementGroup<NpcBase>(5, new List<NpcBase>(), null);
+        public MapElementGroup<AsteroidBase> Asteroids { get; set; } = new MapElementGroup<AsteroidBase>(0, new List<AsteroidBase>(), null);
+        public MapElementGroup<UserFleet> UserFleets { get; set; } = new MapElementGroup<UserFleet>(0, new List<UserFleet>(), null);
+        public MapElementGroup<EnemyFleet> EnemyFleets { get; set; } = new MapElementGroup<EnemyFleet>(0, new List<EnemyFleet>(), null);
+        public MapElementGroup<MoonBase> Moons { get; set; } = new MapElementGroup<MoonBase>(0, new List<MoonBase>(), null);
+
+
+
+
+
+
+
+
+
         // Konstruktor
         public MapBase(int id, Vector2 position)
         {
@@ -96,9 +133,24 @@ namespace WoS.map
             CreateElements(ArrayList_Box, piece, i => new BoxBlue(GenerateRandomPosition(), _random.Next(1, 4)), "ArrayList_Box");
         }
 
-        public void CreateNpc(int piece)
+        public void CreateNpcs()
         {
-            CreateElements(ArrayList_Npc, piece, i => new NpcStreuner(i, GenerateRandomPosition()), "ArrayList_Npc");
+            // Definujeme pole funkcí pro vytvoření různých typů NPC
+            Func<int, Vector2, NpcBase>[] npcCreators = {
+        (index, position) => new NpcStreuner(index, position),
+        (index, position) => new NpcLolita(index, position),
+        // ... [další tvůrci NPC pro další typy]
+    };
+
+            for (int typeIndex = 0; typeIndex < NpcTypeCount.Length; typeIndex++)
+            {
+                CreateElements(
+                    ArrayList_Npc,
+                    NpcTypeCount[typeIndex],
+                    i => npcCreators[typeIndex](i, GenerateRandomPosition()),
+                    $"ArrayList_Npc_Type{typeIndex}"
+                );
+            }
         }
 
         public void CreateAsteroids(int piece)

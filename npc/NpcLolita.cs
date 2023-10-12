@@ -14,7 +14,7 @@ namespace WoS.npc
     {
         // Základní konstruktor, který deleguje na nadřazený konstruktor.
         // Pokud NpcBase vyžaduje konstruktor s parametry, měli bychom je přidat zde.
-        public NpcLolita(Vector2 position) : base(position)
+        public NpcLolita(int id, Vector2 position) : base(position)
         {
             // Zde můžete inicializovat vlastnosti specifické pro NpcStreuner
         }

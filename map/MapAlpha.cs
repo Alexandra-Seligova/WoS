@@ -49,8 +49,20 @@ namespace WoS.map
             SunCount = 1;
             PlanetCount = 10;
             BoxCount = 10;
-            NpcCount = 10;
+            NpcCount = 0;
+            AsteroidCount = 1;
+            UserFleetCount = 1;
+            EnemyFleetCount= 1;
+            MoonCount = 1;
 
+        InitializeNpcCounts();
+        }
+        public void InitializeNpcCounts()
+        {
+            NpcTypeCount[0] = 5; //streuner
+            NpcTypeCount[1] = 10; //lolita
+
+            NpcCount = NpcTypeCount.Sum();
         }
 
         public void LoadConfigFromDb()
@@ -61,22 +73,30 @@ namespace WoS.map
         public void create()
         {
             // vytvoření prvků na mapě dle configu
+            Suns.Elements = new List<SunBase>();
+            Planets.Elements = new List<PlanetBase>();
+            Boxes.Elements = new List<BoxBase>();
+            Npcs.Elements = new List<NpcBase>();
+            Asteroids.Elements = new List<AsteroidBase>();
+            UserFleets.Elements = new List<UserFleet>();
+            EnemyFleets.Elements = new List<EnemyFleet>();
+            Moons.Elements = new List<MoonBase>();
+ new List<MoonBase>();
 
-            ArrayList_Sun = new List<SunBase>();
-            ArrayList_Planet = new List<PlanetBase>();
-            ArrayList_Box = new List<BoxBase>();
-            ArrayList_Npc = new List<NpcBase>();
+            CreateElements(Suns, () => new SunSmall());
+            CreateElements(Planets, () => new PlanetDeath());
 
-            ArrayList_Asteroids = new List<AsteroidBase>();
-            ArrayList_UserFleet = new List<UserFleet>();
-            ArrayList_EnemyFleets = new List<EnemyFleet>();
-            ArrayList_Moons = new List<MoonBase>();
+
 
 
             CreateSun(SunCount);
             CreatePlanet(PlanetCount);
             CreateBox(BoxCount);
-            CreateNpc(NpcCount);
+            CreateNpcs();
+            CreateAsteroids(AsteroidCount);
+            CreateUserFleet(UserFleetCount);
+            CreateEnemyFleets(EnemyFleetCount);
+            CreateMoons(MoonCount);
 
         }
 
@@ -90,7 +110,7 @@ namespace WoS.map
             // Vykreslení jednotlivých prvků hry
             RenderBackeground(spriteBatch);
             RenderAll(spriteBatch);
-            
+
 
         }
 
