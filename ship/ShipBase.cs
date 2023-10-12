@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -85,10 +86,9 @@ namespace WoS.ship
         // List<Anime> animaceList;        // Seznam animací lodě
 
 
-        public ShipBase(Texture2D shipTexture, Vector2 startPosition, float speed)
+        public ShipBase(ContentManager content, Vector2 startPosition)
         : base() // Volání konstruktoru z třídy ElementBase pro nastavení pozice
         {
-            Texture = shipTexture;
         }
 
         public void SetTarget(Vector2 newTarget)

@@ -20,7 +20,6 @@ namespace WoS
 
         Camera2D camera;
         ShipBase ship;
-        Texture2D shipTexture;
 
         MapAlpha mapAlpha;              // Instance vaší mapy
 
@@ -52,10 +51,9 @@ namespace WoS
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             //Mapa
             Texture2D mapTexture = Content.Load<Texture2D>("maps/background/map1");     // Načtení textury pro mapu
-            mapAlpha = new MapAlpha(mapTexture);                                        // Inicializace mapy
+            mapAlpha = new MapAlpha(mapTexture,1, new Vector2(0, 0));                                        // Inicializace mapy
             //ship
-            shipTexture = Content.Load<Texture2D>("spaceShips/Egla");                   // Načtení textury pro ship
-            ship = new ShipEgla(shipTexture, new Vector2(100, 100), 100f);              // Inicializace ship
+            ship = new ShipEgla(Content, new Vector2(100, 100));              // Inicializace ship
 
 
 
@@ -97,10 +95,8 @@ namespace WoS
 
             // Vykreslení mapy
             mapAlpha.Draw(_spriteBatch);
-            // Vykreslení ship
+
             ship.Draw(_spriteBatch);
-
-
 
             _spriteBatch.End();
             base.Draw(gameTime);

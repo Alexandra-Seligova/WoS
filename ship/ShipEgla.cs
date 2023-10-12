@@ -1,12 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using WoS;
 
 namespace WoS.ship
 {
@@ -15,14 +18,14 @@ namespace WoS.ship
 
         private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
 
-        public ShipEgla(Texture2D shipTexture, Vector2 startPosition, float speed)
-            : base(shipTexture, startPosition, speed)
+        public ShipEgla(ContentManager content, Vector2 startPosition)
+            : base(content, startPosition)
         {
-            Texture = shipTexture;
+            Texture   = content.Load<Texture2D>("ShipEglaTexture");                    // Načtení textury pro ship
             // Zdraví a rychlost lodě
             Hp = 700;
             HpMax=700;
-            speed = 500;
+            MaxSpeed = 500;
             // Moduly a vybavení lodě
             generatorsNumber = 2;
             weaponsNumber = 1;
@@ -36,7 +39,6 @@ namespace WoS.ship
 
 
 
-            Texture = shipTexture;
             PositionOnMap = startPosition;
             Rotation = 0;
             Target = startPosition;
