@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,13 @@ float ShieldMax            // Maximální hodnota štítu objektu
 
 
 */
-
+        public override void Update()
+        {
+            // Implementation of method to update the planet
+        }
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            // Implementation of method to draw the planet
+        }
     }
 }

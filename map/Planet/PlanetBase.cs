@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using WoS.Utility;
 using Microsoft.Xna.Framework;  // Potřebné pro Vector2 a další třídy
 using System.Collections.Generic;  // Potřebné pro List<T>
-
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.map.Planet
 {
@@ -18,7 +18,6 @@ namespace WoS.map.Planet
         public int OwnerId { get; set; }
 
         // Pozice a rozměry planety
-        public Vector2 Position { get; set; }  // In MonoGame, Vector2 is commonly used for 2D instead of PVector
         public float Size { get; set; } = 200;
         public float PlanetSize { get; set; } = 400;
         // Ostatní atributy planety
@@ -46,6 +45,7 @@ namespace WoS.map.Planet
         {
             // Implementation of method to populate the list of elements
         }
+   
 
     }
 }

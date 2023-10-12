@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WoS.map.Planet
+namespace WoS.Fleets
 {
-    public class PlanetLuci : PlanetBase
+    public abstract class FleetBase : ElementBase
     {
     }
 }

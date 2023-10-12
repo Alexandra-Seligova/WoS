@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WoS.map.Box
+namespace WoS.Fleets
 {
-    //public int BoxType { get; set; }
-
-    public abstract class BoxBase : ElementBase
+    public class EnemyFleet : FleetBase
     {
+
         public override void Update()
         {
             // Implementation of method to update the planet

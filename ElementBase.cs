@@ -31,7 +31,11 @@ namespace WoS
 
         // Další základní funkce a vlastnosti mohou být přidány podle potřeby.
 
+        public abstract void Update();
+        public abstract void Render(SpriteBatch spriteBatch);
+
     }
+
 }
 
 /*

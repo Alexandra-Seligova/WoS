@@ -4,11 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WoS.Utility; // Předpokládá se, že OrbitalMovement je v tomto namespace
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.map.Asteroids
 {
     public abstract class AsteroidBase : OrbitalMovement
     {
+        public AsteroidBase(Vector2 position) {
+        this.Position = position;
+        }
+
         // Zde můžete přidat specifické vlastnosti a metody pro AsteroidBase
 
         /*

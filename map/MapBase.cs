@@ -5,11 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using WoS.map.Asteroids;
 using WoS.map.Box;
+using WoS.map.moon;
 using WoS.map.Planet;
 using WoS.map.Sun;
 using WoS.npc;
 using WoS.ship;
+using WoS.Utility;
+using WoS.Fleets;
 
 namespace WoS.map
 {
@@ -39,6 +43,10 @@ namespace WoS.map
         public List<PlanetBase> ArrayList_Planet { get;  set; }
         public List<BoxBase> ArrayList_Box { get;  set; }
         public List<NpcBase> ArrayList_Npc { get;  set; }
+        public List<AsteroidBase> ArrayList_Asteroids { get; set; }
+        public List<UserFleet> ArrayList_UserFleet { get; set; }
+        public List<EnemyFleet> ArrayList_EnemyFleets { get; set; }
+        public List<MoonBase> ArrayList_Moons { get; set; }
 
 
         public int SunCount { get; set; } // Počet planet na mapě
@@ -46,6 +54,10 @@ namespace WoS.map
         public int BoxCount { get; set; } // Počet boxů na mapě
         public int NpcCount { get; set; } // Počet NPC na mapě
         public int OnlineShipCount { get; set; } // Počet online lodí na mapě
+        public int AsteroidCount { get; set; }
+        public int UserFleetCount { get; set; }
+        public int EnemyFleetCount { get; set; }
+        public int MoonCount { get; set; }
         // Konstruktor
         public MapBase(int id, Vector2 position)
         {
@@ -56,71 +68,58 @@ namespace WoS.map
 
 
 
-
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            RenderBackeground(spriteBatch);
+            RenderAll(spriteBatch);
+        }
 
         // Update metoda
-        public void Update()
+        public override void Update()
         {
-            // ... (implementace)
-            //aktualizace prvků na mapě
 
         }
 
-        // Ostatní metody pro manipulaci s objekty na mapě
+
         public void CreateSun(int piece)
         {
-            Console.WriteLine("vytvarim ArrayList_Sun");
-            for (int i = 0; i < piece; i++)
-            {
-                ArrayList_Sun.Add(new SunSmall());
-                Console.WriteLine($"pridavam planetu: {i}");
-            }
+            CreateElements(ArrayList_Sun, piece, i => new SunSmall(), "ArrayList_Sun");
         }
 
-        // Metoda pro vytvoření planet.
         public void CreatePlanet(int piece)
         {
-            Console.WriteLine("vytvarim ArrayList_Planety");
-            for (int i = 0; i < piece; i++)
-            {
-                ArrayList_Planet.Add(new PlanetDeath(i));
-                Console.WriteLine($"pridavam planetu: {i}");
-            }
+            CreateElements(ArrayList_Planet, piece, i => new PlanetDeath(i), "ArrayList_Planet");
         }
 
-        // Metoda pro vytvoření Boxů.
         public void CreateBox(int piece)
         {
-            Console.WriteLine("vytvarim ArrayList_Box");
-            for (int i = 0; i < piece; i++)
-            {
-                Vector2 BoxPosition = new Vector2(
-                _random.Next((int)(MapWidth / 10), (int)(MapWidth - MapWidth / 10)),
-                _random.Next((int)(MapHeight / 10), (int)(MapHeight - MapHeight / 10))
-
-                                                                         );
-                int BoxType = _random.Next(1, 4);
-                ArrayList_Box.Add(new BoxBlue(BoxPosition, BoxType));
-                Console.WriteLine($"log: new Box {ArrayList_Box.Count}");
-            }
+            CreateElements(ArrayList_Box, piece, i => new BoxBlue(GenerateRandomPosition(), _random.Next(1, 4)), "ArrayList_Box");
         }
 
-        // Metoda pro vytvoření NPC postav.
         public void CreateNpc(int piece)
         {
-            Console.WriteLine("vytvarim ArrayList_npc");
-            for (int i = 0; i < piece; i++)
-            {
-                Vector2 position = new Vector2(
-                    _random.Next((int)(MapWidth / 10), (int)(MapWidth - MapWidth / 10)),
-                    _random.Next((int)(MapHeight / 10), (int)(MapHeight - MapHeight / 10))
-                );
-                ArrayList_Npc.Add(new NpcStreuner(position, 0, 0, "Streuner", i));
-                Console.WriteLine($"pridavam npc: {i}");
-            }
+            CreateElements(ArrayList_Npc, piece, i => new NpcStreuner(i, GenerateRandomPosition()), "ArrayList_Npc");
         }
 
+        public void CreateAsteroids(int piece)
+        {
+            CreateElements(ArrayList_Asteroids, piece, i => new SmallAsteroid(GenerateRandomPosition()), "ArrayList_Asteroids");
+        }
 
+        public void CreateUserFleet(int piece)
+        {
+            CreateElements(ArrayList_UserFleet, piece, i => new UserFleet(), "ArrayList_UserFleet");
+        }
+
+        public void CreateEnemyFleets(int piece)
+        {
+            CreateElements(ArrayList_EnemyFleets, piece, i => new EnemyFleet(), "ArrayList_EnemyFleets");
+        }
+
+        public void CreateMoons(int piece)
+        {
+            CreateElements(ArrayList_Moons, piece, i => new SmallMoon(GenerateRandomPosition()), "ArrayList_Moons");
+        }
 
         // Funkce pro vykreslení pozadí
         public void RenderBackeground(SpriteBatch spriteBatch)
@@ -130,43 +129,41 @@ namespace WoS.map
         }
 
 
-        // Funkce pro vykreslení objektů Slunce
-        public void RenderSun(SpriteBatch spriteBatch)
+        public void RenderAll(SpriteBatch spriteBatch)
         {
-            foreach (var slunce in ArrayList_Sun)
+            RenderElements(spriteBatch, ArrayList_Sun);
+            RenderElements(spriteBatch, ArrayList_Planet);
+            RenderElements(spriteBatch, ArrayList_Box);
+            RenderElements(spriteBatch, ArrayList_Npc);
+            RenderElements(spriteBatch, ArrayList_Asteroids);
+            RenderElements(spriteBatch, ArrayList_UserFleet);
+            RenderElements(spriteBatch, ArrayList_EnemyFleets);
+            RenderElements(spriteBatch, ArrayList_Moons);
+        }
+
+        private void CreateElements<T>(List<T> list, int piece, Func<int, T> createElementFunc, string logName)
+        {
+            Console.WriteLine($"vytvarim {logName}");
+            for (int i = 0; i < piece; i++)
             {
-                slunce.Render(spriteBatch);
+                list.Add(createElementFunc(i));
+                Console.WriteLine($"pridavam {logName.ToLower()}: {i}");
             }
         }
 
-        // Funkce pro vykreslení objektů Planeta
-        public void RenderPlanet(SpriteBatch spriteBatch)
+        private Vector2 GenerateRandomPosition()
         {
-            foreach (var planeta in ArrayList_Planet)
-            {
-                spriteBatch.Begin();  // Nahradí pushMatrix()
-                planeta.Render(spriteBatch);
-                spriteBatch.End();    // Nahradí popMatrix()
-
-            }
+            return new Vector2(
+                _random.Next((int)(MapWidth / 10), (int)(MapWidth - MapWidth / 10)),
+                _random.Next((int)(MapHeight / 10), (int)(MapHeight - MapHeight / 10))
+            );
         }
 
-        // Funkce pro vykreslení objektů Box
-        public void RenderBox(SpriteBatch spriteBatch)
+        public void RenderElements<T>(SpriteBatch spriteBatch, List<T> elements) where T : ElementBase
         {
-            foreach (var box in ArrayList_Box)
+            foreach (var element in elements)
             {
-                box.Render(spriteBatch);
-            }
-        }
-
-        // Funkce pro aktualizaci a vykreslení objektů NPC
-        public void RenderNpc(SpriteBatch spriteBatch)
-        {
-            foreach (var npc in ArrayList_Npc)
-            
-                npc.Render(spriteBatch);
-
+                element.Render(spriteBatch);
             }
         }
 

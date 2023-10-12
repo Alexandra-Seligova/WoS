@@ -21,7 +21,7 @@ namespace WoS.ship
         public ShipEgla(ContentManager content, Vector2 startPosition)
             : base(content, startPosition)
         {
-            Texture   = content.Load<Texture2D>("ShipEglaTexture");                    // Načtení textury pro ship
+            Texture   = content.Load<Texture2D>("spaceShips/Egla");                    // Načtení textury pro ship
             // Zdraví a rychlost lodě
             Hp = 700;
             HpMax=700;
@@ -47,6 +47,14 @@ namespace WoS.ship
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
+        }
+        public override void Update()
+        {
+            // Implementation of method to update the planet
+        }
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            // Implementation of method to draw the planet
         }
     }
 }

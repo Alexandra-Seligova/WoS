@@ -11,6 +11,9 @@ using WoS.map.Box;
 using WoS.map.Planet;
 using WoS.map.Sun;
 using WoS.npc;
+using WoS.map.moon;
+using WoS.Fleets;
+using WoS.map.Asteroids;
 
 namespace WoS.map
 {
@@ -33,7 +36,7 @@ namespace WoS.map
             LoadConfigFromDb();
             create();
 
-
+            backgroundTexture = backgroundImage;
             // Nastavení pozice mapy na (0,0)
             this.Position = new Vector2(0, 0);
 
@@ -64,6 +67,10 @@ namespace WoS.map
             ArrayList_Box = new List<BoxBase>();
             ArrayList_Npc = new List<NpcBase>();
 
+            ArrayList_Asteroids = new List<AsteroidBase>();
+            ArrayList_UserFleet = new List<UserFleet>();
+            ArrayList_EnemyFleets = new List<EnemyFleet>();
+            ArrayList_Moons = new List<MoonBase>();
 
 
             CreateSun(SunCount);
@@ -82,10 +89,8 @@ namespace WoS.map
 
             // Vykreslení jednotlivých prvků hry
             RenderBackeground(spriteBatch);
-            RenderSun(spriteBatch);
-            RenderPlanet(spriteBatch);
-            RenderBox(spriteBatch);
-            RenderNpc(spriteBatch);
+            RenderAll(spriteBatch);
+            
 
         }
 
