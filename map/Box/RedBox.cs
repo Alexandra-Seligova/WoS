@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;  // Potřebné pro Vector2 a další třídy
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.map.Box
 {
-    internal class BoxBlue : BoxBase
+    internal class RedBox : BoxBase
     {
-        public BoxBlue(Vector2 BoxPozition,int BoxType)
+        public RedBox(Vector2 BoxPozition, int BoxType)
         {
             Position = BoxPozition;
             //this.BoxType = BoxType;

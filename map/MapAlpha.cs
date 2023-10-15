@@ -20,7 +20,7 @@ namespace WoS.map
     public class MapAlpha : MapBase
     {
 
-
+        private Random _random = new Random();
         // Konstruktor pro MapAlpha s předdefinovanými hodnotami
         public MapAlpha(Texture2D backgroundImage, int id, Vector2 position)
         : base(id, position)
@@ -45,76 +45,49 @@ namespace WoS.map
         }
         public void Config()
         {
+            SunsCount[0] = 1;
+            PlanetsCount[0] = 4;
+            PlanetsCount[1] = 10;
 
-            SunCount = 1;
-            PlanetCount = 10;
-            BoxCount = 10;
-            NpcCount = 0;
-            AsteroidCount = 1;
-            UserFleetCount = 1;
-            EnemyFleetCount= 1;
-            MoonCount = 1;
+            BoxesCount[0] = 10;
+            BoxesCount[1] = 10;
+            NpcsCount[0] = 10;
+            NpcsCount[1] = 10;
 
-        InitializeNpcCounts();
+            //OnlineShipsCount=
+            AsteroidsCount[0] = 10;
+            UserFleetsCount[0] = 1;
+            EnemyFleetsCount[0] = 10;
+            MoonsCount[0] = 10;
+
+
+
+            SunsPosition = new[] { new Vector2(MapWidth / 2, MapHeight / 2) };
+            PlanetsPosition = InitializePositions(PlanetsCount.Sum());
+            BoxesPosition = InitializePositions(BoxesCount.Sum());
+            NpcsPosition = InitializePositions(NpcsCount.Sum());
+            AsteroidsPosition = InitializePositions(AsteroidsCount.Sum());
+            UserFleetsPosition = InitializePositions(UserFleetsCount.Sum());
+            EnemyFleetsPosition = InitializePositions(EnemyFleetsCount.Sum());
+            MoonsPosition = InitializePositions(MoonsCount.Sum());
+
+
         }
-        public void InitializeNpcCounts()
-        {
-            NpcTypeCount[0] = 5; //streuner
-            NpcTypeCount[1] = 10; //lolita
 
-            NpcCount = NpcTypeCount.Sum();
-        }
 
         public void LoadConfigFromDb()
         {
             //nastavení pro celou mapu načtené z db
 
         }
-        public void create()
-        {
-            // vytvoření prvků na mapě dle configu
-            Suns.Elements = new List<SunBase>();
-            Planets.Elements = new List<PlanetBase>();
-            Boxes.Elements = new List<BoxBase>();
-            Npcs.Elements = new List<NpcBase>();
-            Asteroids.Elements = new List<AsteroidBase>();
-            UserFleets.Elements = new List<UserFleet>();
-            EnemyFleets.Elements = new List<EnemyFleet>();
-            Moons.Elements = new List<MoonBase>();
- new List<MoonBase>();
-
-            CreateElements(Suns, () => new SunSmall());
-            CreateElements(Planets, () => new PlanetDeath());
-
-
-
-
-            CreateSun(SunCount);
-            CreatePlanet(PlanetCount);
-            CreateBox(BoxCount);
-            CreateNpcs();
-            CreateAsteroids(AsteroidCount);
-            CreateUserFleet(UserFleetCount);
-            CreateEnemyFleets(EnemyFleetCount);
-            CreateMoons(MoonCount);
-
-        }
-
-
-
         // Metoda pro vykreslení mapy
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public void DrawMap(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(backgroundTexture, new Rectangle((int)Position.X, (int)Position.Y, Width, Height), Color.White);
-
             // Vykreslení jednotlivých prvků hry
             RenderBackeground(spriteBatch);
             RenderAll(spriteBatch);
 
 
         }
-
-
     }
-
 }

@@ -19,20 +19,33 @@ namespace WoS.map
 {
     public class MapBase : ElementBase
     {
+        /// <summary>
+        /// Reprezentuje skupinu mapových prvků stejného typu.
+        /// </summary>
+        /// <typeparam name="T">Typ mapového prvku.</typeparam>
         public class MapElementGroup<T> where T : class
         {
-            public List<T> Elements { get; set; }
-            public int Count => Elements.Count;
-            public int[] TypeCount { get; set; }
-            public Vector2[] Positions { get; set; }
+            private Random _random;                                  // Generátor náhodných čísel.
+            public List<T> Elements { get; set; }                    // Seznam mapových prvků v této skupině.
+            public int Count => Elements.Count;                      // Vrací počet prvků v této skupině.
+            public int[] TypeCount { get; set; }                     // Pole počtů prvků dle jejich typu.
+            public Vector2[] Positions { get; set; }                 // Pole pozic jednotlivých prvků v této skupině.
 
-            public MapElementGroup(int typeCountLength, List<T> elements, Vector2[] positions)
+            // Inicializuje novou instanci třídy MapElementGroup s danými hodnotami.
+            public MapElementGroup(int[] typeCount, List<T> elements, Vector2[] positions)
             {
-                TypeCount = new int[typeCountLength];
+                TypeCount = typeCount;
                 Elements = elements ?? new List<T>();
                 Positions = positions ?? new Vector2[0];
+
+
             }
+
+
         }
+
+
+
 
         // Atributy
         public int Id { get; set; }
@@ -50,55 +63,43 @@ namespace WoS.map
         private Random _random = new Random();
         // Rozměry mapy
 
-        // Ostatní běžné atributy
-        public string Name { get; set; }  // Jméno nebo název mapy
-        public string Description { get; set; } // Popis nebo krátký přehled o mapě
-        public List<SunBase> ArrayList_Sun { get;  set; }
-        public List<PlanetBase> ArrayList_Planet { get;  set; }
-        public List<BoxBase> ArrayList_Box { get;  set; }
-        public List<NpcBase> ArrayList_Npc { get;  set; }
-        public List<AsteroidBase> ArrayList_Asteroids { get; set; }
-        public List<UserFleet> ArrayList_UserFleet { get; set; }
-        public List<EnemyFleet> ArrayList_EnemyFleets { get; set; }
-        public List<MoonBase> ArrayList_Moons { get; set; }
 
+        public int[] SunsCount { get; set; } = new int[1];  // Například pro pole s 5 prvky// Počet planet na mapě
+        public int[] PlanetsCount { get; set; } = new int[10];// Počet planet na mapě
+        public int[] BoxesCount { get; set; } = new int[10];// Počet boxů na mapě
+        public int[] NpcsCount { get; set; } = new int[10];// Počet NPC na mapě
+        public int[] OnlineShipsCount { get; set; } = new int[10];// Počet online lodí na mapě
+        public int[] AsteroidsCount { get; set; } = new int[10];
+        public int[] UserFleetsCount { get; set; } = new int[1];
+        public int[] EnemyFleetsCount { get; set; } = new int[10];
+        public int[] MoonsCount { get; set; } = new int[10];
 
-        public int SunCount { get; set; } // Počet planet na mapě
-        public int PlanetCount { get; set; } // Počet planet na mapě
-        public int BoxCount { get; set; } // Počet boxů na mapě
-        public int NpcCount { get; set; } // Počet NPC na mapě
-        public int OnlineShipCount { get; set; } // Počet online lodí na mapě
-        public int AsteroidCount { get; set; }
-        public int UserFleetCount { get; set; }
-        public int EnemyFleetCount { get; set; }
-        public int MoonCount { get; set; }
-
-        public int[] NpcTypeCount { get; set; } = new int[5];// Počet jednotlivých druhů NPC na mapě
+        public Vector2[] SunsPosition { get; set; }
+        public Vector2[] PlanetsPosition { get; set; }
+        public Vector2[] BoxesPosition { get; set; }
+        public Vector2[] NpcsPosition { get; set; }
+        public Vector2[] OnlineShipsPosition { get; set; }
+        public Vector2[] AsteroidsPosition { get; set; }
+        public Vector2[] UserFleetsPosition { get; set; }
+        public Vector2[] EnemyFleetsPosition { get; set; }
+        public Vector2[] MoonsPosition { get; set; }
 
 
 
-
-        public MapElementGroup<SunBase> Suns { get; set; } = new MapElementGroup<SunBase>(0, new List<SunBase>(), null);
-        public MapElementGroup<PlanetBase> Planets { get; set; } = new MapElementGroup<PlanetBase>(0, new List<PlanetBase>(), null);
-        public MapElementGroup<BoxBase> Boxes { get; set; } = new MapElementGroup<BoxBase>(0, new List<BoxBase>(), null);
-        public MapElementGroup<NpcBase> Npcs { get; set; } = new MapElementGroup<NpcBase>(5, new List<NpcBase>(), null);
-        public MapElementGroup<AsteroidBase> Asteroids { get; set; } = new MapElementGroup<AsteroidBase>(0, new List<AsteroidBase>(), null);
-        public MapElementGroup<UserFleet> UserFleets { get; set; } = new MapElementGroup<UserFleet>(0, new List<UserFleet>(), null);
-        public MapElementGroup<EnemyFleet> EnemyFleets { get; set; } = new MapElementGroup<EnemyFleet>(0, new List<EnemyFleet>(), null);
-        public MapElementGroup<MoonBase> Moons { get; set; } = new MapElementGroup<MoonBase>(0, new List<MoonBase>(), null);
-
-
-
-
-
-
+        public MapElementGroup<SunBase> Suns { get; set; }
+        public MapElementGroup<PlanetBase> Planets { get; set; }
+        public MapElementGroup<BoxBase> Boxes { get; set; }
+        public MapElementGroup<NpcBase> Npcs { get; set; }
+        public MapElementGroup<AsteroidBase> Asteroids { get; set; }
+        public MapElementGroup<UserFleet> UserFleets { get; set; }
+        public MapElementGroup<EnemyFleet> EnemyFleets { get; set; }
+        public MapElementGroup<MoonBase> Moons { get; set; }
 
 
 
         // Konstruktor
         public MapBase(int id, Vector2 position)
         {
-
         }
 
         // Ostatní metody
@@ -116,61 +117,108 @@ namespace WoS.map
         {
 
         }
-
-
-        public void CreateSun(int piece)
+        public void create()
         {
-            CreateElements(ArrayList_Sun, piece, i => new SunSmall(), "ArrayList_Sun");
+
+            // vytvoření skupin pro jednotlivé prvky na mapě.
+            Suns = new MapElementGroup<SunBase>(SunsCount, new List<SunBase>(), SunsPosition);
+            Planets = new MapElementGroup<PlanetBase>(PlanetsCount, new List<PlanetBase>(), PlanetsPosition);
+            Boxes = new MapElementGroup<BoxBase>(BoxesCount, new List<BoxBase>(), BoxesPosition);
+            Npcs = new MapElementGroup<NpcBase>(NpcsCount, new List<NpcBase>(), NpcsPosition);
+            Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsCount, new List<AsteroidBase>(), AsteroidsPosition);
+            UserFleets = new MapElementGroup<UserFleet>(UserFleetsCount, new List<UserFleet>(), UserFleetsPosition);
+            EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsCount, new List<EnemyFleet>(), EnemyFleetsPosition);
+            Moons = new MapElementGroup<MoonBase>(MoonsCount, new List<MoonBase>(), MoonsPosition);
+
+
+
+
+            // Vytvoření prvků mapy:
+
+            // Slunce
+            CreateSmallSun(SunsCount[0]);            // Vytvoření malého slunce
+
+            // Planety
+            CreateDeathPlanets(PlanetsCount[0]);        // Vytvoření planety typu "Death"
+            CreateMuciPlanets(PlanetsCount[1]);         // Vytvoření planety typu "Muci"
+
+            // Boxíky
+            CreateBlueBoxes(BoxesCount[0]);           // Vytvoření modrého boxu
+            CreaterRedBoxes(BoxesCount[1]);           // Vytvoření červeného boxu
+
+            // NPC postavy
+            CreateStreunerNpcs(NpcsCount[0]);        // Vytvoření NPC typu "Streuner"
+            CreateLolitaNpcs(NpcsCount[1]);          // Vytvoření NPC typu "Lolita"
+
+            // Asteroidy
+            CreateSmallAsteroids(AsteroidsCount[0]);      // Vytvoření malého asteroidu
+
+            // Flotily
+            CreateUserFleet(UserFleetsCount[0]);           // Vytvoření uživatelské flotily
+            CreateEnemyFleets(EnemyFleetsCount[1]);         // Vytvoření nepřátelské flotily
+
+            // Měsíce
+            CreateSmallMoons(MoonsCount[0]);          // Vytvoření malého měsíce
+
         }
 
-        public void CreatePlanet(int piece)
+
+        public void CreateSmallSun(int piece)// 1 kus
         {
-            CreateElements(ArrayList_Planet, piece, i => new PlanetDeath(i), "ArrayList_Planet");
+            CreateElements(Suns, piece, i => new SunSmall(), "Suns");
         }
 
-        public void CreateBox(int piece)
+        public void CreateDeathPlanets(int piece)
         {
-            CreateElements(ArrayList_Box, piece, i => new BoxBlue(GenerateRandomPosition(), _random.Next(1, 4)), "ArrayList_Box");
+            CreateElements(Planets, piece, i => new PlanetDeath(i), "ArrayList_Planet");
         }
 
-        public void CreateNpcs()
+        public void CreateMuciPlanets(int piece)
         {
-            // Definujeme pole funkcí pro vytvoření různých typů NPC
-            Func<int, Vector2, NpcBase>[] npcCreators = {
-        (index, position) => new NpcStreuner(index, position),
-        (index, position) => new NpcLolita(index, position),
-        // ... [další tvůrci NPC pro další typy]
-    };
-
-            for (int typeIndex = 0; typeIndex < NpcTypeCount.Length; typeIndex++)
-            {
-                CreateElements(
-                    ArrayList_Npc,
-                    NpcTypeCount[typeIndex],
-                    i => npcCreators[typeIndex](i, GenerateRandomPosition()),
-                    $"ArrayList_Npc_Type{typeIndex}"
-                );
-            }
+            CreateElements(Planets, piece, i => new PlanetDeath(i), "ArrayList_Planet");
         }
 
-        public void CreateAsteroids(int piece)
+
+        public void CreateBlueBoxes(int piece)
         {
-            CreateElements(ArrayList_Asteroids, piece, i => new SmallAsteroid(GenerateRandomPosition()), "ArrayList_Asteroids");
+            CreateElements(Boxes, piece, i => new BlueBox(GenerateRandomPosition(), 0), "ArrayList_Box");
+        }
+        public void CreaterRedBoxes(int piece)
+        {
+            CreateElements(Boxes, piece, i => new RedBox(GenerateRandomPosition(), 1), "ArrayList_Box");
+        }
+
+        int id = 0;
+        public void CreateStreunerNpcs(int piece)
+        {
+            CreateElements(Npcs, piece, i => new NpcStreuner(GenerateRandomPosition(), id++), "ArrayList_Npcs");
+        }
+        public void CreateLolitaNpcs(int piece)
+        {
+            CreateElements(Npcs, piece, i => new NpcLolita(GenerateRandomPosition(), id++), "ArrayList_Npcs");
+        }
+
+
+
+
+        public void CreateSmallAsteroids(int piece)
+        {
+            CreateElements(Asteroids, piece, i => new SmallAsteroid(GenerateRandomPosition()), "ArrayList_Asteroids");
         }
 
         public void CreateUserFleet(int piece)
         {
-            CreateElements(ArrayList_UserFleet, piece, i => new UserFleet(), "ArrayList_UserFleet");
+            CreateElements(UserFleets, piece, i => new UserFleet(), "ArrayList_UserFleet");
         }
 
         public void CreateEnemyFleets(int piece)
         {
-            CreateElements(ArrayList_EnemyFleets, piece, i => new EnemyFleet(), "ArrayList_EnemyFleets");
+            CreateElements(EnemyFleets, piece, i => new EnemyFleet(), "ArrayList_EnemyFleets");
         }
 
-        public void CreateMoons(int piece)
+        public void CreateSmallMoons(int piece)
         {
-            CreateElements(ArrayList_Moons, piece, i => new SmallMoon(GenerateRandomPosition()), "ArrayList_Moons");
+            CreateElements(Moons, piece, i => new SmallMoon(GenerateRandomPosition()), "ArrayList_Moons");
         }
 
         // Funkce pro vykreslení pozadí
@@ -183,25 +231,40 @@ namespace WoS.map
 
         public void RenderAll(SpriteBatch spriteBatch)
         {
-            RenderElements(spriteBatch, ArrayList_Sun);
-            RenderElements(spriteBatch, ArrayList_Planet);
-            RenderElements(spriteBatch, ArrayList_Box);
-            RenderElements(spriteBatch, ArrayList_Npc);
-            RenderElements(spriteBatch, ArrayList_Asteroids);
-            RenderElements(spriteBatch, ArrayList_UserFleet);
-            RenderElements(spriteBatch, ArrayList_EnemyFleets);
-            RenderElements(spriteBatch, ArrayList_Moons);
+            RenderElements(spriteBatch, Suns);
+            RenderElements(spriteBatch, Planets);
+            RenderElements(spriteBatch, Boxes);
+            RenderElements(spriteBatch, Npcs);
+            RenderElements(spriteBatch, Asteroids);
+            RenderElements(spriteBatch, UserFleets);
+            RenderElements(spriteBatch, EnemyFleets);
+            RenderElements(spriteBatch, Moons);
         }
 
-        private void CreateElements<T>(List<T> list, int piece, Func<int, T> createElementFunc, string logName)
+        private void CreateElements<T>(MapElementGroup<T> group, int piece, Func<int, T> createElementFunc, string logName) where T : class
         {
             Console.WriteLine($"vytvarim {logName}");
             for (int i = 0; i < piece; i++)
             {
-                list.Add(createElementFunc(i));
+                group.Elements.Add(createElementFunc(i));
                 Console.WriteLine($"pridavam {logName.ToLower()}: {i}");
             }
         }
+
+        public void CreateElements<T>(MapElementGroup<T> group, Func<T> createElementFunc) where T : class
+        {
+            for (int i = 0; i < group.TypeCount.Length; i++)
+            {
+                int count = group.TypeCount[i];
+                for (int j = 0; j < count; j++)
+                {
+                    group.Elements.Add(createElementFunc());
+                }
+            }
+        }
+
+
+
 
         private Vector2 GenerateRandomPosition()
         {
@@ -211,13 +274,21 @@ namespace WoS.map
             );
         }
 
-        public void RenderElements<T>(SpriteBatch spriteBatch, List<T> elements) where T : ElementBase
+        public void RenderElements<T>(SpriteBatch spriteBatch, MapElementGroup<T> group) where T : ElementBase
         {
-            foreach (var element in elements)
+            foreach (var element in group.Elements)
             {
                 element.Render(spriteBatch);
             }
         }
-
+        public Vector2[] InitializePositions(int count)
+        {
+            Vector2[] positions = new Vector2[count];
+            for (int i = 0; i < count; i++)
+            {
+                positions[i] = new Vector2(_random.Next(0, (int)MapWidth), _random.Next(0, (int)MapHeight));
+            }
+            return positions;
+        }
     }
 }

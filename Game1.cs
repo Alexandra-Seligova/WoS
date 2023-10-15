@@ -94,7 +94,7 @@ namespace WoS
             _spriteBatch.Begin(transformMatrix: camera.GetTransformation());
 
             // Vykreslení mapy
-            mapAlpha.Draw(_spriteBatch);
+            mapAlpha.DrawMap(_spriteBatch);
 
             ship.Draw(_spriteBatch);
 
