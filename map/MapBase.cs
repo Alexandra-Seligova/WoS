@@ -14,6 +14,8 @@ using WoS.npc;
 using WoS.ship;
 using WoS.Utility;
 using WoS.Fleets;
+using Microsoft.Xna.Framework.Content;
+using System.Reflection.Metadata;
 
 namespace WoS.map
 {
@@ -26,8 +28,8 @@ namespace WoS.map
         public class MapElementGroup<T> where T : class
         {
             private Random _random;                                  // Generátor náhodných čísel.
-            public List<T> Elements { get; set; }                    // Seznam mapových prvků v této skupině.
-            public int Count => Elements.Count;                      // Vrací počet prvků v této skupině.
+            public List<T> ElementsList { get; set; }                    // Seznam mapových prvků v této skupině.
+            public int Count => ElementsList.Count;                      // Vrací počet prvků v této skupině.
             public int[] TypeCount { get; set; }                     // Pole počtů prvků dle jejich typu.
             public Vector2[] Positions { get; set; }                 // Pole pozic jednotlivých prvků v této skupině.
 
@@ -35,7 +37,7 @@ namespace WoS.map
             public MapElementGroup(int[] typeCount, List<T> elements, Vector2[] positions)
             {
                 TypeCount = typeCount;
-                Elements = elements ?? new List<T>();
+                ElementsList = elements ?? new List<T>();
                 Positions = positions ?? new Vector2[0];
 
 
@@ -165,7 +167,7 @@ namespace WoS.map
 
         public void CreateSmallSun(int piece)// 1 kus
         {
-            CreateElements(Suns, piece, i => new SunSmall(), "Suns");
+            CreateElements(Suns, piece, i => new SunSmall(i, SunsPosition[i], Content), "Suns");
         }
 
         public void CreateDeathPlanets(int piece)
@@ -246,7 +248,7 @@ namespace WoS.map
             Console.WriteLine($"vytvarim {logName}");
             for (int i = 0; i < piece; i++)
             {
-                group.Elements.Add(createElementFunc(i));
+                group.ElementsList.Add(createElementFunc(i));
                 Console.WriteLine($"pridavam {logName.ToLower()}: {i}");
             }
         }
@@ -258,7 +260,7 @@ namespace WoS.map
                 int count = group.TypeCount[i];
                 for (int j = 0; j < count; j++)
                 {
-                    group.Elements.Add(createElementFunc());
+                    group.ElementsList.Add(createElementFunc());
                 }
             }
         }
@@ -276,7 +278,7 @@ namespace WoS.map
 
         public void RenderElements<T>(SpriteBatch spriteBatch, MapElementGroup<T> group) where T : ElementBase
         {
-            foreach (var element in group.Elements)
+            foreach (var element in group.ElementsList)
             {
                 element.Render(spriteBatch);
             }

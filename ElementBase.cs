@@ -14,6 +14,8 @@ namespace WoS
         public int Width { get; set; }                // Šířka objektu
         public int Height { get; set; }               // Výška objektu
 
+        public int Id { get; set; }
+
         // Vlastnosti zdraví a štítu
         public float Hp { get; set; }                 // Aktuální zdraví objektu
         public float HpMax { get; set; }              // Maximální zdraví objektu

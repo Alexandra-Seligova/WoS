@@ -78,7 +78,7 @@ namespace WoS
 
                 // Nastavení cílové pozice lodi na základě pozice myši
                 //Mapa.MapElementGroup.elementInFleet[0] = ship;
-                mapAlpha.UserFleets.Elements[0].SetMouseTarget(mousePosition, new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), camera.Position);
+                mapAlpha.UserFleets.ElementsList[0].SetMouseTarget(mousePosition, new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), camera.Position);
 
             }
 
