@@ -14,7 +14,7 @@ namespace WoS.map.Sun
     {
         private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
 
-        SunSmall(int id, Vector2 position, ContentManager content)
+        public SunSmall(int id, Vector2 position, ContentManager content)
         {
             Id = id;
             Position = position;

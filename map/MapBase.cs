@@ -99,9 +99,13 @@ namespace WoS.map
 
 
 
+        public ContentManager Content { get;  set; }
         // Konstruktor
-        public MapBase(int id, Vector2 position)
+        public MapBase(int id, Vector2 position, ContentManager content)
         {
+            Id = id;
+            Position = position;
+             Content = content;
         }
 
         // Ostatní metody
@@ -172,32 +176,32 @@ namespace WoS.map
 
         public void CreateDeathPlanets(int piece)
         {
-            CreateElements(Planets, piece, i => new PlanetDeath(i), "ArrayList_Planet");
+            CreateElements(Planets, piece, i => new PlanetDeath(i, PlanetsPosition[i], Content), "ArrayList_Planet");
         }
 
         public void CreateMuciPlanets(int piece)
         {
-            CreateElements(Planets, piece, i => new PlanetDeath(i), "ArrayList_Planet");
+            CreateElements(Planets, piece, i => new PlanetDeath(i, PlanetsPosition[i], Content), "ArrayList_Planet");
         }
 
 
         public void CreateBlueBoxes(int piece)
         {
-            CreateElements(Boxes, piece, i => new BlueBox(GenerateRandomPosition(), 0), "ArrayList_Box");
+            CreateElements(Boxes, piece, i => new BlueBox(i, GenerateRandomPosition(), Content), "ArrayList_Box");
         }
         public void CreaterRedBoxes(int piece)
         {
-            CreateElements(Boxes, piece, i => new RedBox(GenerateRandomPosition(), 1), "ArrayList_Box");
+            CreateElements(Boxes, piece, i => new RedBox(i, GenerateRandomPosition(), Content), "ArrayList_Box");
         }
 
         int id = 0;
         public void CreateStreunerNpcs(int piece)
         {
-            CreateElements(Npcs, piece, i => new NpcStreuner(GenerateRandomPosition(), id++), "ArrayList_Npcs");
+            CreateElements(Npcs, piece, i => new NpcStreuner(i, GenerateRandomPosition(), Content), "ArrayList_Npcs");
         }
         public void CreateLolitaNpcs(int piece)
         {
-            CreateElements(Npcs, piece, i => new NpcLolita(GenerateRandomPosition(), id++), "ArrayList_Npcs");
+            CreateElements(Npcs, piece, i => new NpcLolita(i, GenerateRandomPosition(), Content), "ArrayList_Npcs");
         }
 
 
@@ -205,22 +209,22 @@ namespace WoS.map
 
         public void CreateSmallAsteroids(int piece)
         {
-            CreateElements(Asteroids, piece, i => new SmallAsteroid(GenerateRandomPosition()), "ArrayList_Asteroids");
+            CreateElements(Asteroids, piece, i => new SmallAsteroid(i, GenerateRandomPosition(), Content), "ArrayList_Asteroids");
         }
 
         public void CreateUserFleet(int piece)
         {
-            CreateElements(UserFleets, piece, i => new UserFleet(), "ArrayList_UserFleet");
+            CreateElements(UserFleets, piece, i => new UserFleet(i, UserFleetsPosition[i], Content), "ArrayList_UserFleet");
         }
 
         public void CreateEnemyFleets(int piece)
         {
-            CreateElements(EnemyFleets, piece, i => new EnemyFleet(), "ArrayList_EnemyFleets");
+            CreateElements(EnemyFleets, piece, i => new EnemyFleet(i, EnemyFleetsPosition[i], Content), "ArrayList_EnemyFleets");
         }
 
         public void CreateSmallMoons(int piece)
         {
-            CreateElements(Moons, piece, i => new SmallMoon(GenerateRandomPosition()), "ArrayList_Moons");
+            CreateElements(Moons, piece, i => new SmallMoon(i, GenerateRandomPosition(), Content), "ArrayList_Moons");
         }
 
         // Funkce pro vykreslení pozadí

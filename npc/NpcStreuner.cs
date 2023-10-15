@@ -6,18 +6,31 @@ using System.Threading.Tasks;
 using WoS.npc;  // Přidáno pro přístup k třídě NpcBase (pokud je v jiném souboru v tomto namespace)
 
 using Microsoft.Xna.Framework;  // Pro použití Vector2
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.npc
 {
     public class NpcStreuner : NpcBase
     {
-        // Základní konstruktor, který deleguje na nadřazený konstruktor.
-        // Pokud NpcBase vyžaduje konstruktor s parametry, měli bychom je přidat zde.
-        public NpcStreuner(Vector2 position, int id ) : base(position)
+        private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
+        public NpcStreuner(int id, Vector2 position, ContentManager content) : base(position)
         {
-            // Zde můžete inicializovat vlastnosti specifické pro NpcStreuner
+            Id = id;
+            Position = position;
+            PositionOnMap = position;
+            Rotation = 0;
+            Texture = content.Load<Texture2D>("npc/ships/Streuner");  // Zde můžete inicializovat vlastnosti specifické pro NpcStreuner
         }
 
-        // Další metody a vlastnosti týkající se NpcStreuner můžete přidat sem...
+        public override void Update()
+        {
+            // Implementation of method to update the planet
+        }
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
+
+        }// Další metody a vlastnosti týkající se NpcStreuner můžete přidat sem...
     }
 }

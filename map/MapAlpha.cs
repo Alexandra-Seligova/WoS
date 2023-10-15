@@ -14,6 +14,7 @@ using WoS.npc;
 using WoS.map.moon;
 using WoS.Fleets;
 using WoS.map.Asteroids;
+using Microsoft.Xna.Framework.Content;
 
 namespace WoS.map
 {
@@ -22,8 +23,8 @@ namespace WoS.map
 
         private Random _random = new Random();
         // Konstruktor pro MapAlpha s předdefinovanými hodnotami
-        public MapAlpha(Texture2D backgroundImage, int id, Vector2 position)
-        : base(id, position)
+        public MapAlpha(Texture2D backgroundImage, int id, Vector2 position, ContentManager content)
+        : base(id, position, content)
         {
             Id = id;
             Status = 1;

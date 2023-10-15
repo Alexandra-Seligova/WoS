@@ -51,7 +51,7 @@ namespace WoS
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             //Mapa
             Texture2D mapTexture = Content.Load<Texture2D>("maps/background/map1");     // Načtení textury pro mapu
-            mapAlpha = new MapAlpha(mapTexture,1, new Vector2(0, 0));                                        // Inicializace mapy
+            mapAlpha = new MapAlpha(mapTexture,1, new Vector2(0, 0), Content);                                        // Inicializace mapy
             //ship
             ship = new ShipEgla(Content, new Vector2(100, 100));              // Inicializace ship
 
