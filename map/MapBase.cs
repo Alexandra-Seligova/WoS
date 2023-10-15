@@ -49,7 +49,7 @@ namespace WoS.map
 
         // Atributy
         public int Id { get; set; }
-        public int Stav { get; set; }
+        public int Status { get; set; }
         public Vector2 ImageSize { get; set; }
 
 

@@ -26,6 +26,7 @@ namespace WoS.map
         : base(id, position)
         {
             Id = id;
+            Status = 1;
             Position = position;
 
             Width = 10000;
@@ -37,6 +38,7 @@ namespace WoS.map
             create();
 
             backgroundTexture = backgroundImage;
+
             // Nastavení pozice mapy na (0,0)
             this.Position = new Vector2(0, 0);
 

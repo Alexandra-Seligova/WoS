@@ -1,0 +1,10 @@
+﻿Deník vývoje
+
+15.10 dodělaná hlavní struktura MapBase (MapElementGroup) a AlphaMap
+Zdá se, že mechanismus je funkční a všechny potřebné funkce jsou implementovány.
+TODO: implementace načítání mapy z DB
+
+TODO:	Základní gui, gui pro znázornění ship statusu a štítů atd.
+		přidání ship a všeho okolo do UserFleets v MapElementGroup,
+		Přidání prvků do shipu (zbraně, generátory, atd..)
+		Pokud vystřelím a zničím např zbraň co se stane s lodí? Silný Laserový paprsek proti slabé lodi

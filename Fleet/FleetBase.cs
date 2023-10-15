@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WoS.ship
+namespace WoS.Fleet
 {
     public class FleetBase
     {
@@ -18,7 +18,7 @@ namespace WoS.ship
         // Konstruktor
         public FleetBase()
         {
-           // ships = new List<Ship>();
+            // ships = new List<Ship>();
             //drones = new List<Drone>();
         }/*
 
