@@ -81,7 +81,7 @@ namespace WoS
                 mapAlpha.UserFleets.ElementsList[0].SetMouseTarget(mousePosition, new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), camera.Position);
 
             }
-
+            mapAlpha.UpdateMap(gameTime);
             // Aktualizace lodi
             ship.Update(gameTime);
 

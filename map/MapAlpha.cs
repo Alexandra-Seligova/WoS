@@ -83,6 +83,14 @@ namespace WoS.map
             //nastavení pro celou mapu načtené z db
 
         }
+
+        public void UpdateMap(GameTime gameTime)
+        {
+            // Aktualizace jednotlivých prvků hry
+            UpdateAll(gameTime);
+
+        }
+
         // Metoda pro vykreslení mapy
         public void DrawMap(SpriteBatch spriteBatch)
         {

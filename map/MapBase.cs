@@ -111,18 +111,7 @@ namespace WoS.map
         // Ostatní metody
 
 
-
-        public override void Render(SpriteBatch spriteBatch)
-        {
-            RenderBackeground(spriteBatch);
-            RenderAll(spriteBatch);
-        }
-
-        // Update metoda
-        public override void Update()
-        {
-
-        }
+        #region Create
         public void create()
         {
 
@@ -167,7 +156,9 @@ namespace WoS.map
             CreateSmallMoons(MoonsCount[0]);          // Vytvoření malého měsíce
 
         }
+        #endregion Create
 
+        #region CreateElements
 
         public void CreateSmallSun(int piece)// 1 kus
         {
@@ -233,6 +224,20 @@ namespace WoS.map
             spriteBatch.Draw(backgroundTexture, new Rectangle((int)Position.X, (int)Position.Y, Width, Height), Color.White);
 
         }
+        #endregion CreateElements
+
+
+        public void UpdateAll(GameTime gameTime)
+        {
+            UpdateElements( Suns);
+            UpdateElements( Planets);
+            UpdateElements( Boxes);
+            UpdateElements( Npcs);
+            UpdateElements( Asteroids);
+            UpdateElements( UserFleets);
+            UpdateElements( EnemyFleets);
+            UpdateElements( Moons);
+        }
 
 
         public void RenderAll(SpriteBatch spriteBatch)
@@ -246,6 +251,11 @@ namespace WoS.map
             RenderElements(spriteBatch, EnemyFleets);
             RenderElements(spriteBatch, Moons);
         }
+
+        #region Methods
+
+        public override void Update() { }
+        public override void Render(SpriteBatch spriteBatch) { }
 
         private void CreateElements<T>(MapElementGroup<T> group, int piece, Func<int, T> createElementFunc, string logName) where T : class
         {
@@ -269,9 +279,6 @@ namespace WoS.map
             }
         }
 
-
-
-
         private Vector2 GenerateRandomPosition()
         {
             return new Vector2(
@@ -279,7 +286,13 @@ namespace WoS.map
                 _random.Next((int)(MapHeight / 10), (int)(MapHeight - MapHeight / 10))
             );
         }
-
+        public void UpdateElements<T>( MapElementGroup<T> group) where T : ElementBase
+        {
+            foreach (var element in group.ElementsList)
+            {
+                element.Update();
+            }
+        }
         public void RenderElements<T>(SpriteBatch spriteBatch, MapElementGroup<T> group) where T : ElementBase
         {
             foreach (var element in group.ElementsList)
@@ -296,5 +309,6 @@ namespace WoS.map
             }
             return positions;
         }
+        #endregion Methods
     }
 }
