@@ -8,3 +8,7 @@ TODO:	Základní gui, gui pro znázornění ship statusu a štítů atd.
 		přidání ship a všeho okolo do UserFleets v MapElementGroup,
 		Přidání prvků do shipu (zbraně, generátory, atd..)
 		Pokud vystřelím a zničím např zbraň co se stane s lodí? Silný Laserový paprsek proti slabé lodi
+
+
+
+		Objekty na mapě?

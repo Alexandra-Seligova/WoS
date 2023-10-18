@@ -21,6 +21,9 @@ namespace WoS.map
 {
     public class MapBase : ElementBase
     {
+
+        #region MapElement Class
+
         /// <summary>
         /// Reprezentuje skupinu mapových prvků stejného typu.
         /// </summary>
@@ -46,6 +49,7 @@ namespace WoS.map
 
         }
 
+        #endregion MapElement Class
 
 
 
@@ -65,7 +69,18 @@ namespace WoS.map
         private Random _random = new Random();
         // Rozměry mapy
 
+        #region MapElementGroup List
+        public MapElementGroup<SunBase> Suns { get; set; }
+        public MapElementGroup<PlanetBase> Planets { get; set; }
+        public MapElementGroup<BoxBase> Boxes { get; set; }
+        public MapElementGroup<NpcBase> Npcs { get; set; }
+        public MapElementGroup<AsteroidBase> Asteroids { get; set; }
+        public MapElementGroup<UserFleet> UserFleets { get; set; }
+        public MapElementGroup<EnemyFleet> EnemyFleets { get; set; }
+        public MapElementGroup<MoonBase> Moons { get; set; }
+        #endregion MapElementGroup List
 
+        #region Count
         public int[] SunsCount { get; set; } = new int[1];  // Například pro pole s 5 prvky// Počet planet na mapě
         public int[] PlanetsCount { get; set; } = new int[10];// Počet planet na mapě
         public int[] BoxesCount { get; set; } = new int[10];// Počet boxů na mapě
@@ -75,7 +90,9 @@ namespace WoS.map
         public int[] UserFleetsCount { get; set; } = new int[1];
         public int[] EnemyFleetsCount { get; set; } = new int[10];
         public int[] MoonsCount { get; set; } = new int[10];
+        #endregion Count
 
+        #region Position
         public Vector2[] SunsPosition { get; set; }
         public Vector2[] PlanetsPosition { get; set; }
         public Vector2[] BoxesPosition { get; set; }
@@ -85,27 +102,15 @@ namespace WoS.map
         public Vector2[] UserFleetsPosition { get; set; }
         public Vector2[] EnemyFleetsPosition { get; set; }
         public Vector2[] MoonsPosition { get; set; }
+        #endregion Position
 
-
-
-        public MapElementGroup<SunBase> Suns { get; set; }
-        public MapElementGroup<PlanetBase> Planets { get; set; }
-        public MapElementGroup<BoxBase> Boxes { get; set; }
-        public MapElementGroup<NpcBase> Npcs { get; set; }
-        public MapElementGroup<AsteroidBase> Asteroids { get; set; }
-        public MapElementGroup<UserFleet> UserFleets { get; set; }
-        public MapElementGroup<EnemyFleet> EnemyFleets { get; set; }
-        public MapElementGroup<MoonBase> Moons { get; set; }
-
-
-
-        public ContentManager Content { get;  set; }
+        public ContentManager Content { get; set; }
         // Konstruktor
         public MapBase(int id, Vector2 position, ContentManager content)
         {
             Id = id;
             Position = position;
-             Content = content;
+            Content = content;
         }
 
         // Ostatní metody
@@ -157,6 +162,32 @@ namespace WoS.map
 
         }
         #endregion Create
+
+        public void UpdateAll(GameTime gameTime)
+        {
+            UpdateElements(Suns);
+            UpdateElements(Planets);
+            UpdateElements(Boxes);
+            UpdateElements(Npcs);
+            UpdateElements(Asteroids);
+            UpdateElements(UserFleets);
+            UpdateElements(EnemyFleets);
+            UpdateElements(Moons);
+        }
+
+
+        public void RenderAll(SpriteBatch spriteBatch)
+        {
+            RenderElements(spriteBatch, Suns);
+            RenderElements(spriteBatch, Planets);
+            RenderElements(spriteBatch, Boxes);
+            RenderElements(spriteBatch, Npcs);
+            RenderElements(spriteBatch, Asteroids);
+            RenderElements(spriteBatch, UserFleets);
+            RenderElements(spriteBatch, EnemyFleets);
+            RenderElements(spriteBatch, Moons);
+        }
+
 
         #region CreateElements
 
@@ -226,32 +257,6 @@ namespace WoS.map
         }
         #endregion CreateElements
 
-
-        public void UpdateAll(GameTime gameTime)
-        {
-            UpdateElements( Suns);
-            UpdateElements( Planets);
-            UpdateElements( Boxes);
-            UpdateElements( Npcs);
-            UpdateElements( Asteroids);
-            UpdateElements( UserFleets);
-            UpdateElements( EnemyFleets);
-            UpdateElements( Moons);
-        }
-
-
-        public void RenderAll(SpriteBatch spriteBatch)
-        {
-            RenderElements(spriteBatch, Suns);
-            RenderElements(spriteBatch, Planets);
-            RenderElements(spriteBatch, Boxes);
-            RenderElements(spriteBatch, Npcs);
-            RenderElements(spriteBatch, Asteroids);
-            RenderElements(spriteBatch, UserFleets);
-            RenderElements(spriteBatch, EnemyFleets);
-            RenderElements(spriteBatch, Moons);
-        }
-
         #region Methods
 
         public override void Update() { }
@@ -286,7 +291,7 @@ namespace WoS.map
                 _random.Next((int)(MapHeight / 10), (int)(MapHeight - MapHeight / 10))
             );
         }
-        public void UpdateElements<T>( MapElementGroup<T> group) where T : ElementBase
+        public void UpdateElements<T>(MapElementGroup<T> group) where T : ElementBase
         {
             foreach (var element in group.ElementsList)
             {
