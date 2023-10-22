@@ -17,8 +17,8 @@ namespace WoS
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch _spriteBatch;
-
-        Camera2D camera;
+        SpriteFont myFont;
+        Camera3D camera;
         ShipBase ship;
 
         MapAlpha mapAlpha;              // Instance vaší mapy
@@ -36,19 +36,22 @@ namespace WoS
             // graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             IsMouseVisible = true;
-            camera = new Camera2D(GraphicsDevice.Viewport);
+            camera = new Camera3D(GraphicsDevice.Viewport);
 
         }
 
         protected override void Initialize()
         {
-            InitializeMqtt();
+            //InitializeMqtt();
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            myFont = Content.Load<SpriteFont>("Font/arial");
+            camera.LoadContent(Content, _spriteBatch);
             //Mapa
             Texture2D mapTexture = Content.Load<Texture2D>("maps/background/map1");     // Načtení textury pro mapu
             mapAlpha = new MapAlpha(mapTexture,1, new Vector2(0, 0), Content);                                        // Inicializace mapy
@@ -61,9 +64,11 @@ namespace WoS
 
         protected override void Update(GameTime gameTime)
         {
+            camera.UpdateZoom();
+
             if (!isGUIInteraction)
             {
-                camera.Follow(ship.PositionOnMap);
+                camera.Follow(new Vector3(100, 100,0));
             }
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -78,7 +83,7 @@ namespace WoS
 
                 // Nastavení cílové pozice lodi na základě pozice myši
                 //Mapa.MapElementGroup.elementInFleet[0] = ship;
-                mapAlpha.UserFleets.ElementsList[0].SetMouseTarget(mousePosition, new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), camera.Position);
+                //mapAlpha.UserFleets.ElementsList[0].SetMouseTarget(mousePosition, new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), camera.Position);
 
             }
             mapAlpha.UpdateMap(gameTime);
@@ -92,8 +97,8 @@ namespace WoS
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin(transformMatrix: camera.GetTransformation());
-
+            _spriteBatch.Begin(transformMatrix: camera.GetProjectionMatrix());
+            camera.DrawAxis(GraphicsDevice, myFont);
             // Vykreslení mapy
             mapAlpha.DrawMap(_spriteBatch);
 
@@ -102,7 +107,7 @@ namespace WoS
             _spriteBatch.End();
             base.Draw(gameTime);
         }
-
+        /*
         public void InitializeMqtt()
         {
             // Vytvořte nový MQTT klient a připojte se k brokeru.
@@ -131,6 +136,6 @@ namespace WoS
             client.Disconnect();
             base.UnloadContent();
         }
-
+        */
     }
 }
