@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WoS.Fleet
 {
-    internal class EnemyFleets
+    public class EnemyFleets : FleetBase
     {
+        // Metody specifické pro EnemyFleets
     }
 }

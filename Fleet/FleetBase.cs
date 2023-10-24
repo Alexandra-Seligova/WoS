@@ -8,42 +8,27 @@ namespace WoS.Fleet
 {
     public class FleetBase
     {
-        // Seznam lodí a dronů v letce
-        //private List<Ship> ships;
-        //private List<Drone> drones;
+        protected List<IControllable> controllables;
+        protected IControllable currentControlledObject;
 
-        // Aktuálně ovládaný objekt v letce
-        private object currentControlledObject;
-
-        // Konstruktor
         public FleetBase()
         {
-            // ships = new List<Ship>();
-            //drones = new List<Drone>();
-        }/*
-
-        // Přidání lodi do letky
-        public void AddShip(Ship ship)
-        {
-            ships.Add(ship);
+            controllables = new List<IControllable>();
         }
 
-        // Přidání dronu do letky
-        public void AddDrone(Drone drone)
+        public void AddControllable(IControllable controllable)
         {
-            drones.Add(drone);
-        }
-        */
-        // Přepnutí ovládání na další objekt v letce
-        public void SwitchControl()
-        {
-            // Tady byste mohl implementovat logiku pro přepnutí ovládání mezi objekty v letce
+            controllables.Add(controllable);
         }
 
-        // Nastavení chování zbytku letky na základě vybrané lodi
-        public void SetFleetBehaviorBasedOnCurrentObject()
+        public virtual void SwitchControl()
         {
-            // Implementace logiky pro nastavení chování zbytku letky na základě aktuálně ovládaného objektu
+            // Logika pro přepnutí ovládání mezi objekty
+        }
+
+        public virtual void SetFleetBehaviorBasedOnCurrentObject()
+        {
+            // Implementace logiky pro nastavení chování flotily na základě aktuálně ovládaného objektu
         }
     }
 }
