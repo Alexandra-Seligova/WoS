@@ -18,7 +18,7 @@ namespace WoS
         private GraphicsDeviceManager graphics;
         private SpriteBatch _spriteBatch;
         SpriteFont myFont;
-        Camera3D camera;
+        Camera2D camera;
         ShipBase ship;
 
         MapAlpha mapAlpha;              // Instance vaší mapy
@@ -36,7 +36,7 @@ namespace WoS
             // graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             IsMouseVisible = true;
-            camera = new Camera3D(GraphicsDevice.Viewport);
+            camera = new Camera2D(GraphicsDevice.Viewport);
 
         }
 
@@ -51,7 +51,7 @@ namespace WoS
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             myFont = Content.Load<SpriteFont>("Font/arial");
-            camera.LoadContent(Content, _spriteBatch);
+            //camera.LoadContent(Content, _spriteBatch);
             //Mapa
             Texture2D mapTexture = Content.Load<Texture2D>("maps/background/map1");     // Načtení textury pro mapu
             mapAlpha = new MapAlpha(mapTexture,1, new Vector2(0, 0), Content);                                        // Inicializace mapy
@@ -68,7 +68,7 @@ namespace WoS
 
             if (!isGUIInteraction)
             {
-                camera.Follow(new Vector3(100, 100,0));
+                camera.Follow(new Vector2(100, 100));
             }
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -97,8 +97,8 @@ namespace WoS
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin(transformMatrix: camera.GetProjectionMatrix());
-            camera.DrawAxis(GraphicsDevice, myFont);
+            _spriteBatch.Begin(transformMatrix: camera.GetTransformation());
+            //camera.DrawAxis(GraphicsDevice, myFont);
             // Vykreslení mapy
             mapAlpha.DrawMap(_spriteBatch);
 
