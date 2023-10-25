@@ -60,7 +60,7 @@ namespace WoS.map
             //OnlineShipsCount=
             AsteroidsCount[0] = 10;
             UserFleetsCount[0] = 1;
-            EnemyFleetsCount[0] = 10;
+            EnemyFleetsCount[0] = 1;
             MoonsCount[0] = 10;
 
 
