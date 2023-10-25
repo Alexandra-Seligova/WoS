@@ -23,39 +23,62 @@ namespace WoS.Database
             public int Id { get; set; }
             public string Name { get; set; }
             public int Count { get; set; }
-            public List<Vector2> Positions { get; set; } = new List<Vector2>();
-            public List<int> Types { get; set; } = new List<int>();
+            public List<Vector2> Positions { get; set; }
+            public List<int> Types { get; set; }
+            public string json { get; set; }
             public MapConfig(int id, string name, int count, List<Vector2> positions, List<int> types)
             {
-
+                Positions = new List<Vector2>();
+                Types = new List<int>();
                 Id = id;
                 Name = name;
                 Count = count;
                 Positions = positions;
                 Types = types;
+                json = ToJson();
+            }
+            public string ToJson()
+            {
+                return JsonConvert.SerializeObject(this, Formatting.Indented);
             }
         }
         Database Db = new Database();
 
-       int Id = 1;
-                string Name = "AlphaMap";
-        private Random _random = new Random();
-        // Rozměry mapy
+        int Id { get; set; } // Id mapy
+        string Name { get; set; } // Jméno mapy
         public float MapWidth { get; set; }  // Šířka mapy
         public float MapHeight { get; set; }  // Výška mapy
 
-        private List<MapConfig> Configs { get; set; } = new List<MapConfig>();
+        private Random _random = new Random();
+
+
+        private List<MapConfig> Configs { get; set; }
+
 
         // počítadla pro jednotlivé typy objektů
-        private List<int> Types { get; set; } = new List<int>();
-        private List<Vector2> Positions { get; set; } = new List<Vector2>();
-        private int elementCounts { get; set; } = 0;
-        private int numberOfPeaces { get; set; } = 0;
-
+        private List<int> Types { get; set; }
+        private List<Vector2> Positions { get; set; }
+        private int elementCounts { get; set; }
+        private int numberOfPeaces { get; set; }
 
 
         public CreateMap()
         {
+            Types = new List<int>();
+            Positions = new List<Vector2>();
+            elementCounts = 0;
+            numberOfPeaces = 0;
+            Configs = new List<MapConfig>();
+
+            MapWidth = 10000;
+            MapHeight = 10000;
+
+            Id = 1;
+                Name = "AlphaMap";
+        }
+        public void CreateMapAndInsertToDatabase()
+        {
+            createMapConfigs();
             Db.InsertMapConfig(Id,  Name, Configs);
         }
 
@@ -182,6 +205,7 @@ namespace WoS.Database
         }
         #endregion CreateConfigElements
 
+        #region Metody
 
         private void resetPocitadel()
         {
@@ -211,9 +235,9 @@ namespace WoS.Database
 
         private List<int> generateTypesCounts(int[] TypesCount)
         {
-            for (int i = 1; i <= TypesCount.Length; i++)
+            for (int i = 0; i < TypesCount.Length; i++)
             {
-                Types.Add(TypesCount[i - 1]); //typ 1 obsahuje počet 1
+                Types.Add(TypesCount[i ]); //typ 1 obsahuje počet 1
             }
             return Types;
         }
@@ -236,5 +260,6 @@ namespace WoS.Database
         {
             return JsonConvert.DeserializeObject<MapConfig>(json);
         }
+        #endregion Metody
     }
 }

@@ -81,15 +81,15 @@ namespace WoS.map
         #endregion MapElementGroup List
 
         #region Count
-        public int[] SunsCount { get; set; } = new int[1];  // Například pro pole s 5 prvky// Počet planet na mapě
-        public int[] PlanetsCount { get; set; } = new int[10];// Počet planet na mapě
-        public int[] BoxesCount { get; set; } = new int[10];// Počet boxů na mapě
-        public int[] NpcsCount { get; set; } = new int[10];// Počet NPC na mapě
-        public int[] OnlineShipsCount { get; set; } = new int[10];// Počet online lodí na mapě
-        public int[] AsteroidsCount { get; set; } = new int[10];
-        public int[] UserFleetsCount { get; set; } = new int[1];
-        public int[] EnemyFleetsCount { get; set; } = new int[10];
-        public int[] MoonsCount { get; set; } = new int[10];
+        public int[] SunsTypeCount { get; set; } = new int[1];  // Například pro pole s 5 prvky// Počet planet na mapě
+        public int[] PlanetsTypeCount { get; set; } = new int[10];// Počet planet na mapě
+        public int[] BoxesTypeCount { get; set; } = new int[10];// Počet boxů na mapě
+        public int[] NpcsTypeCount { get; set; } = new int[10];// Počet NPC na mapě
+        public int[] OnlineShipsTypeCount { get; set; } = new int[10];// Počet online lodí na mapě
+        public int[] AsteroidsTypeCount { get; set; } = new int[10];
+        public int[] UserFleetsTypeCount { get; set; } = new int[1];
+        public int[] EnemyFleetsTypeCount { get; set; } = new int[10];
+        public int[] MoonsTypeCount { get; set; } = new int[10];
         #endregion Count
 
         #region Position
@@ -121,14 +121,14 @@ namespace WoS.map
         {
 
             // vytvoření skupin pro jednotlivé prvky na mapě.
-            Suns = new MapElementGroup<SunBase>(SunsCount, new List<SunBase>(), SunsPosition);
-            Planets = new MapElementGroup<PlanetBase>(PlanetsCount, new List<PlanetBase>(), PlanetsPosition);
-            Boxes = new MapElementGroup<BoxBase>(BoxesCount, new List<BoxBase>(), BoxesPosition);
-            Npcs = new MapElementGroup<NpcBase>(NpcsCount, new List<NpcBase>(), NpcsPosition);
-            Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsCount, new List<AsteroidBase>(), AsteroidsPosition);
-            UserFleets = new MapElementGroup<UserFleet>(UserFleetsCount, new List<UserFleet>(), UserFleetsPosition);
-            EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsCount, new List<EnemyFleet>(), EnemyFleetsPosition);
-            Moons = new MapElementGroup<MoonBase>(MoonsCount, new List<MoonBase>(), MoonsPosition);
+            Suns = new MapElementGroup<SunBase>(SunsTypeCount, new List<SunBase>(), SunsPosition);
+            Planets = new MapElementGroup<PlanetBase>(PlanetsTypeCount, new List<PlanetBase>(), PlanetsPosition);
+            Boxes = new MapElementGroup<BoxBase>(BoxesTypeCount, new List<BoxBase>(), BoxesPosition);
+            Npcs = new MapElementGroup<NpcBase>(NpcsTypeCount, new List<NpcBase>(), NpcsPosition);
+            Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsTypeCount, new List<AsteroidBase>(), AsteroidsPosition);
+            UserFleets = new MapElementGroup<UserFleet>(UserFleetsTypeCount, new List<UserFleet>(), UserFleetsPosition);
+            EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsTypeCount, new List<EnemyFleet>(), EnemyFleetsPosition);
+            Moons = new MapElementGroup<MoonBase>(MoonsTypeCount, new List<MoonBase>(), MoonsPosition);
 
 
 
@@ -136,29 +136,29 @@ namespace WoS.map
             // Vytvoření prvků mapy:
 
             // Slunce
-            CreateSmallSun(SunsCount[0]);            // Vytvoření malého slunce
+            CreateSmallSun(SunsTypeCount[0]);            // Vytvoření malého slunce
 
             // Planety
-            CreateDeathPlanets(PlanetsCount[0]);        // Vytvoření planety typu "Death"
-            CreateMuciPlanets(PlanetsCount[1]);         // Vytvoření planety typu "Muci"
+            CreateDeathPlanets(PlanetsTypeCount[0]);        // Vytvoření planety typu "Death"
+            CreateMuciPlanets(PlanetsTypeCount[1]);         // Vytvoření planety typu "Muci"
 
             // Boxíky
-            CreateBlueBoxes(BoxesCount[0]);           // Vytvoření modrého boxu
-            CreaterRedBoxes(BoxesCount[1]);           // Vytvoření červeného boxu
+            CreateBlueBoxes(BoxesTypeCount[0]);           // Vytvoření modrého boxu
+            CreaterRedBoxes(BoxesTypeCount[1]);           // Vytvoření červeného boxu
 
             // NPC postavy
-            CreateStreunerNpcs(NpcsCount[0]);        // Vytvoření NPC typu "Streuner"
-            CreateLolitaNpcs(NpcsCount[1]);          // Vytvoření NPC typu "Lolita"
+            CreateStreunerNpcs(NpcsTypeCount[0]);        // Vytvoření NPC typu "Streuner"
+            CreateLolitaNpcs(NpcsTypeCount[1]);          // Vytvoření NPC typu "Lolita"
 
             // Asteroidy
-            CreateSmallAsteroids(AsteroidsCount[0]);      // Vytvoření malého asteroidu
+            CreateSmallAsteroids(AsteroidsTypeCount[0]);      // Vytvoření malého asteroidu
 
             // Flotily
-            CreateUserFleet(UserFleetsCount[0]);           // Vytvoření uživatelské flotily
-            CreateEnemyFleets(EnemyFleetsCount[1]);         // Vytvoření nepřátelské flotily
+            CreateUserFleet(UserFleetsTypeCount[0]);           // Vytvoření uživatelské flotily
+            CreateEnemyFleets(EnemyFleetsTypeCount[1]);         // Vytvoření nepřátelské flotily
 
             // Měsíce
-            CreateSmallMoons(MoonsCount[0]);          // Vytvoření malého měsíce
+            CreateSmallMoons(MoonsTypeCount[0]);          // Vytvoření malého měsíce
 
         }
         #endregion Create

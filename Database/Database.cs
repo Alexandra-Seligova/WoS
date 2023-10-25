@@ -26,22 +26,22 @@ namespace WoS.Database
             using (var connection = new SqlConnection(_connectionString))
             {
                 // Konvertujeme konfigurace na JSON
-                var sunsJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "Suns"));
-                var PlanetsJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "Planets"));
-                var BoxesJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "Boxes"));
-                var NpcsJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "Npcs"));
-                var AsteroidsJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "Asteroids"));
-                var UserFleetsJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "UserFleets"));
-                var EnemyFleetsJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "EnemyFleets")); 
-                var MoonsJson = JsonConvert.SerializeObject(configs.FirstOrDefault(c => c.Name == "Moons"));
+                var sunsJson = configs[0].json;
+                var PlanetsJson = configs[1].json;
+                var BoxesJson = configs[2].json;
+                var NpcsJson = configs[3].json;
+                var AsteroidsJson = configs[4].json;
+                var UserFleetsJson = configs[5].json;
+                var EnemyFleetsJson = configs[6].json;
+                var MoonsJson = configs[7].json;
 
 
                 // ... Stejným způsobem konvertujte další konfigurace ...
 
                 var query = @"
-INSERT INTO [WoS].[dbo].[MapsConfig]
-           ([IdMap],[MapName] ,[Suns],[Planets],[Boxes],[Npcs] ,[Asteroids],[UserFleets] ,[EnemyFleets] ,[Moons])
-VALUES     (@IdMap ,@MapName  ,@Suns, @Planets, @Boxes,  @Npcs ,@Asteroids ,@UserFleets , @EnemyFleets  ,@Moons)";
+                INSERT INTO [WoS].[dbo].[MapsConfig]
+                            ([IdMap],[MapName] ,[Suns],[Planets],[Boxes],[Npcs] ,[Asteroids],[UserFleets] ,[EnemyFleets] ,[Moons])
+                VALUES      (@IdMap ,@MapName  ,@Suns, @Planets, @Boxes,  @Npcs ,@Asteroids ,@UserFleets , @EnemyFleets  ,@Moons)";
 
                 connection.Execute(query, new
                 {
@@ -60,5 +60,29 @@ VALUES     (@IdMap ,@MapName  ,@Suns, @Planets, @Boxes,  @Npcs ,@Asteroids ,@Use
             }
         }
         #endregion createMap
+
+        public MapConfigData GetMapConfigData(int idMap)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var query = @"SELECT * FROM [WoS].[dbo].[MapsConfig] WHERE IdMap = @IdMap";
+                return connection.QueryFirstOrDefault<MapConfigData>(query, new { IdMap = idMap });
+            }
+        }
+
+        public class MapConfigData
+        {
+            public int Id { get; set; }
+            public int IdMap { get; set; }
+            public string MapName { get; set; }
+            public string Suns { get; set; }
+            public string Planets { get; set; }
+            public string Boxes { get; set; }
+            public string Npcs { get; set; }
+            public string Asteroids { get; set; }
+            public string UserFleets { get; set; }
+            public string EnemyFleets { get; set; }
+            public string Moons { get; set; }
+        }
     }
 }

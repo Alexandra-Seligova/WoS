@@ -48,31 +48,31 @@ namespace WoS.map
         }
         public void Config()
         {
-            SunsCount[0] = 1;
-            PlanetsCount[0] = 4;
-            PlanetsCount[1] = 10;
+            SunsTypeCount[0] = 1;
+            PlanetsTypeCount[0] = 4;
+            PlanetsTypeCount[1] = 10;
 
-            BoxesCount[0] = 10;
-            BoxesCount[1] = 10;
-            NpcsCount[0] = 10;
-            NpcsCount[1] = 10;
+            BoxesTypeCount[0] = 10;
+            BoxesTypeCount[1] = 10;
+            NpcsTypeCount[0] = 10;
+            NpcsTypeCount[1] = 10;
 
             //OnlineShipsCount=
-            AsteroidsCount[0] = 10;
-            UserFleetsCount[0] = 1;
-            EnemyFleetsCount[0] = 1;
-            MoonsCount[0] = 10;
+            AsteroidsTypeCount[0] = 10;
+            UserFleetsTypeCount[0] = 1;
+            EnemyFleetsTypeCount[0] = 1;
+            MoonsTypeCount[0] = 10;
 
 
 
             SunsPosition = new[] { new Vector2(MapWidth / 2, MapHeight / 2) };
-            PlanetsPosition = InitializePositions(PlanetsCount.Sum());
-            BoxesPosition = InitializePositions(BoxesCount.Sum());
-            NpcsPosition = InitializePositions(NpcsCount.Sum());
-            AsteroidsPosition = InitializePositions(AsteroidsCount.Sum());
-            UserFleetsPosition = InitializePositions(UserFleetsCount.Sum());
-            EnemyFleetsPosition = InitializePositions(EnemyFleetsCount.Sum());
-            MoonsPosition = InitializePositions(MoonsCount.Sum());
+            PlanetsPosition = InitializePositions(PlanetsTypeCount.Sum());
+            BoxesPosition = InitializePositions(BoxesTypeCount.Sum());
+            NpcsPosition = InitializePositions(NpcsTypeCount.Sum());
+            AsteroidsPosition = InitializePositions(AsteroidsTypeCount.Sum());
+            UserFleetsPosition = InitializePositions(UserFleetsTypeCount.Sum());
+            EnemyFleetsPosition = InitializePositions(EnemyFleetsTypeCount.Sum());
+            MoonsPosition = InitializePositions(MoonsTypeCount.Sum());
 
 
         }

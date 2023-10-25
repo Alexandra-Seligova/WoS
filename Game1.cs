@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using WoS.Camera;
 using WoS.map;
 using WoS.ship;
+using WoS.Database;
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using System;
@@ -42,6 +43,8 @@ namespace WoS
 
         protected override void Initialize()
         {
+            CreateMap createMap = new CreateMap();
+           // createMap.CreateMapAndInsertToDatabase(); // Vytvoření mapy a vložení do databáze
             //InitializeMqtt();
             base.Initialize();
         }
