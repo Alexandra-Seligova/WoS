@@ -84,5 +84,6 @@ namespace WoS.Database
             public string EnemyFleets { get; set; }
             public string Moons { get; set; }
         }
+
     }
 }

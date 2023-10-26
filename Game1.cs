@@ -9,6 +9,7 @@ using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using System;
 using System.Text;
+using static WoS.Database.Database;
 
 namespace WoS
 {
@@ -43,8 +44,15 @@ namespace WoS
 
         protected override void Initialize()
         {
-            CreateMap createMap = new CreateMap();
-           // createMap.CreateMapAndInsertToDatabase(); // Vytvoření mapy a vložení do databáze
+          //  Database Db = new Database();
+            CreateMap Cmap = new CreateMap();
+            // Cmap.CreateMapAndInsertToDatabase(); // Vytvoření mapy a vložení do databáze
+
+
+
+
+
+
             //InitializeMqtt();
             base.Initialize();
         }

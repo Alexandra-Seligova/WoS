@@ -41,7 +41,12 @@ namespace WoS.Database
             {
                 return JsonConvert.SerializeObject(this, Formatting.Indented);
             }
+            public static MapConfig FromJson(string json)
+            {
+                return JsonConvert.DeserializeObject<MapConfig>(json);
+            }
         }
+
         Database Db = new Database();
 
         int Id { get; set; } // Id mapy
@@ -74,13 +79,16 @@ namespace WoS.Database
             MapHeight = 10000;
 
             Id = 1;
-                Name = "AlphaMap";
+            Name = "AlphaMap";
         }
+
+
         public void CreateMapAndInsertToDatabase()
         {
             createMapConfigs();
             Db.InsertMapConfig(Id,  Name, Configs);
         }
+
 
         public void createMapConfigs()
         {

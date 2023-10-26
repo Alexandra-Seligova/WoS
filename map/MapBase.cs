@@ -16,6 +16,10 @@ using WoS.Utility;
 using WoS.Fleets;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection.Metadata;
+using Newtonsoft.Json;
+using static WoS.Database.Database;
+
+using WoS.Database;
 
 namespace WoS.map
 {
@@ -52,7 +56,7 @@ namespace WoS.map
         #endregion MapElement Class
 
 
-
+        Database Db = new Database();
         // Atributy
         public int Id { get; set; }
         public int Status { get; set; }
@@ -155,13 +159,78 @@ namespace WoS.map
 
             // Flotily
             CreateUserFleet(UserFleetsTypeCount[0]);           // Vytvoření uživatelské flotily
-            CreateEnemyFleets(EnemyFleetsTypeCount[1]);         // Vytvoření nepřátelské flotily
+
+            CreateEnemyFleets(EnemyFleetsTypeCount[0]);         // Vytvoření nepřátelské flotily
 
             // Měsíce
             CreateSmallMoons(MoonsTypeCount[0]);          // Vytvoření malého měsíce
 
         }
         #endregion Create
+
+
+
+        public void create(MapConfigData configData)  //config z db
+        {
+            // Deserializujeme JSON řetězce z databáze
+            var sunsList = JsonConvert.DeserializeObject<List<SunBase>>(configData.Suns);
+            var planetsList = JsonConvert.DeserializeObject<List<PlanetBase>>(configData.Planets);
+            var boxesList = JsonConvert.DeserializeObject<List<BoxBase>>(configData.Boxes);
+            var npcsList = JsonConvert.DeserializeObject<List<NpcBase>>(configData.Npcs);
+            var asteroidsList = JsonConvert.DeserializeObject<List<AsteroidBase>>(configData.Asteroids);
+            var userFleetsList = JsonConvert.DeserializeObject<List<UserFleet>>(configData.UserFleets);
+            var enemyFleetsList = JsonConvert.DeserializeObject<List<EnemyFleet>>(configData.EnemyFleets);
+            var moonsList = JsonConvert.DeserializeObject<List<MoonBase>>(configData.Moons);
+
+            // vytvoření skupin pro jednotlivé prvky na mapě
+            Suns = new MapElementGroup<SunBase>(SunsTypeCount, sunsList, SunsPosition);
+            Planets = new MapElementGroup<PlanetBase>(PlanetsTypeCount, planetsList, PlanetsPosition);
+            Boxes = new MapElementGroup<BoxBase>(BoxesTypeCount, boxesList, BoxesPosition);
+            Npcs = new MapElementGroup<NpcBase>(NpcsTypeCount, npcsList, NpcsPosition);
+            Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsTypeCount, asteroidsList, AsteroidsPosition);
+            UserFleets = new MapElementGroup<UserFleet>(UserFleetsTypeCount, userFleetsList, UserFleetsPosition);
+            EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsTypeCount, enemyFleetsList, EnemyFleetsPosition);
+            Moons = new MapElementGroup<MoonBase>(MoonsTypeCount, moonsList, MoonsPosition);
+
+
+            // Vytvoření prvků mapy:
+
+            // Slunce
+            CreateSmallSun(SunsTypeCount[0]);            // Vytvoření malého slunce
+
+            // Planety
+            CreateDeathPlanets(PlanetsTypeCount[0]);        // Vytvoření planety typu "Death"
+            CreateMuciPlanets(PlanetsTypeCount[1]);         // Vytvoření planety typu "Muci"
+
+            // Boxíky
+            CreateBlueBoxes(BoxesTypeCount[0]);           // Vytvoření modrého boxu
+            CreaterRedBoxes(BoxesTypeCount[1]);           // Vytvoření červeného boxu
+
+            // NPC postavy
+            CreateStreunerNpcs(NpcsTypeCount[0]);        // Vytvoření NPC typu "Streuner"
+            CreateLolitaNpcs(NpcsTypeCount[1]);          // Vytvoření NPC typu "Lolita"
+
+            // Asteroidy
+            CreateSmallAsteroids(AsteroidsTypeCount[0]);      // Vytvoření malého asteroidu
+
+            // Flotily
+            CreateUserFleet(UserFleetsTypeCount[0]);           // Vytvoření uživatelské flotily
+
+            CreateEnemyFleets(EnemyFleetsTypeCount[0]);         // Vytvoření nepřátelské flotily
+
+            // Měsíce
+            CreateSmallMoons(MoonsTypeCount[0]);          // Vytvoření malého měsíce
+
+            // Zde můžeš pokračovat ve vytváření prvků mapy na základě dat z databáze
+            // ...
+        }
+
+        public void loadConfigFromDb(int idMap)
+        {
+            MapConfigData configData = db.GetMapConfigData(idMap);
+
+            map.create(configData);
+        }
 
         public void UpdateAll(GameTime gameTime)
         {
