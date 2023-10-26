@@ -45,6 +45,7 @@ namespace WoS
         {
             CreateMap createMap = new CreateMap();
            // createMap.CreateMapAndInsertToDatabase(); // Vytvoření mapy a vložení do databáze
+
             //InitializeMqtt();
             base.Initialize();
         }
