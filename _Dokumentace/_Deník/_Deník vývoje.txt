@@ -12,3 +12,47 @@ TODO:	Základní gui, gui pro znázornění ship statusu a štítů atd.
 
 
 		Objekty na mapě?
+
+
+
+
+		Je potřeba mít obrázky nejlépe 3d:
+		Drony: LavaDron, DeluxeDron,AquaDron -- IceDron, FireDron, WindDron, EarthDron, ThunderDron, LightDron, DarkDron
+		Transporter: SmallTransporter, MediumTransporter, LargeTransporter, megaTransporter
+
+
+
+
+
+
+
+
+		Druhy zbraní pro ship: Canon, PulseCanon, BeamCanon, FastCanon
+		Kombinované zbraně: BallisticCanon, MiningLaser, PulseBeamLaser, LaserBeam,LaserCanon,
+
+	Technologie Zbraní: Balistické, fotonové, laser, plazmové, iontové,
+
+		Munice: Green, LightBlue, Purple, Orange, Steel, Silver, Gold
+		Raketa: SmallRocket, MediumRocket, LargeRocket, MegaRocket, NuclearRocket, AntiMatterRocket, PlasmaRocket, IonRocket, NeutronRocket, PositronRocket, ElectronRocket, ProtonRocket, PhotonRocket, GravitonRocket, DarkMatterRocket, BlackHoleRocket, WhiteHoleRocket, WormHoleRocket, QuasarRocket, PulsarRocket, SupernovaRocket, HypernovaRocket, NovaRocket, RedGiantRocket, BlueGiantRocket, YellowGiantRocket, WhiteGiantRocket, BlackGiantRocket, BrownGiantRocket, RedDwarfRocket, BlueDwarfRocket, YellowDwarfRocket, WhiteDwarfRocket, BlackDwarfRocket, BrownDwarfRocket, RedSupergiantRocket, BlueSupergiantRocket, YellowSupergiantRocket, WhiteSupergiantRocket, BlackSupergiantRocket, BrownSupergiantRocket, RedHypergiantRocket, BlueHypergiantRocket, YellowHypergiantRocket, WhiteHypergiantRocket, BlackHypergiantRocket, BrownHypergiantRocket, RedHypernovaRocket, BlueHypernovaRocket, YellowHypernovaRocket, WhiteHypernovaRocket, BlackHypernovaRocket, BrownHypernovaRocket, RedQuarkRocket, BlueQuarkRocket, YellowQuarkRocket, WhiteQuarkRocket, BlackQuarkRocket, BrownQuarkRocket, RedNeutronRocket, BlueNeutronRocket, YellowNeutronRocket, WhiteNeutronRocket, BlackNeutronRocket, BrownNeutronRocket, RedPositronRocket, BluePositronRocket, YellowPositronRocket, WhitePositronRocket, BlackPositronRocket, BrownPositronRocket, RedElectronRocket, BlueElectronRocket, YellowElectronRocket, WhiteElectronRocket, BlackElectronRocket, BrownElectronRocket, RedProtonRocket, BlueProtonRocket, YellowProtonRocket, WhiteProtonRocket, BlackProtonRocket, BrownProtonRocket, RedPhotonRocket, BluePhotonRocket, YellowPhotonRocket, WhitePhotonRocket, BlackPhotonRocket, BrownPhotonRocket, RedGravitonRocket, BlueGravitonRocket, YellowGravitonRocket, WhiteGravitonRocket, BlackGravitonRocket, BrownGravitonRocket, RedDarkMatterRocket, BlueDarkMatterRocket, YellowDarkMatterRocket, WhiteDarkMatterRocket, BlackDarkMatterRocket
+
+		Ship Druhy: obchodní, Průzkumné, Těžební, transportní, Bitevní
+		Ship Formace: Kruh, šipka, trojúhelník, kříž,
+
+		Generátory druhy: štít, pohon, energie
+
+
+		Boostery: štít, těžba, pohon, průmysl, zbraně, energie, výzkum,
+
+
+		Doplňky: Automatická střelba raket, Tank paliva, násobič skladového prostoru, těžební radar, radar, skok na domovskou planetu,
+				 těžební urychlovač, zaměřovač, opravovací robot, scanner krátký, scaner longrange
+
+		design:Ship, dron, zbraně, budovy, stanice
+
+
+		Typy map: volné, dungeon
+
+
+
+
+
