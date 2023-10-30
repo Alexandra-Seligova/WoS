@@ -54,5 +54,61 @@ TODO:	Základní gui, gui pro znázornění ship statusu a štítů atd.
 
 
 
+		Stavba budov na objektech: Asteroid velký, planeta, miniplaneta, měsíc, kometa
+
+		Typy budov: těžební - těžba různých surovin, postavena poblíž zdroje
+					rafinérie - zušlechtění materiálu na vyšší kvalitu
+					Továrna - na suroviny, na díly, na zbraně, na drony, na lodě, na budovy, na technologie
+					energetická - výroba energie
+					hangár - opravy lodí, dronů, zbraní, budov, technologií
+					obrana: laserová, plazmová, iontová, fotonová, balistická, raketová, protiraketová, štít
+					transport - mezi budovami, mezi městy, mezi planetární, mezihvězdná
+					sklad
+					laboratoř - výzkum technologií
+					observatoř - jak daleko je viditelná plocha (území)
+        Základna: slouží jako sklaad, odemiká nové úrovně pro ostatní budovy, má vlastní obranu a štít
+
+		výzkum: základní - enenergetika, laser, iontová , hyperprostorová
+				pohony   -
+				pokročilý výzkum -špionážní, počítačové, astrofyzika, kvantová, gravitonová
+				bojové - balistické, fotonové, laserové, plazmové, iontové, raketové, protiraketové, štítové, hyperprostorové, pancíř
+		technologie - těžební, energetické, výrobní, výzkumné, obranné, transportní, komunikační, kolonizační, špionážní, počítačové, astrofyzika, kvantová, gravitonová, hyperprostorová, teleportační, telep
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
