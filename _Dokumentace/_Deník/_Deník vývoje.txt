@@ -66,12 +66,13 @@ TODO:	Základní gui, gui pro znázornění ship statusu a štítů atd.
 					sklad
 					laboratoř - výzkum technologií
 					observatoř - jak daleko je viditelná plocha (území)
-        Základna: slouží jako sklaad, odemiká nové úrovně pro ostatní budovy, má vlastní obranu a štít
+        Základna: slouží jako sklad, odemiká nové úrovně pro ostatní budovy, má vlastní obranu a štít
 
-		výzkum: základní - enenergetika, laser, iontová , hyperprostorová
+		výzkum: základní - energetika, laser, iontová , hyperprostorová
 				pohony   -
 				pokročilý výzkum -špionážní, počítačové, astrofyzika, kvantová, gravitonová
 				bojové - balistické, fotonové, laserové, plazmové, iontové, raketové, protiraketové, štítové, hyperprostorové, pancíř
+
 		technologie - těžební, energetické, výrobní, výzkumné, obranné, transportní, komunikační, kolonizační, špionážní, počítačové, astrofyzika, kvantová, gravitonová, hyperprostorová, teleportační, telep
 
 
