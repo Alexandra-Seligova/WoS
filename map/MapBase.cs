@@ -13,7 +13,7 @@ using WoS.map.Sun;
 using WoS.npc;
 using WoS.ship;
 using WoS.Utility;
-using WoS.Fleets;
+using WoS.Fleet;
 using Microsoft.Xna.Framework.Content;
 using System.Reflection.Metadata;
 using Newtonsoft.Json;
@@ -80,7 +80,7 @@ namespace WoS.map
         public MapElementGroup<NpcBase> Npcs { get; set; }
         public MapElementGroup<AsteroidBase> Asteroids { get; set; }
         public MapElementGroup<UserFleet> UserFleets { get; set; }
-        public MapElementGroup<EnemyFleet> EnemyFleets { get; set; }
+        public MapElementGroup<EnemyFleets> EnemyFleets { get; set; }
         public MapElementGroup<MoonBase> Moons { get; set; }
         #endregion MapElementGroup List
 
@@ -131,7 +131,7 @@ namespace WoS.map
             Npcs = new MapElementGroup<NpcBase>(NpcsTypeCount, new List<NpcBase>(), NpcsPosition);
             Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsTypeCount, new List<AsteroidBase>(), AsteroidsPosition);
             UserFleets = new MapElementGroup<UserFleet>(UserFleetsTypeCount, new List<UserFleet>(), UserFleetsPosition);
-            EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsTypeCount, new List<EnemyFleet>(), EnemyFleetsPosition);
+            EnemyFleets = new MapElementGroup<EnemyFleets>(EnemyFleetsTypeCount, new List<EnemyFleet>(), EnemyFleetsPosition);
             Moons = new MapElementGroup<MoonBase>(MoonsTypeCount, new List<MoonBase>(), MoonsPosition);
 
 
@@ -310,7 +310,7 @@ namespace WoS.map
 
         public void CreateEnemyFleets(int piece)
         {
-            CreateElements(EnemyFleets, piece, i => new EnemyFleet(i, EnemyFleetsPosition[i], Content), "ArrayList_EnemyFleets");
+            CreateElements(EnemyFleets, piece, i => new EnemyFleets(i, EnemyFleetsPosition[i], Content), "ArrayList_EnemyFleets");
         }
 
         public void CreateSmallMoons(int piece)

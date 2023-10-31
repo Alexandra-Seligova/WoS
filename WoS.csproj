@@ -34,7 +34,15 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ship\Drons\" />
+    <Folder Include="map\Materials\PureMaterials\" />
+    <Folder Include="map\moon\Elements\" />
+    <Folder Include="map\Planet\Element\" />
+    <Folder Include="map\Station\Buildings\" />
+    <Folder Include="ship\ExploratoryType\" />
+    <Folder Include="ship\MiningType\" />
+    <Folder Include="ship\BattleType\" />
+    <Folder Include="ship\TransportType\" />
+    <Folder Include="ship\TraderType\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
