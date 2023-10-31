@@ -77,21 +77,112 @@ TODO:	Základní gui, gui pro znázornění ship statusu a štítů atd.
 
 
 
+		Prvky
+		-čistota, vlastnosti(strength 100, conductivity 50), reaktivita()
+
+
+		1. rafinace na vyšší kvalitu a čistotu
+
+		2. Sloučeniny více prvků v jeden
+
+		3. reakce na vytvoření nových prvků
+			- některé prvky jsou reaktivní
+
+		4. kombinace prvků v určitém pořadí
+
+		5. enchanting (očarování magií a zvýení určitých vlastností)
+
+
+
+		posbírání prvků na orbitě
+		Vytěžení na planetě
+
+		v rafinérii se zpracují na určitou čistotu (80-99%)
+
+		Slučování prvků v nové prvky
+		Reakce prvků na nové prvky
+		Kombinace prvků v určitém pořadí
+		enchanting (očarování magií a zvýení určitých vlastností)
+
+		výsledné materiály slouží ke stavbě součástek pro lodě atd.
+
+		Továrna - z prvků vytváří součástky
 
 
 
 
 
+Ironite Ore (odkaz na železo - Iron)
+Aluminite Ore (odkaz na hliník - Aluminum)
+Copperate Ore (odkaz na měď - Copper)
+Zinconite Ore (odkaz na zinek - Zinc)
+Nickelan Ore (odkaz na nikl - Nickel)
+Tinate Ore (odkaz na cín - Tin)
+Chromite Ore (odkaz na chrom - Chromium)
+Mangonite Ore (odkaz na mangan - Manganese)
+Titanese Ore (odkaz na titan - Titanium)
+Cobaltine Ore (odkaz na kobalt - Cobalt)
+Tungstate Ore (odkaz na wolfram - Tungsten)
+Molybdenite Ore (odkaz na molybden - Molybdenum)
+Silverate Ore (odkaz na stříbro - Silver)
+Goldine Ore (odkaz na zlato - Gold)
+Platinate Ore (odkaz na platina - Platinum)
+Palladite Ore (odkaz na palladium - Palladium)
+Leadonite Ore (odkaz na olovo - Lead)
+Mercurite Ore (odkaz na rtuť - Mercury)
+Borite Ore (odkaz na bor - Boron)
+Silicite Ore (odkaz na křemík - Silicon)
+Potassiumite Ore (odkaz na draslík - Potassium)
+Calcite Ore (odkaz na vápník - Calcium)
+Sulfurite Ore (odkaz na síru - Sulfur)
+Phosphorite Ore (odkaz na fosfor - Phosphorus)
+Chlorite Ore (odkaz na chlór - Chlorine)
+Bromite Ore (odkaz na brom - Bromine)
+Iodite Ore (odkaz na jód - Iodine)
+Neonite Ore (inspirace inertními plyny, odkaz na neon - Neon)
+Argonite Ore (odkaz na argon - Argon)
+Kryptonite Ore (odkaz na krypton - Krypton)
+Xenonite Ore (odkaz na xenon - Xenon)
+Radonite Ore (odkaz na radon - Radon)
+
+Oil
+Hydrogen
+Uranium
+AntiMatter
+DarkMatter
 
 
 
 
 
+Postavení GUI
+
+GuiBase -> jedna stránka
+GuiBasic -> skládá se z komponent:
+			- GBName - Název hráče, level, rank, body, status
+				      - openBar
+			- GBName - úkoly a mise po levé straně
+			- GBMineralnBar - po otevření se zobrazí všechny suroviny a jejich počet
+			- GBMainButtons - Nastavení, Konfigurace, build
+			 - GBBuildMenu - menu pro stavbu budov (Vše, průmysl, těžba, výzkum, obrana, transport)
 
 
+			- GBXpBar - spodní lajna s xp a levely
+			- GBSpellBar - spodní lajna s akčními tlačítky
+			- GBSpellBarConfig - změna mezi konfigurací tlačítek 1 a 2
+			- GBShipMode - útok, obrana, rychlost
+			- GBShipFuel - množství paliva
+			- GBShipView - zobrazení lodi, štítů, nastevených generátorů atd.
+			- GBMiniMap - minimapa tlačítka (přiblížení, oddálení, Velká mapa)
+								   zobrazení šipek směru , zobrazení lodí, zobrazení objektů, questů, misí
 
-
-
+- GuiEditShip - menu pro konfiguraci lodi (letky), designu
+		      -> skládá se z komponent:
+			     - GEShipConfigBar - nastavení / zobrazení komponent lodě
+				 - GBShipView - zobrazení lodě v trochu větší podobě např 150% s parametrama o lodi
+				 - GEShipDesign - design lodi vyzobrazení,seznam možných designů, bez parametrů o lodi
+				 - GEShipCargo -  seznam prvků na palubě lodi a jejich počet
+				 - GEBackButton
 
 
 

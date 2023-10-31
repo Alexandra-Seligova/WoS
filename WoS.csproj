@@ -11,6 +11,14 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="map\Materials\PureMaterials\**" />
+    <Compile Remove="map\Station\Buildings\**" />
+    <EmbeddedResource Remove="map\Materials\PureMaterials\**" />
+    <EmbeddedResource Remove="map\Station\Buildings\**" />
+    <None Remove="map\Materials\PureMaterials\**" />
+    <None Remove="map\Station\Buildings\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Content\GUI\GuiLod.svg" />
     <None Remove="Content\GUI\GUIship.svg" />
     <None Remove="Content\GUI\GuiSklad.svg" />
@@ -34,10 +42,14 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="map\Materials\PureMaterials\" />
+    <Folder Include="GUI\GuiBuild\Components\" />
+    <Folder Include="GUI\GuiImperium\Components\" />
+    <Folder Include="GUI\GuiPlanetInfo\Components\" />
     <Folder Include="map\moon\Elements\" />
     <Folder Include="map\Planet\Element\" />
-    <Folder Include="map\Station\Buildings\" />
+    <Folder Include="map\Satelit\" />
+    <Folder Include="map\SpaceObjects\Asteroidní pole\" />
+    <Folder Include="map\SpaceObjects\Bouřeaerupce\" />
     <Folder Include="ship\ExploratoryType\" />
     <Folder Include="ship\MiningType\" />
     <Folder Include="ship\BattleType\" />
