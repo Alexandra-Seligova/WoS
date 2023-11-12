@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WoS.ship.components.extensions.generators
 {
-    public class alphaShield : GeneratorBase
+    public class AlphaShield : GeneratorBase
     {
         /*
  *** Přehled vlastností a metod třídy ElementBase ***

@@ -12,7 +12,7 @@ using WoS.map.Planet;
 using WoS.map.Sun;
 using WoS.npc;
 using WoS.map.moon;
-using WoS.Fleets;
+using WoS.Fleet;
 using WoS.map.Asteroids;
 using Microsoft.Xna.Framework.Content;
 

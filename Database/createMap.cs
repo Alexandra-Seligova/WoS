@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 using Microsoft.Xna.Framework;
 using static WoS.map.MapBase;
-using WoS.Fleets;
+using WoS.Fleet;
 using WoS.map.Asteroids;
 using WoS.map.Box;
 using WoS.map.moon;

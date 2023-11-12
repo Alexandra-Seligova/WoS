@@ -50,11 +50,6 @@
     <Folder Include="map\Satelit\" />
     <Folder Include="map\SpaceObjects\Asteroidní pole\" />
     <Folder Include="map\SpaceObjects\Bouřeaerupce\" />
-    <Folder Include="ship\ExploratoryType\" />
-    <Folder Include="ship\MiningType\" />
-    <Folder Include="ship\BattleType\" />
-    <Folder Include="ship\TransportType\" />
-    <Folder Include="ship\TraderType\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

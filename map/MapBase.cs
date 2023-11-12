@@ -56,7 +56,7 @@ namespace WoS.map
         #endregion MapElement Class
 
 
-        Database Db = new Database();
+     //   Database Db = new Database();
         // Atributy
         public int Id { get; set; }
         public int Status { get; set; }
@@ -131,7 +131,7 @@ namespace WoS.map
             Npcs = new MapElementGroup<NpcBase>(NpcsTypeCount, new List<NpcBase>(), NpcsPosition);
             Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsTypeCount, new List<AsteroidBase>(), AsteroidsPosition);
             UserFleets = new MapElementGroup<UserFleet>(UserFleetsTypeCount, new List<UserFleet>(), UserFleetsPosition);
-            EnemyFleets = new MapElementGroup<EnemyFleets>(EnemyFleetsTypeCount, new List<EnemyFleet>(), EnemyFleetsPosition);
+            EnemyFleets = new MapElementGroup<EnemyFleets>(EnemyFleetsTypeCount, new List<EnemyFleets>(), EnemyFleetsPosition);
             Moons = new MapElementGroup<MoonBase>(MoonsTypeCount, new List<MoonBase>(), MoonsPosition);
 
 
@@ -179,7 +179,7 @@ namespace WoS.map
             var npcsList = JsonConvert.DeserializeObject<List<NpcBase>>(configData.Npcs);
             var asteroidsList = JsonConvert.DeserializeObject<List<AsteroidBase>>(configData.Asteroids);
             var userFleetsList = JsonConvert.DeserializeObject<List<UserFleet>>(configData.UserFleets);
-            var enemyFleetsList = JsonConvert.DeserializeObject<List<EnemyFleet>>(configData.EnemyFleets);
+            var enemyFleetsList = JsonConvert.DeserializeObject<List<EnemyFleets>>(configData.EnemyFleets);
             var moonsList = JsonConvert.DeserializeObject<List<MoonBase>>(configData.Moons);
 
             // vytvoření skupin pro jednotlivé prvky na mapě
@@ -189,7 +189,7 @@ namespace WoS.map
             Npcs = new MapElementGroup<NpcBase>(NpcsTypeCount, npcsList, NpcsPosition);
             Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsTypeCount, asteroidsList, AsteroidsPosition);
             UserFleets = new MapElementGroup<UserFleet>(UserFleetsTypeCount, userFleetsList, UserFleetsPosition);
-            EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsTypeCount, enemyFleetsList, EnemyFleetsPosition);
+           // EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsTypeCount, enemyFleetsList, EnemyFleetsPosition);
             Moons = new MapElementGroup<MoonBase>(MoonsTypeCount, moonsList, MoonsPosition);
 
 
