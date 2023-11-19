@@ -53,18 +53,6 @@ namespace WoS.ship
 */
     public abstract class ShipBase : MovementBase
     {
-        // Základní charakteristiky lodě
-        public string oznaceni;                // Označení lodě (Pokud "Designation" v MovementBase není totéž, pak tento atribut může zůstat)
-
-        // Fyzikální parametry lodě
-        public float zrychleni = 50;           // Zrychlení lodě
-
-        // Cílová pozice a stav přenosu
-        bool tran = false;              // Stav přenosu
-        public bool budeTran = false;          // Bude probíhat přenos?
-        public bool jeTran = false;            // Probíhá právě přenos?
-        public bool konecTran = true;          // Přenos skončil?
-        public bool sebrano = false;           // Bylo něco sebráno?
 
         // Moduly a vybavení lodě
         public int generatorsNumber;                // Počet doplňků (standardní moduly)
