@@ -50,7 +50,21 @@ namespace WoS.ship
         }
         public override void Update()
         {
-            // Implementation of method to update the planet
+
+            if (Vector2.Distance(PositionOnMap, Target) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
+            {
+                Vector2 direction = Vector2.Normalize(Target - PositionOnMap);
+                Vector2 velocity = direction * MaxSpeed * (float)0.01;
+                //Vector2 velocity = direction * MaxSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                PositionOnMap += velocity;
+
+                // Pokud je loď velmi blízko cíli, nastavte její pozici přímo na cíl
+                if (Vector2.Distance(PositionOnMap, Target) < MaxSpeed * 0.01)
+                    // if (Vector2.Distance(PositionOnMap, Target) < MaxSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds)
+                {
+                    PositionOnMap = Target;
+                }
+            }
         }
         public override void Render(SpriteBatch spriteBatch)
         {

@@ -23,9 +23,13 @@ namespace WoS.map
 
         private Random _random = new Random();
         // Konstruktor pro MapAlpha s předdefinovanými hodnotami
-        public MapAlpha(Texture2D backgroundImage, int id, Vector2 position, ContentManager content)
+        public MapAlpha( int id, Vector2 position, ContentManager content)
         : base(id, position, content)
         {
+
+            backgroundTexture = Content.Load<Texture2D>("maps/background/map1");     // Načtení textury pro mapu;
+
+
             Id = id;
             Status = 1;
             Position = position;
@@ -34,16 +38,18 @@ namespace WoS.map
             Height = 10000;
             MapWidth = Width;
             MapHeight = Height;
+
             Config();
             LoadConfigFromDb();
             create();
-
-            backgroundTexture = backgroundImage;
+            //create(JSON); //Načtení a vytvoření z Json souboru z DB
 
             // Nastavení pozice mapy na (0,0)
             this.Position = new Vector2(0, 0);
 
             // Zde můžete přidat další konkrétní nastavení pro MapAlpha, pokud je potřebujete
+
+
 
         }
         public void Config()
@@ -60,7 +66,7 @@ namespace WoS.map
             //OnlineShipsCount=
             AsteroidsTypeCount[0] = 10;
             UserFleetsTypeCount[0] = 1;
-            EnemyFleetsTypeCount[0] = 1;
+            //EnemyFleetsTypeCount[0] = 0;
             MoonsTypeCount[0] = 10;
 
 
@@ -71,7 +77,7 @@ namespace WoS.map
             NpcsPosition = InitializePositions(NpcsTypeCount.Sum());
             AsteroidsPosition = InitializePositions(AsteroidsTypeCount.Sum());
             UserFleetsPosition = InitializePositions(UserFleetsTypeCount.Sum());
-            EnemyFleetsPosition = InitializePositions(EnemyFleetsTypeCount.Sum());
+            //EnemyFleetsPosition = InitializePositions(EnemyFleetsTypeCount.Sum());
             MoonsPosition = InitializePositions(MoonsTypeCount.Sum());
 
 
@@ -81,7 +87,7 @@ namespace WoS.map
         public void LoadConfigFromDb()
         {
             //nastavení pro celou mapu načtené z db
-
+            //create(JSON); //Načtení a vytvoření z Json souboru z DB
         }
 
         public void UpdateMap(GameTime gameTime)

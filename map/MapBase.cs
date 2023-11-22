@@ -79,8 +79,8 @@ namespace WoS.map
         public MapElementGroup<BoxBase> Boxes { get; set; }
         public MapElementGroup<NpcBase> Npcs { get; set; }
         public MapElementGroup<AsteroidBase> Asteroids { get; set; }
-        public MapElementGroup<UserFleet> UserFleets { get; set; }
-        public MapElementGroup<EnemyFleets> EnemyFleets { get; set; }
+        public MapElementGroup<FleetBase> UserFleets { get; set; }
+     //   public MapElementGroup<EnemyFleets> EnemyFleets { get; set; }
         public MapElementGroup<MoonBase> Moons { get; set; }
         #endregion MapElementGroup List
 
@@ -92,7 +92,7 @@ namespace WoS.map
         public int[] OnlineShipsTypeCount { get; set; } = new int[10];// Počet online lodí na mapě
         public int[] AsteroidsTypeCount { get; set; } = new int[10];
         public int[] UserFleetsTypeCount { get; set; } = new int[1];
-        public int[] EnemyFleetsTypeCount { get; set; } = new int[10];
+    //    public int[] EnemyFleetsTypeCount { get; set; } = new int[10];
         public int[] MoonsTypeCount { get; set; } = new int[10];
         #endregion Count
 
@@ -104,7 +104,7 @@ namespace WoS.map
         public Vector2[] OnlineShipsPosition { get; set; }
         public Vector2[] AsteroidsPosition { get; set; }
         public Vector2[] UserFleetsPosition { get; set; }
-        public Vector2[] EnemyFleetsPosition { get; set; }
+      //  public Vector2[] EnemyFleetsPosition { get; set; }
         public Vector2[] MoonsPosition { get; set; }
         #endregion Position
 
@@ -130,8 +130,8 @@ namespace WoS.map
             Boxes = new MapElementGroup<BoxBase>(BoxesTypeCount, new List<BoxBase>(), BoxesPosition);
             Npcs = new MapElementGroup<NpcBase>(NpcsTypeCount, new List<NpcBase>(), NpcsPosition);
             Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsTypeCount, new List<AsteroidBase>(), AsteroidsPosition);
-            UserFleets = new MapElementGroup<UserFleet>(UserFleetsTypeCount, new List<UserFleet>(), UserFleetsPosition);
-            EnemyFleets = new MapElementGroup<EnemyFleets>(EnemyFleetsTypeCount, new List<EnemyFleets>(), EnemyFleetsPosition);
+            UserFleets = new MapElementGroup<FleetBase>(UserFleetsTypeCount, new List<FleetBase>(), UserFleetsPosition);
+          //  EnemyFleets = new MapElementGroup<EnemyFleets>(EnemyFleetsTypeCount, new List<EnemyFleets>(), EnemyFleetsPosition);
             Moons = new MapElementGroup<MoonBase>(MoonsTypeCount, new List<MoonBase>(), MoonsPosition);
 
 
@@ -160,7 +160,7 @@ namespace WoS.map
             // Flotily
             CreateUserFleet(UserFleetsTypeCount[0]);           // Vytvoření uživatelské flotily
 
-            CreateEnemyFleets(EnemyFleetsTypeCount[0]);         // Vytvoření nepřátelské flotily
+         //   CreateEnemyFleets(EnemyFleetsTypeCount[0]);         // Vytvoření nepřátelské flotily
 
             // Měsíce
             CreateSmallMoons(MoonsTypeCount[0]);          // Vytvoření malého měsíce
@@ -178,8 +178,8 @@ namespace WoS.map
             var boxesList = JsonConvert.DeserializeObject<List<BoxBase>>(configData.Boxes);
             var npcsList = JsonConvert.DeserializeObject<List<NpcBase>>(configData.Npcs);
             var asteroidsList = JsonConvert.DeserializeObject<List<AsteroidBase>>(configData.Asteroids);
-            var userFleetsList = JsonConvert.DeserializeObject<List<UserFleet>>(configData.UserFleets);
-            var enemyFleetsList = JsonConvert.DeserializeObject<List<EnemyFleets>>(configData.EnemyFleets);
+            var userFleetsList = JsonConvert.DeserializeObject<List<FleetBase>>(configData.UserFleets);
+            //var enemyFleetsList = JsonConvert.DeserializeObject<List<EnemyFleets>>(configData.EnemyFleets);
             var moonsList = JsonConvert.DeserializeObject<List<MoonBase>>(configData.Moons);
 
             // vytvoření skupin pro jednotlivé prvky na mapě
@@ -188,7 +188,7 @@ namespace WoS.map
             Boxes = new MapElementGroup<BoxBase>(BoxesTypeCount, boxesList, BoxesPosition);
             Npcs = new MapElementGroup<NpcBase>(NpcsTypeCount, npcsList, NpcsPosition);
             Asteroids = new MapElementGroup<AsteroidBase>(AsteroidsTypeCount, asteroidsList, AsteroidsPosition);
-            UserFleets = new MapElementGroup<UserFleet>(UserFleetsTypeCount, userFleetsList, UserFleetsPosition);
+            UserFleets = new MapElementGroup<FleetBase>(UserFleetsTypeCount, userFleetsList, UserFleetsPosition);
            // EnemyFleets = new MapElementGroup<EnemyFleet>(EnemyFleetsTypeCount, enemyFleetsList, EnemyFleetsPosition);
             Moons = new MapElementGroup<MoonBase>(MoonsTypeCount, moonsList, MoonsPosition);
 
@@ -216,7 +216,7 @@ namespace WoS.map
             // Flotily
             CreateUserFleet(UserFleetsTypeCount[0]);           // Vytvoření uživatelské flotily
 
-            CreateEnemyFleets(EnemyFleetsTypeCount[0]);         // Vytvoření nepřátelské flotily
+        //    CreateEnemyFleets(EnemyFleetsTypeCount[0]);         // Vytvoření nepřátelské flotily
 
             // Měsíce
             CreateSmallMoons(MoonsTypeCount[0]);          // Vytvoření malého měsíce
@@ -225,11 +225,12 @@ namespace WoS.map
             // ...
         }
 
+
         public void loadConfigFromDb(int idMap)
         {
-            MapConfigData configData = db.GetMapConfigData(idMap);
+        //    MapConfigData configData = db.GetMapConfigData(idMap);
 
-            map.create(configData);
+        //    map.create(configData);
         }
 
         public void UpdateAll(GameTime gameTime)
@@ -240,7 +241,7 @@ namespace WoS.map
             UpdateElements(Npcs);
             UpdateElements(Asteroids);
             UpdateElements(UserFleets);
-            UpdateElements(EnemyFleets);
+         //   UpdateElements(EnemyFleets);
             UpdateElements(Moons);
         }
 
@@ -253,7 +254,7 @@ namespace WoS.map
             RenderElements(spriteBatch, Npcs);
             RenderElements(spriteBatch, Asteroids);
             RenderElements(spriteBatch, UserFleets);
-            RenderElements(spriteBatch, EnemyFleets);
+         //   RenderElements(spriteBatch, EnemyFleets);
             RenderElements(spriteBatch, Moons);
         }
 
@@ -307,12 +308,12 @@ namespace WoS.map
         {
             CreateElements(UserFleets, piece, i => new UserFleet(i, UserFleetsPosition[i], Content), "ArrayList_UserFleet");
         }
-
+                  /*
         public void CreateEnemyFleets(int piece)
         {
             CreateElements(EnemyFleets, piece, i => new EnemyFleets(i, EnemyFleetsPosition[i], Content), "ArrayList_EnemyFleets");
         }
-
+                  */
         public void CreateSmallMoons(int piece)
         {
             CreateElements(Moons, piece, i => new SmallMoon(i, GenerateRandomPosition(), Content), "ArrayList_Moons");

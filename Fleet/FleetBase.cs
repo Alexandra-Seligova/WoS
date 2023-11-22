@@ -4,31 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+using WoS.Camera;
+using WoS.map;
+using WoS.ship;
+using WoS.Database;
+
+using WoS.map.Asteroids;
+using WoS.map.Box;
+using WoS.map.moon;
+using WoS.map.Planet;
+using WoS.map.Sun;
+using WoS.npc;
+using WoS.Utility;
+using WoS.Fleet;
+using Microsoft.Xna.Framework.Content;
+using System.Reflection.Metadata;
+using Newtonsoft.Json;
+using static WoS.Database.Database;
 namespace WoS.Fleet
 {
-    public class FleetBase
+    public class FleetBase : ElementBase
     {
-        protected List<IControllable> controllables;
-        protected IControllable currentControlledObject;
 
-        public FleetBase()
+        public ShipBase ship;
+        public FleetBase() : base()
         {
-            controllables = new List<IControllable>();
         }
 
-        public void AddControllable(IControllable controllable)
-        {
-            controllables.Add(controllable);
-        }
 
-        public virtual void SwitchControl()
-        {
-            // Logika pro přepnutí ovládání mezi objekty
-        }
-
-        public virtual void SetFleetBehaviorBasedOnCurrentObject()
-        {
-            // Implementace logiky pro nastavení chování flotily na základě aktuálně ovládaného objektu
-        }
+        public override void Update() { }
+        public override void Render(SpriteBatch spriteBatch) { }
     }
 }
