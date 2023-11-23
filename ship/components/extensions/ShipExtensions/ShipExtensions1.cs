@@ -10,12 +10,12 @@ using System.Xml.Linq;
 using WoS.ship.components.extensions.weapons;
 using WoS.Utility;
 
-namespace WoS.ship.components.extensions.generators
+namespace WoS.ship.components.extensions.ShipExtensions
 {
-    public class AlphaReactor : GeneratorBase
+    public class ShipExtensions1 : ShipExtensionBase
     {
 
-        public AlphaReactor(ContentManager content, Vector2 position) : base()
+        public ShipExtensions1(ContentManager content, Vector2 position) : base()
         {
         }
 
@@ -28,6 +28,4 @@ namespace WoS.ship.components.extensions.generators
             // Implementation of method to draw the planet
         }
     }
-    
-    
 }

@@ -7,60 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using WoS.ship.components.extensions.weapons;
 using WoS.Utility;
 
 namespace WoS.ship
 {
 
 
-    // Základní třída pro všechny lodě
-    // Tato třída obsahuje základní charakteristiky lodě, jako je zdraví, štíty, rychlost, pozice, rotace, atd.
-    // Dále obsahuje seznamy pro jednotlivé moduly, jako jsou kanóny, generátory, atd.
-    // Tato třída obsahuje také metody pro pohyb lodě, střelbu, atd.
-
-    /*
- *** Přehled vlastností a metod třídy ElementBase ***
-         Texture2D Texture          // Textura pro objekt
-         Vector2 Position           // Základní vlastnost pozice
-         Vector2 PositionOnMap      // Globální pozice objektu na mapě
-         Vector2 PositionOnScreen   // Místní pozice objektu na obrazovce
-         float   Rotation           // Rotace objektu v prostoru
-         int     Width              // Šířka objektu
-         int     Height             // Výška objektu
-
-        // Vlastnosti zdraví a štítu
-         float Hp                   // Aktuální zdraví objektu
-         float HpMax                // Maximální zdraví objektu
-         float Shield               // Aktuální hodnota štítu objektu
-         float ShieldMax            // Maximální hodnota štítu objektu
-
-
-*** Přehled vlastností a metod třídy MovementBase ***
-
-         Texture2D
-         string     Designation      // Název či označení lodi
-         float      Rotation
-         Vector2    Velocity         // Aktuální rychlost lodi
-         float      Acceleration     // Zrychlení lodi
-         int        MaxSpeed         // Maximální rychlost lodi
-         float      ShipWidth        // Šířka lodi
-         float      ShipHeight       // Výška lodi
-         Vector2    Target           // Cíl lodi pro pohyb
-         Vector2    SpawnPlace       // Místo, kde se loď objevila
-
-         // metody
-         bool       IsCollidingWith(ElementBase other)
-*/
     public abstract class ShipBase : MovementBase
     {
 
         // Moduly a vybavení lodě
         public int generatorsNumber;                // Počet doplňků (standardní moduly)
         public int weaponsNumber;                 // Počet zbraní (útočné moduly)
-        public Vector2[] kanony = new Vector2[6];   // Pozice kanónů
-        public Vector2[] dela = new Vector2[2];     // Pozice del
-        public Vector2[] generatory = new Vector2[6]; // Pozice generátorů
-        public Vector2[] doplnky = new Vector2[6];  // Pozice doplňků
+        public int extensionsNumber;              // Počet rozšíření (defenzivní moduly)
 
         // Ostatní
         public bool prvni_spusteni = true;     // Pro nastavení prvního statusu
