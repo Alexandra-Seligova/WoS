@@ -189,13 +189,40 @@ GuiBasic -> skládá se z komponent:
 
 
 
+Ship -	ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
+		ShipBattleBeta  [Reaktor 1, Pohon 3, MaláZbraň 2,StředníZbraň 2, Štít 2, Rozšíření 2]
+		ShipBattleGama  [Reaktor 1, Pohon 4, MaláZbraň 6,StředníZbraň 2,Štít 2, Rozšíření 6]
 
+		ShipExploratoryAlpha [Reaktor 1, Pohon 3, MaláZbraň 2, Štít 1, Rozšíření 3]
+		ShipExploratoryBeta  [Reaktor 1, Pohon 3, MaláZbraň 4, StředníZbraň 1,Štít 2, Rozšíření 4]
+		ShipExploratoryGamma [Reaktor 1, Pohon 4, MaláZbraň 6, StředníZbraň 2,Štít 2, Rozšíření 6]
 
+		ShipTraderAlpha [Reaktor 1, Pohon 2, MaláZbraň 1, Štít 1, Rozšíření 3]
+		ShipTraderBeta  [Reaktor 1, Pohon 2, MaláZbraň 2, StředníZbraň 1,Štít 2, Rozšíření 4]
+		ShipTraderGamma [Reaktor 1, Pohon 3, MaláZbraň 6, StředníZbraň 2,Štít 2, Rozšíření 6]
 
+		ShipTransporterAlpha [Reaktor 0, Pohon 2, MaláZbraň 1, Štít 1, Rozšíření 2]
+		ShipTransporterBeta  [Reaktor 1, Pohon 1, MaláZbraň 2, StředníZbraň 0,Štít 2, Rozšíření 4]
+		ShipTransporterGamma [Reaktor 1, Pohon 1, MaláZbraň 4, StředníZbraň 0,Štít 2, Rozšíření 8]
 
+		ShipMiningAlpha [Reaktor 0, Pohon 1, MaláZbraň 1, Štít 0, Rozšíření 0]
+		ShipMiningBeta  [Reaktor 0, Pohon 1, MaláZbraň 2, StředníZbraň 0,Štít 0, Rozšíření 1]
+		ShipMiningGamma [Reaktor 0, Pohon 2, MaláZbraň 4, StředníZbraň 0,Štít 2, Rozšíření 2]
 
+Dron -	DronDeluxeAlpha	  [rychlost 100,štít 100, zbraňě 100]
+		DronDeluxeBeta
 
+		DronBattleAlpha
+		DronBattleBeta
 
+		DronLavaAlpha
+		DronLavaBeta
+
+		DronElectroAlpha
+		DronElectroBeta
+
+		DronAquaAlpha
+		DronAquaBeta
 
 
 

@@ -19,7 +19,7 @@ namespace WoS.ship.components.extensions.ShipExtensions
         {
         }
 
-        public override void Update()
+        public void Update(Vector2 actualShipPosition, float atualRotation, Vector2 actualTarget)
         {
             // Implementation of method to update the planet
         }

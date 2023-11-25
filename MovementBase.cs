@@ -37,7 +37,7 @@ namespace WoS
 
 
         // Cíl lodi pro pohyb
-        public Vector2 Target { get; set; }
+        public Vector2 TargetPosition { get; set; }
 
         // Místo, kde se loď objevila
         public Vector2 SpawnPlace { get; set; }

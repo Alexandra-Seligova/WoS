@@ -1,9 +1,20 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using System.Xml.Linq;
+using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
+using WoS.map.Box;
+using WoS.map.Planet;
+using WoS.map.Sun;
+using WoS.npc;
+using WoS.map.moon;
+using WoS.Fleet;
+using WoS.map.Asteroids;
+using Microsoft.Xna.Framework.Content;
 
 namespace WoS.ship.components.extensions.generators
 {
@@ -31,7 +42,15 @@ namespace WoS.ship.components.extensions.generators
 
 
 */
+        Vector2 PositionOnShip;
+        private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
+        public AlphaShield(ContentManager content, Vector2 positionOnShip) : base()
+        {
+            Texture = content.Load<Texture2D>("spaceShips/AlphaEngine");
+            PositionOnShip = positionOnShip;
 
+
+        }
 
         public override void Update()
         {

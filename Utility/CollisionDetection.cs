@@ -46,10 +46,21 @@ namespace WoS.Utility
 
 
         // Konstruktor pro inicializaci pozice.
-    //    public CollisionDetection(Vector2 position)
-     //   {
-     //       Position = position;
-     //   }
+        //    public CollisionDetection(Vector2 position)
+        //   {
+        //       Position = position;
+        //   }
+
+
+        public override void Update()
+        {
+
+            // Implementation of method to update the planet
+        }
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            // Implementation of method to draw the planet
+        }
         public virtual bool IsCollidingWith(ElementBase other)
         {
             if (Position.X + Width > other.Position.X &&
