@@ -28,22 +28,21 @@ using static WoS.Database.Database;
 using WoS.ship.ShipTypes;
 using Microsoft.Identity.Client;
 using WoS.ship.Drons;
-using WoS.ship.Drons.DronBase;
 namespace WoS.Fleet
 {
     public class UserFleet : FleetBase
     {
-        private int DronsCount;
+        public int DronsCount;
 
-        private int[] DronsType;
-        private DroneBase[] Dronslist;
-          private Vector2[] DronsPosition;
+        public int[] DronsType;
+        public DroneBase[] Dronslist;
+          public Vector2[] DronsPosition;
         public UserFleet(int id, Vector2 position, ContentManager content) : base()
         {
 
             //ship = new ShipEgla(content, new Vector2(100, 100));      // Inicializace ship
 
-            SetShip("BattleShipT1", content);
+            SetShip("ShipBattleAlpha", content);
             DronsCount = 8;
             DronsType = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
             SetDrons(DronsType, content);
@@ -57,34 +56,34 @@ namespace WoS.Fleet
             switch (shipName)
             {
 
-                case "BattleShipT1":
+                case "ShipBattleAlpha":
                     ship = new ShipBattleAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "BattleShipT2":
+                case "ShipBattleBeta":
                     ship = new ShipBattleBeta(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "ExploratoryShipT1":
+                case "ShipExploratoryAlpha":
                     ship = new ShipExploratoryAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "ExploratoryShipT2":
+                case "ShipExploratoryBeta":
                     ship = new ShipExploratoryBeta(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "MiningShipT1":
+                case "ShipMiningAlpha":
                     ship = new ShipMiningAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "MiningShipT2":
+                case "ShipMiningBeta":
                     ship = new ShipMiningBeta(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "TraderShipT1":
+                case "ShipTraderAlpha":
                     ship = new ShipTraderAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "TraderShipT2":
+                case "ShipTraderBeta":
                     ship = new ShipTraderBeta(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "TransportShipT1":
+                case "ShipTransportAlpha":
                     ship = new ShipTransportAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "TransportShipT2":
+                case "ShipTransportBeta":
                     ship = new ShipTransportBeta(content, new Vector2(100, 100));      // Inicializace ship
                     break;
 
@@ -99,24 +98,24 @@ namespace WoS.Fleet
         }
 
 
-        public void SetDron(String dronName, ContentManager content)
+        public void SetDron(String dronName,int position, ContentManager content)
         {
             switch (dronName)
             {
-                case "DronDeluxeT1":
-                    Dronslist = new DronDeluxeAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                case "DronDeluxeAlpha":
+                    Dronslist[position] = new DronDeluxeAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "DronBattleT1":
-                    Dronslist = new DronBattleAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                case "DronBattleAlpha":
+                    Dronslist[position] = new DronBattleAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "DronLavaT1":
-                    Dronslist = new DronLavaAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                case "DronLavaAlpha":
+                    Dronslist[position] = new DronLavaAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "DronAquaT1":
-                    Dronslist = new DronAquaAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                case "DronAquaAlpha":
+                    Dronslist[position] = new DronAquaAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
-                case "DronElectroT1":
-                    Dronslist = new DronElectroAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                case "DronElectroAlpha":
+                    Dronslist[position] = new DronElectroAlpha(content, new Vector2(100, 100));      // Inicializace ship
                     break;
             }
 
@@ -128,31 +127,31 @@ namespace WoS.Fleet
         {
             for (int i = 0; i < config.Length; i++) // 8 dronů
             {
-                if (config[i] > 0 && config[i] < 6)
+                if (config[i] > 0 && config[i] < DronsCount)
                 {
                     switch (config[i])
                     {
                         case 1:
-                            SetDron("DronDeluxeT1", content);
+                            SetDron("DronDeluxeAlpha",i, content);
                             break;
                         case 2:
-                            SetDron("DronBattleT1", content);
+                            SetDron("DronBattleAlpha",i, content);
                             break;
                         case 3:
-                            SetDron("DronLavaT1", content);
+                            SetDron("DronLavaAlpha",i, content);
                             break;
                         case 4:
-                            SetDron("DronAquaT1", content);
+                            SetDron("DronAquaAlpha",i, content);
                             break;
                         case 5:
-                            SetDron("DronElectroT1", content);
+                            SetDron("DronElectroAlpha",i, content);
                             break;
 
                     }
                 }
                 else
                 {
-                    SetDron("DronDeluxeT1", content);
+                    SetDron("DronDeluxeAlpha",i, content);
                 }
             }
 
