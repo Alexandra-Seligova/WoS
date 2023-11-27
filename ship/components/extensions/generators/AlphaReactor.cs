@@ -28,6 +28,6 @@ namespace WoS.ship.components.extensions.generators
             // Implementation of method to draw the planet
         }
     }
-    
-    
+
+
 }

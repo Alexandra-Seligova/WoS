@@ -33,9 +33,9 @@ namespace WoS.ship.ShipTypes
             extensionsNumber = 2;
 
 
-            canons = new BalisticCanon[weaponsNumber];
-            generators = new AlphaEngine[generatorsNumber];
-            extensions = new ShipExtensions1[extensionsNumber];
+            canons = new List<WeaponBase>();
+            generators = new List<GeneratorBase>();
+            extensions = new List<ShipExtensions1>();
 
 
             Texture = content.Load<Texture2D>("spaceShips/ShipTraderBeta");

@@ -33,15 +33,16 @@ namespace WoS.Fleet
     public class UserFleet : FleetBase
     {
         public int DronsCount;
-
+        public List<DroneBase> Dronslist;
         public int[] DronsType;
-        public DroneBase[] Dronslist;
+
           public Vector2[] DronsPosition;
         public UserFleet(int id, Vector2 position, ContentManager content) : base()
         {
 
             //ship = new ShipEgla(content, new Vector2(100, 100));      // Inicializace ship
 
+            Dronslist = new List<DroneBase>();
             SetShip("ShipBattleAlpha", content);
             DronsCount = 8;
             DronsType = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
@@ -103,19 +104,19 @@ namespace WoS.Fleet
             switch (dronName)
             {
                 case "DronDeluxeAlpha":
-                    Dronslist[position] = new DronDeluxeAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                    Dronslist.Add( new DronDeluxeAlpha(content, new Vector2(100, 100)));      // Inicializace ship
                     break;
                 case "DronBattleAlpha":
-                    Dronslist[position] = new DronBattleAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                    Dronslist.Add( new DronBattleAlpha(content, new Vector2(100, 100)));      // Inicializace ship
                     break;
                 case "DronLavaAlpha":
-                    Dronslist[position] = new DronLavaAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                    Dronslist.Add(  new DronLavaAlpha(content, new Vector2(100, 100)));      // Inicializace ship
                     break;
                 case "DronAquaAlpha":
-                    Dronslist[position] = new DronAquaAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                    Dronslist.Add(  new DronAquaAlpha(content, new Vector2(100, 100)));      // Inicializace ship
                     break;
                 case "DronElectroAlpha":
-                    Dronslist[position] = new DronElectroAlpha(content, new Vector2(100, 100));      // Inicializace ship
+                    Dronslist.Add(  new DronElectroAlpha(content, new Vector2(100, 100)));      // Inicializace ship
                     break;
             }
 

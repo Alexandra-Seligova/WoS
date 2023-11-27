@@ -31,9 +31,9 @@ namespace WoS.ship.ShipTypes
             extensionsNumber = 2;
 
 
-            canons = new BalisticCanon[weaponsNumber];
-            generators = new AlphaEngine[generatorsNumber];
-            extensions = new ShipExtensions1[extensionsNumber];
+            canons = new List<WeaponBase>();
+            generators = new List<GeneratorBase>();
+            extensions = new List<ShipExtensions1>();
 
 
             Texture = content.Load<Texture2D>("spaceShips/ShipBattleAlpha");
@@ -57,16 +57,16 @@ namespace WoS.ship.ShipTypes
         public void CreateShipExtensions(ContentManager content, int weaponsNumber, int generatorsNumber, int extensionsNumber)
         {
             //  ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
-            generators[0] = new AlphaReactor(content, GetPositionOnShip("Generator",0));
+            generators.Add( new AlphaReactor(content, GetPositionOnShip("Generator",0)));
 
-            canons[0] = new BalisticCanon(content, GetPositionOnShip("Weapon",0),1);
-            canons[1] = new BalisticCanon(content, GetPositionOnShip("Weapon",1), 1);
+            canons.Add(new BalisticCanon(content, GetPositionOnShip("Weapon", 0), 1));
+            canons.Add(new BalisticCanon(content, GetPositionOnShip("Weapon", 0), 1));
 
-            generators[1] = new AlphaEngine(content, GetPositionOnShip("Generator",1));
-            generators[2] = new AlphaEngine(content, GetPositionOnShip("Generator",2));
+            generators.Add( new AlphaEngine(content, GetPositionOnShip("Generator",1)));
+            generators.Add( new AlphaEngine(content, GetPositionOnShip("Generator",2)));
 
-            extensions[0] = new ShipExtensions1(content, GetPositionOnShip("Extension",0));
-            extensions[1] = new ShipExtensions1(content, GetPositionOnShip("Extension",1));
+            extensions.Add( new ShipExtensions1(content, GetPositionOnShip("Extension",0)));
+            extensions.Add( new ShipExtensions1(content, GetPositionOnShip("Extension",1)));
         }
 
 

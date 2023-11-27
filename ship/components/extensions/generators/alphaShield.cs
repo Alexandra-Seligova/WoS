@@ -46,7 +46,7 @@ namespace WoS.ship.components.extensions.generators
         private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
         public AlphaShield(ContentManager content, Vector2 positionOnShip) : base()
         {
-            Texture = content.Load<Texture2D>("spaceShips/AlphaEngine");
+            Texture = content.Load<Texture2D>("spaceShips/ShieldAlpha");
             PositionOnShip = positionOnShip;
 
 

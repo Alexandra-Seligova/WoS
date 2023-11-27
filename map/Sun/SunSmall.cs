@@ -20,7 +20,7 @@ namespace WoS.map.Sun
             Position = position;
             PositionOnMap = position;
             Rotation = 0;
-            Texture = content.Load<Texture2D>("spaceShips/Egla");
+            //Texture = content.Load<Texture2D>("spaceShips/Egla");
             // Implementation of method to update the planet
         }
 
@@ -29,11 +29,11 @@ namespace WoS.map.Sun
 
         public override void Update()
         {
-            // Implementation of method to update 
+            // Implementation of method to update
         }
         public override void Render(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
+            //spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
 
         }
     }

@@ -11,7 +11,7 @@ namespace WoS.ship.components.extensions.weapons
 {
     public abstract class WeaponBase : ShipExtensionBase
     {
-
+       
         public void Update(Vector2 actualShipPosition, float atualRotation, Vector2 actualTarget)
         {
             Rotation = atualRotation;

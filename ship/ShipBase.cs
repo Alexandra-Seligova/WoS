@@ -39,9 +39,13 @@ namespace WoS.ship
         // List<Kanon> kanonyList;         // Seznam kanónů lodě
         // List<Munice> municeList;        // Seznam munice lodě
         // List<Anime> animaceList;        // Seznam animací lodě
-        public WeaponBase[] canons;
-        public GeneratorBase[] generators;
-        public ShipExtensions1[] extensions;
+      
+
+        public List<WeaponBase> canons;
+        public List<GeneratorBase> generators;
+        public List<ShipExtensions1> extensions;
+
+
 
         public Vector2[] WeaponsPosition;
         public Vector2[] GeneratorsPosition;
@@ -129,7 +133,7 @@ namespace WoS.ship
             Vector2 actualShipPosition = PositionOnMap;
             Vector2 actualTarget = TargetPosition;
 
-            for (int i = 0; i < canons.Length; i++)
+            for (int i = 0; i < canons.Count; i++)
             {
                 if (canons[i] != null)
                 {
@@ -137,7 +141,7 @@ namespace WoS.ship
                 }
             }
 
-            for (int i = 0; i < generators.Length; i++)
+            for (int i = 0; i < generators.Count; i++)
             {
                 if (generators[i] != null)
                 {
@@ -145,7 +149,7 @@ namespace WoS.ship
                 }
             }
 
-            for (int i = 0; i < extensions.Length; i++)
+            for (int i = 0; i < extensions.Count; i++)
             {
                 if (extensions[i] != null)
                 {

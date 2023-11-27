@@ -226,8 +226,10 @@ Dron -	DronDeluxeAlpha	  [rychlost 100,štít 100, zbraňě 100]
 
 
 
-
-
-
-
-
+CPU raketometu nabíjí raketomet vybranými raketami a odpaluje ho automaticky během vlastního laserového útoku.
+Zlepšuje šance zasáhnout loď a snižuje počet nepřesných laserových střel o 50%. Spotřebovává 10 jedn. xenomitu na salvu.
+Vybavuje generátory na palubě automaticky tím nejlepším dostupným zdrojem.
+Zdvojnásobí nákladní prostor molekulární kompresí.
+Během vlastního laserového útoku odpaluje automaticky nejvyšší možnou rychlostí rakety vybraného typu.
+Automaticky odstartuje opravovacího robota.
+Zdvojnásobí rychlost střelby raketometu.
