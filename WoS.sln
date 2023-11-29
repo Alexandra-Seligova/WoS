@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoS_Server", "..\WoS_Server
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplatesForWos", "..\TemplatesForWos\TemplatesForWos.csproj", "{9ABA24AE-1D5A-452C-9A9F-DF19E760FA39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lů", "..\..\Lů\Lů\Lů.csproj", "{AD173918-0378-45E9-BD70-E9B77AA0D103}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9ABA24AE-1D5A-452C-9A9F-DF19E760FA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ABA24AE-1D5A-452C-9A9F-DF19E760FA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ABA24AE-1D5A-452C-9A9F-DF19E760FA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD173918-0378-45E9-BD70-E9B77AA0D103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD173918-0378-45E9-BD70-E9B77AA0D103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD173918-0378-45E9-BD70-E9B77AA0D103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD173918-0378-45E9-BD70-E9B77AA0D103}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

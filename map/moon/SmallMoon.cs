@@ -11,7 +11,7 @@ namespace WoS.map.moon
 {
     public class SmallMoon : MoonBase
     {
-        private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
+        private const float SCALE_FACTOR = 0.2f; // 10% z původní velikosti
         public SmallMoon(int id, Vector2 position, ContentManager content) : base(position)
         {
             Id = id;

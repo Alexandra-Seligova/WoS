@@ -19,7 +19,7 @@ namespace WoS.ship.ShipTypes
     public class ShipBattleAlpha : ShipBase
     {
         //  ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
-        private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
+        private const float SCALE_FACTOR = 0.2f; // 10% z původní velikosti
 
 
 

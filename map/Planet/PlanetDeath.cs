@@ -12,7 +12,7 @@ namespace WoS.map.Planet
 {
     public class PlanetDeath : PlanetBase
     {
-        private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
+        private const float SCALE_FACTOR = 0.3f; // 10% z původní velikosti
 
         public PlanetDeath(int id, Vector2 position, ContentManager content) : base(id)
         {
