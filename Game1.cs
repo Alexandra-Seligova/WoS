@@ -126,5 +126,6 @@ namespace WoS
             _spriteBatch.End();
             base.Draw(gameTime);
         }
+
     }
 }
