@@ -27,9 +27,6 @@ namespace WoS.GUI
         {
             Id = id;
             Position = position;
-            LoaderTexture2D("GUI/GuiBasic/Name", content);
-            Width = 500;
-            Height = 200;
             Visible = true;
 
         }

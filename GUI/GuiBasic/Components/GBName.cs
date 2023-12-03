@@ -18,32 +18,19 @@ namespace WoS.GUI.GuiBasic.Components
         private Vector2 UserNamePosition;
         private int UserLevel;
         private Vector2 UserLevelPosition;
-
+        private SpriteFont myFont;
 
         public GBName(int id, Vector2 position, ContentManager content) : base(id, position, content)
 
         {
-            Id = id;
-            Position = position;
+            base.Id = id;
+            base.Position = position;
+            base.Visible = true;
+            myFont = content.Load<SpriteFont>("Font/arial");
+
             LoaderTexture2D("GUI/GuiBasic/GBName", content);
             SetComponentConfig();
             Visible = true;
-
-        }
-
-        public override void OnClick()
-        {
-            //otevřít vysouvací menu úkolů
-            // GBNameBar.Visible = !GBNameBar.Visible;
-
-        }
-
-        public override void ComponentDraw()
-        {
-            //vykreslit text
-            //  spriteBatch.DrawString(myFont, UserName, UserNamePositionnew, Color.White);
-            //  SpriteBatch.DrawString(myFont, UserLevel, UserLevelPosition, Color.White);
-
 
         }
         public override void SetComponentConfig()
@@ -53,6 +40,33 @@ namespace WoS.GUI.GuiBasic.Components
             UserNamePosition = new Vector2(50, 30);
             UserLevelPosition = new Vector2(100, 100);
         }
+
+        public override void OnClick()
+        {
+            //otevřít vysouvací menu úkolů
+            // GBNameBar.Visible = !GBNameBar.Visible;
+
+        }
+
+
+        /*public void override Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+            ComponentDraw(spriteBatch);
+
+        } */
+
+
+
+        public void ComponentDraw(SpriteBatch spriteBatch)
+        {
+            //vykreslit text
+            spriteBatch.DrawString(myFont, UserName, UserNamePosition, Color.White);
+            spriteBatch.DrawString(myFont, UserLevel.ToString(), UserLevelPosition, Color.White);
+
+
+        }
+
 
     }
 }
