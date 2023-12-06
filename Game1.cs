@@ -10,12 +10,16 @@ using uPLibrary.Networking.M2Mqtt.Messages;
 using System;
 using System.Text;
 using static WoS.Database.Database;
+using WoS.GUI.GuiBasics;
+using WoS.GUI;
 
 namespace WoS
 {
     public class Game1 : Game
     {
+        bool isGUIInteraction = false;  // Toto by měl být přepínač, který kontroluje, zda je aktivní interakce s GUI
 
+        private GuiManager Gui; // Přidání instance GuiBasic
         private GraphicsDeviceManager graphics;
         private SpriteBatch _spriteBatch;
         SpriteFont myFont;
@@ -24,7 +28,10 @@ namespace WoS
 
         MapAlpha mapAlpha;              // Instance vaší mapy
 
-        bool isGUIInteraction = false;  // Toto by měl být přepínač, který kontroluje, zda je aktivní interakce s GUI
+
+
+
+
 
         public Game1()
         {
@@ -41,20 +48,26 @@ namespace WoS
 
         }
 
+
+
+
+
+
         protected override void Initialize()
         {
-            //  Database Db = new Database();
+            Gui = new GuiManager(Content); // Inicializace GuiBasic
             CreateMap Cmap = new CreateMap();
             // Cmap.CreateMapAndInsertToDatabase(); // Vytvoření mapy a vložení do databáze
-
-
-
-
 
 
             //InitializeMqtt();
             base.Initialize();
         }
+
+
+
+
+
 
         protected override void LoadContent()
         {
@@ -71,10 +84,15 @@ namespace WoS
 
         }
 
+
+
+
+
+
         protected override void Update(GameTime gameTime)
         {
             camera.UpdateZoom();
-
+            Gui.Update(gameTime); // Aktualizace GuiBasic
             if (!isGUIInteraction)
             {
                 camera.Follow(mapAlpha.UserFleets.ElementsList[0].ship.PositionOnMap);
@@ -101,10 +119,6 @@ namespace WoS
 
 
 
-
-
-
-
             mapAlpha.UpdateMap(gameTime);
             // Aktualizace lodi
 
@@ -112,6 +126,11 @@ namespace WoS
 
             base.Update(gameTime);
         }
+
+
+
+
+
 
         protected override void Draw(GameTime gameTime)
         {
@@ -122,7 +141,7 @@ namespace WoS
             mapAlpha.DrawMap(_spriteBatch);
 
 
-
+            Gui.Draw(_spriteBatch); // Vykreslení GuiBasic
             _spriteBatch.End();
             base.Draw(gameTime);
         }

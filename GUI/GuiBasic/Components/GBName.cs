@@ -10,63 +10,56 @@ using Microsoft.Xna.Framework.Input;
 using WoS;
 
 
-namespace WoS.GUI.GuiBasic.Components
+namespace WoS.GUI.GuiBasics.Components
 {
-    public class GBName : GuiComponentBase
+    /// <summary>
+    /// Třída komponenty GBName.
+    /// </summary>
+    public sealed class GBName : GuiComponentBase
     {
-        private String UserName;
+        // Pole
+        private string UserName;
         private Vector2 UserNamePosition;
         private int UserLevel;
         private Vector2 UserLevelPosition;
-        private SpriteFont myFont;
 
+        // Konstruktor
         public GBName(int id, Vector2 position, ContentManager content) : base(id, position, content)
-
         {
-            base.Id = id;
-            base.Position = position;
-            base.Visible = true;
-            myFont = content.Load<SpriteFont>("Font/arial");
-
-            LoaderTexture2D("GUI/GuiBasic/GBName", content);
+            LoadTexture2D("GUI/GuiBasic/GBName", content);
             SetComponentConfig();
-            Visible = true;
-
         }
+
+        // Nastavení specifické konfigurace komponenty
         public override void SetComponentConfig()
         {
+            UserName = "Jmeno";
+            UserLevel = 1;
+
             Width = 500;
             Height = 200;
             UserNamePosition = new Vector2(50, 30);
             UserLevelPosition = new Vector2(100, 100);
         }
 
+        // Přepsání pro zpracování událostí kliknutí
         public override void OnClick()
         {
-            //otevřít vysouvací menu úkolů
-            // GBNameBar.Visible = !GBNameBar.Visible;
-
+            // Zpracování události kliknutí, například otevření menu
         }
 
-
-        /*public void override Draw(SpriteBatch spriteBatch)
+        // Přepsání metody Draw
+        public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
             ComponentDraw(spriteBatch);
-
-        } */
-
-
-
-        public void ComponentDraw(SpriteBatch spriteBatch)
-        {
-            //vykreslit text
-            spriteBatch.DrawString(myFont, UserName, UserNamePosition, Color.White);
-            spriteBatch.DrawString(myFont, UserLevel.ToString(), UserLevelPosition, Color.White);
-
-
         }
 
-
+        // Vykreslení specifických vlastností komponenty
+        protected override void ComponentDraw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(myFont, UserName, UserNamePosition, Color.White);
+            spriteBatch.DrawString(myFont, UserLevel.ToString(), UserLevelPosition, Color.White);
+        }
     }
 }

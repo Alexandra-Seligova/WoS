@@ -12,8 +12,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace WoS.GUI
 {
+    /// <summary>
+    /// Základní třída pro GUI komponenty.
+    /// </summary>
     public abstract class GuiComponentBase
     {
+        // Vlastnosti
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public float Width { get; set; }
@@ -22,55 +26,63 @@ namespace WoS.GUI
         public string Name { get; set; }
         public bool Visible { get; set; }
 
+        public readonly SpriteFont myFont;
 
+        // Konstruktor
         public GuiComponentBase(int id, Vector2 position, ContentManager content)
         {
+            myFont = content.Load<SpriteFont>("Font/arial");
+
             Id = id;
             Position = position;
             Visible = true;
-
         }
-        public void LoaderTexture2D(string path, ContentManager content)
+
+        // Načte texturu pro komponentu
+        public void LoadTexture2D(string path, ContentManager content)
         {
             Texture = content.Load<Texture2D>(path);
         }
+
+        // Vykreslí komponentu
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (Visible)
             {
                 spriteBatch.Draw(Texture, Position, Color.White);
-                ComponentDraw();
+                ComponentDraw(spriteBatch);
             }
         }
-        public virtual void ComponentDraw()
-        {
 
+        // Specifické vykreslení komponenty, má být přepsáno v odvozených třídách
+        protected virtual void ComponentDraw(SpriteBatch spriteBatch) { }
+
+
+        public virtual void Update(GameTime gameTime)
+        {
+            IsClickedOnMe();
         }
+
+
+
+        // Zkontroluje, zda bylo na komponentu kliknuto
         public void IsClickedOnMe()
         {
-            if (Visible)
+            if (Visible && Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-                if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+                var mouseState = Mouse.GetState();
+                if (mouseState.X >= Position.X && mouseState.X <= Position.X + Width &&
+                    mouseState.Y >= Position.Y && mouseState.Y <= Position.Y + Height)
                 {
-                    if (Mouse.GetState().X >= Position.X && Mouse.GetState().X <= Position.X + Width)
-                    {
-                        if (Mouse.GetState().Y >= Position.Y && Mouse.GetState().Y <= Position.Y + Height)
-                        {
-                            OnClick();
-                        }
-                    }
+                    OnClick();
                 }
             }
-
-
         }
+
+        // Abstraktní metoda pro zpracování kliknutí, musí být implementována v odvozených třídách
         public abstract void OnClick();
-        public virtual void SetComponentConfig()
-        {
 
-        }
-
+        // Metoda pro nastavení konfigurace komponenty, může být přepsána v odvozených třídách
+        public virtual void SetComponentConfig() { }
     }
 }
-
-

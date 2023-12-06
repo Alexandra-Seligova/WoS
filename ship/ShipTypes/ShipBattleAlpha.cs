@@ -43,7 +43,7 @@ namespace WoS.ship.ShipTypes
             HpMax = 700;
             MaxSpeed = 500;
 
-            CreatePositionsOnShip( weaponsNumber, generatorsNumber, extensionsNumber);
+            CreatePositionsOnShip(weaponsNumber, generatorsNumber, extensionsNumber);
             CreateShipExtensions(content, weaponsNumber, generatorsNumber, extensionsNumber);
 
             PositionOnMap = startPosition;
@@ -57,16 +57,16 @@ namespace WoS.ship.ShipTypes
         public void CreateShipExtensions(ContentManager content, int weaponsNumber, int generatorsNumber, int extensionsNumber)
         {
             //  ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
-            generators.Add( new AlphaReactor(content, GetPositionOnShip("Generator",0)));
+            generators.Add(new AlphaReactor(content, GetPositionOnShip("Generator", 0)));
 
             canons.Add(new BalisticCanon(content, GetPositionOnShip("Weapon", 0), 1));
             canons.Add(new BalisticCanon(content, GetPositionOnShip("Weapon", 0), 1));
 
-            generators.Add( new AlphaEngine(content, GetPositionOnShip("Generator",1)));
-            generators.Add( new AlphaEngine(content, GetPositionOnShip("Generator",2)));
+            generators.Add(new AlphaEngine(content, GetPositionOnShip("Generator", 1)));
+            generators.Add(new AlphaEngine(content, GetPositionOnShip("Generator", 2)));
 
-            extensions.Add( new ShipExtensions1(content, GetPositionOnShip("Extension",0)));
-            extensions.Add( new ShipExtensions1(content, GetPositionOnShip("Extension",1)));
+            extensions.Add(new ShipExtensions1(content, GetPositionOnShip("Extension", 0)));
+            extensions.Add(new ShipExtensions1(content, GetPositionOnShip("Extension", 1)));
         }
 
 
@@ -79,18 +79,18 @@ namespace WoS.ship.ShipTypes
             ExtensionsPosition = new Vector2[extensionsCount];
 
             // Vytváření pozic pro zbraně
-             WeaponsPosition[0] = new Vector2(0, 0);
+            WeaponsPosition[0] = new Vector2(0, 0);
             WeaponsPosition[1] = new Vector2(0, 0);
 
 
             // Vytváření pozic pro generátory
-             GeneratorsPosition[0] = new Vector2(0, 0);
-             GeneratorsPosition[1] = new Vector2(0, 0);
+            GeneratorsPosition[0] = new Vector2(0, 0);
+            GeneratorsPosition[1] = new Vector2(0, 0);
             GeneratorsPosition[2] = new Vector2(0, 0);
 
             // Vytváření pozic pro rozšíření
-             ExtensionsPosition[0] = new Vector2(0, 0);
-             ExtensionsPosition[1] = new Vector2(0, 0);
+            ExtensionsPosition[0] = new Vector2(0, 0);
+            ExtensionsPosition[1] = new Vector2(0, 0);
 
         }
 

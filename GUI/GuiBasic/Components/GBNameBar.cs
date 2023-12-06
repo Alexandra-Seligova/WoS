@@ -22,24 +22,9 @@ namespace WoS.GUI.GuiBasic.Components
         {
             Id = id;
             Position = position;
-            LoaderTexture2D("GUI/GuiBasic/GBNameBar", content);
+            LoadTexture2D("GUI/GuiBasic/GBNameBar", content);
             SetComponentConfig();
             Visible = true;
-
-        }
-        public override void OnClick()
-        {
-            //otevřít vysouvací menu úkolů
-            // GBNameBar.Visible = !GBNameBar.Visible;
-
-        }
-
-        public override void ComponentDraw()
-        {
-            //vykreslit text
-            //  spriteBatch.DrawString(myFont, UserName, UserNamePositionnew, Color.White);
-            //  SpriteBatch.DrawString(myFont, UserLevel, UserLevelPosition, Color.White);
-
 
         }
         public override void SetComponentConfig()
@@ -51,6 +36,21 @@ namespace WoS.GUI.GuiBasic.Components
 
 
 
+        public override void OnClick()
+        {
+            //otevřít vysouvací menu úkolů
+            // GBNameBar.Visible = !GBNameBar.Visible;
+
+        }
+
+        protected override void ComponentDraw(SpriteBatch spriteBatch)
+        {
+             DrawQuests(spriteBatch,QuestsBarSize);
+
+
+
+        }
+
 
         // vykreslit 10x okénko,
         // po levé straně lišta s posunem  (celkem až 30x  nahoře, uprostřed, dole) = rozlišení 3
@@ -60,8 +60,8 @@ namespace WoS.GUI.GuiBasic.Components
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            //  spriteBatch.Draw(Texture, Position, Color.White);
-                 DrawQuests(spriteBatch,QuestsBarSize);
+            ComponentDraw(spriteBatch);
+
 
 
         }
@@ -79,7 +79,7 @@ namespace WoS.GUI.GuiBasic.Components
 
 
 
-           public void DrawQuest(SpriteBatch spriteBatch, int QuestNumber)
+        public void DrawQuest(SpriteBatch spriteBatch, int QuestNumber)
         {
 
 
