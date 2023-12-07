@@ -15,7 +15,7 @@ namespace WoS.GUI.GuiBasic.Components
 {
     public sealed class GBShipView : GuiComponentBase
     {
-        private const float SCALE_FACTOR = 0.18f; // 10% z původní velikosti
+        private const float SCALE_FACTOR = 0.08f; // 10% z původní velikosti
         public GBShipView(int id, Vector2 position, ContentManager content) : base(id, position, content)
         {
             Position = position;

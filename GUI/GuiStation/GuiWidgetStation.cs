@@ -22,8 +22,8 @@ namespace WoS.GUI.GuiBasic
     {
 
 
-        public GuiWidgetStation(ContentManager content) : base(content)
-        {
+            public GuiWidgetStation(ContentManager content) : base(content)
+            {
             Name = "Gui Station Widget";
             Description = "Základní gui pro vykreslení hlavní scény hry";
 

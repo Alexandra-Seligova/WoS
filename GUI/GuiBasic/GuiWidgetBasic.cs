@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 
 using WoS.GUI.GuiBasic.Components;
+using WoS.GUI.ComponentBase;
 
 
 
@@ -27,10 +28,13 @@ namespace WoS.GUI.GuiBasic
 
             // Inicializace jednotlivých komponent
             components.Add(new GBName(1, new Vector2(0, 0), content));
-            components.Add(new GBShipView(5, new Vector2(300, 100), content));
+            components.Add(new GBShipView(5, new Vector2(80, 1080 - 350), content));
+            components.Add(new ShipShieldView(3, new Vector2(200, 1080 - 200), content));
+            components.Add(new GBMineralBar(8, new Vector2(200, 0), content));
+
             /*
             components.Add(new GBXpBar(7, new Vector2(400, 100), content));
-            components.Add(new GBMineralBar(8, new Vector2(450, 100), content));
+
 
 
             components.Add(new GBMainButton(2, new Vector2(150, 100), content));
@@ -38,7 +42,7 @@ namespace WoS.GUI.GuiBasic
 
             components.Add(new GBShipFuel(3, new Vector2(200, 100), content));
             components.Add(new GBShipMode(4, new Vector2(250, 100), content));
-            
+
 
 
             components.Add(new GBSpellBar(6, new Vector2(350, 100), content));
