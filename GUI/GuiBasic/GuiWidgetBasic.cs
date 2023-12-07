@@ -10,8 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 
-using WoS.GUI.GuiBasics.Components;
-
+using WoS.GUI.GuiBasic.Components;
 
 
 
@@ -27,7 +26,8 @@ namespace WoS.GUI.GuiBasic
             Description = "Základní gui pro vykreslení hlavní scény hry";
 
             // Inicializace jednotlivých komponent
-            components.Add(new GBName(1, new Vector2(100, 100), content));
+            components.Add(new GBName(1, new Vector2(0, 0), content));
+            components.Add(new GBShipView(5, new Vector2(300, 100), content));
             /*
             components.Add(new GBXpBar(7, new Vector2(400, 100), content));
             components.Add(new GBMineralBar(8, new Vector2(450, 100), content));
@@ -38,7 +38,7 @@ namespace WoS.GUI.GuiBasic
 
             components.Add(new GBShipFuel(3, new Vector2(200, 100), content));
             components.Add(new GBShipMode(4, new Vector2(250, 100), content));
-            components.Add(new GBShipView(5, new Vector2(300, 100), content));
+            
 
 
             components.Add(new GBSpellBar(6, new Vector2(350, 100), content));

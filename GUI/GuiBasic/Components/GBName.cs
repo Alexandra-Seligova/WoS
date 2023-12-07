@@ -10,13 +10,14 @@ using Microsoft.Xna.Framework.Input;
 using WoS;
 
 
-namespace WoS.GUI.GuiBasics.Components
+namespace WoS.GUI.GuiBasic.Components
 {
     /// <summary>
     /// Třída komponenty GBName.
     /// </summary>
     public sealed class GBName : GuiComponentBase
     {
+        private const float SCALE_FACTOR = 0.18f; // 10% z původní velikosti
         // Pole
         private string UserName;
         private Vector2 UserNamePosition;
@@ -26,20 +27,22 @@ namespace WoS.GUI.GuiBasics.Components
         // Konstruktor
         public GBName(int id, Vector2 position, ContentManager content) : base(id, position, content)
         {
-            LoadTexture2D("GUI/GuiBasic/GBName", content);
+            Position = position;
+            LoadTexture2D("GUI/GBName", content);
             SetComponentConfig();
+
         }
 
         // Nastavení specifické konfigurace komponenty
         public override void SetComponentConfig()
         {
-            UserName = "Jmeno";
+            UserName = "Scribonia";
             UserLevel = 1;
 
             Width = 500;
-            Height = 200;
-            UserNamePosition = new Vector2(50, 30);
-            UserLevelPosition = new Vector2(100, 100);
+            Height = 100;
+            UserNamePosition = new Vector2(10, 10);
+            UserLevelPosition = new Vector2(10, 30);
         }
 
         // Přepsání pro zpracování událostí kliknutí
@@ -51,8 +54,12 @@ namespace WoS.GUI.GuiBasics.Components
         // Přepsání metody Draw
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-            ComponentDraw(spriteBatch);
+            if (Visible)
+            {
+                spriteBatch.Draw(Texture, Position, null, Color.White, 0, new Vector2(0, 0), SCALE_FACTOR, SpriteEffects.None, 0);
+                ComponentDraw(spriteBatch);
+            }
+
         }
 
         // Vykreslení specifických vlastností komponenty

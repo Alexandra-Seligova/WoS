@@ -10,7 +10,7 @@ using uPLibrary.Networking.M2Mqtt.Messages;
 using System;
 using System.Text;
 using static WoS.Database.Database;
-using WoS.GUI.GuiBasics;
+using WoS.GUI.GuiBasic;
 using WoS.GUI;
 
 namespace WoS
@@ -28,7 +28,7 @@ namespace WoS
 
         MapAlpha mapAlpha;              // Instance vaší mapy
 
-
+        Vector2 WindowPosition;         // Pozice okna GUI
 
 
 
@@ -55,7 +55,7 @@ namespace WoS
 
         protected override void Initialize()
         {
-            Gui = new GuiManager(Content); // Inicializace GuiBasic
+            Gui = new GuiManager(Content, new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight)); // Inicializace GuiBasic
             CreateMap Cmap = new CreateMap();
             // Cmap.CreateMapAndInsertToDatabase(); // Vytvoření mapy a vložení do databáze
 
@@ -92,7 +92,10 @@ namespace WoS
         protected override void Update(GameTime gameTime)
         {
             camera.UpdateZoom();
-            Gui.Update(gameTime); // Aktualizace GuiBasic
+            WindowPosition = mapAlpha.UserFleets.ElementsList[0].ship.Position;
+
+
+            Gui.Update(gameTime, WindowPosition); // Aktualizace GuiBasic
             if (!isGUIInteraction)
             {
                 camera.Follow(mapAlpha.UserFleets.ElementsList[0].ship.PositionOnMap);
@@ -140,9 +143,18 @@ namespace WoS
             // Vykreslení mapy
             mapAlpha.DrawMap(_spriteBatch);
 
+            // Přechodně posune SpriteBatch pro vykreslení GUI na pozici WindowPosition
+            _spriteBatch.End();
+            _spriteBatch.Begin(transformMatrix: Matrix.CreateTranslation(new Vector3(WindowPosition, 0)));
 
             Gui.Draw(_spriteBatch); // Vykreslení GuiBasic
+
+
+            // Resetování SpriteBatch zpět na původní pozici
             _spriteBatch.End();
+            // _spriteBatch.Begin(transformMatrix: Matrix.CreateTranslation(new Vector3(0, 0, 0)));
+
+            // _spriteBatch.End();
             base.Draw(gameTime);
         }
 

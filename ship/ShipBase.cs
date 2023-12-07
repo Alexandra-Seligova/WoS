@@ -39,7 +39,7 @@ namespace WoS.ship
         // List<Kanon> kanonyList;         // Seznam kanónů lodě
         // List<Munice> municeList;        // Seznam munice lodě
         // List<Anime> animaceList;        // Seznam animací lodě
-      
+
 
         public List<WeaponBase> canons;
         public List<GeneratorBase> generators;

@@ -47,11 +47,7 @@ namespace WoS.GUI
         // Vykreslí komponentu
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (Visible)
-            {
-                spriteBatch.Draw(Texture, Position, Color.White);
-                ComponentDraw(spriteBatch);
-            }
+
         }
 
         // Specifické vykreslení komponenty, má být přepsáno v odvozených třídách

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 
-using WoS.GUI.GuiBasics.Components;
+using WoS.GUI.GuiBasic.Components;
 
 
 
