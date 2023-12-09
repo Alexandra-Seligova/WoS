@@ -2,6 +2,9 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Resources;
+using Newtonsoft.Json.Linq; // Používá Newtonsoft.Json
+using System.IO;
 
 namespace WoS.GUI.ComponentBase
 {
@@ -15,20 +18,32 @@ namespace WoS.GUI.ComponentBase
         public bool ConfigurationIsActive;
         public bool BuildingIsActive;
 
+        private string SettingsButtonText;
+        private string ConfigurationButtonText;
+        private string BuildingButtonText;
+
 
         public GBMainButton(int id, Vector2 position, ContentManager content) : base(id, position, content)
         {
             Position = position;
+            LoadText(); //
+
             LoadButtons(content);
         }
 
+        public void LoadText()    // možnot pro lokalizaci
+        {
+            SettingsButtonText = Localization.Instance.GetText("GBMainButton", "SettingsButtonText");                  //settings
+            ConfigurationButtonText = Localization.Instance.GetText("GBMainButton", "ConfigurationButtonText");        //configuration
+            BuildingButtonText = Localization.Instance.GetText("GBMainButton", "BuildingButtonText");                  //build
+        }
         private void LoadButtons(ContentManager content)
         {
             // Tady nastavíte pozice tlačítek relativně k `Position`
 
-            SettingsButton = new Button(Position + new Vector2(0, 0), "Settings", content, myFont);
-            ConfigurationButton = new Button(Position + new Vector2(0, 100), "Configuration", content, myFont);
-            BuildingButton = new Button(Position + new Vector2(0, 200), "Building", content, myFont);
+            SettingsButton = new Button(Position + new Vector2(0, 0), SettingsButtonText, content, myFont);
+            ConfigurationButton = new Button(Position + new Vector2(0, 100), ConfigurationButtonText, content, myFont);
+            BuildingButton = new Button(Position + new Vector2(0, 200), BuildingButtonText, content, myFont);
         }
 
         public override void OnClick()

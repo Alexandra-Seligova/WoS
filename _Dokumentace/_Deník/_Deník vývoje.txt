@@ -233,3 +233,36 @@ Zdvojnásobí nákladní prostor molekulární kompresí.
 Během vlastního laserového útoku odpaluje automaticky nejvyšší možnou rychlostí rakety vybraného typu.
 Automaticky odstartuje opravovacího robota.
 Zdvojnásobí rychlost střelby raketometu.
+
+
+Jak by měla vypadat první verze?
+1 - základní funkční hra
+2 - základní grafika
+3 - základní zvuky
+4 - základní hudba
+5 - základní příběh
+6 - základní menu
+7 - základní ovládání
+
+
+
+Příběh: Hráč začne tak, že si po načtení hry vybere svojí cestu hrou.
+Výběr  [Battle, Exploratory, Trader] podle toho se nastaví i první Ship
+
+
+[První dialogové okno - vyber si frakci]
+Vítej ve World of Scribonia!
+
+Ahoj kosmonaute!
+
+Vítej ve fascinujícím světě World of Scribonia, nekonečné galaxii plné nástrah a nebezpečí. Jsi na začátku cesty, která tě provede nevídanými dobrodružstvími a výzvami.
+
+Tvým posláním je vybudovat mocnou civilizaci, která bude skvétat jak ve velikosti, tak v technologiích. Máš na výběr z několika cest, které ovlivní tvůj osud:
+
+Obchodník: Mistr ve světě obchodu a diplomacie. Využij své dovednosti k získání bohatství a vlivu.
+Průzkumník: Objevuj neznámé a odhaluj tajemství vesmíru. Každá nová planeta může skrývat něco úžasného.
+Bojovník: Staneš se legendárním válečníkem, který čelí největším hrozbám. Tvá odvaha bude tvým nejlepším zbraní.
+Každá frakce má své výhody i nevýhody, ale nejvíce záleží na tom, co tě baví. Vyber si moudře a připrav se na dobrodružství, jaké jsi ještě nezažil.
+
+Přeji ti šťastnou cestu, kosmonaute!
+

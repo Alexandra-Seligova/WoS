@@ -59,6 +59,8 @@ namespace WoS
             CreateMap Cmap = new CreateMap();
             // Cmap.CreateMapAndInsertToDatabase(); // Vytvoření mapy a vložení do databáze
 
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("cz");
+            Localization.Instance.SetLanguage("cz"); // Pro změnu na češtinu
 
             //InitializeMqtt();
             base.Initialize();
