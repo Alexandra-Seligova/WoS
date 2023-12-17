@@ -60,7 +60,7 @@ namespace WoS.ship.ShipTypes
             generators.Add(new AlphaReactor(content, GetPositionOnShip("Generator", 0)));
 
             canons.Add(new BalisticCanon(content, GetPositionOnShip("Weapon", 0), 1));
-            canons.Add(new BalisticCanon(content, GetPositionOnShip("Weapon", 0), 1));
+            canons.Add(new BalisticCanon(content, GetPositionOnShip("Weapon", 1), 1));
 
             generators.Add(new AlphaEngine(content, GetPositionOnShip("Generator", 1)));
             generators.Add(new AlphaEngine(content, GetPositionOnShip("Generator", 2)));
@@ -94,7 +94,34 @@ namespace WoS.ship.ShipTypes
 
         }
 
+        public void Update(Vector2 actualShipPosition, float atualRotation, Vector2 actualTarget)
+        {
+            // Aktualizace pozice lodi
+            PositionOnMap = actualShipPosition;
+            Rotation = atualRotation;
+            TargetPosition = actualTarget;
 
+            // Aktualizace kanónů
+            foreach (var canon in canons)
+            {
+                canon.PositionOnMap= PositionOnMap;
+                canon.Update();
+            }
+
+            // Aktualizace generátorů
+            foreach (var generator in generators)
+            {
+                generator.PositionOnMap= PositionOnMap;
+                generator.Update();
+            }
+
+            // Aktualizace rozšíření
+            foreach (var extension in extensions)
+            {
+                extension.PositionOnMap = PositionOnMap;
+                extension.Update();
+            }
+        }
 
 
         public override void Render(SpriteBatch spriteBatch)
@@ -104,8 +131,28 @@ namespace WoS.ship.ShipTypes
         // Přetížení metody Draw
         public override void Draw(SpriteBatch spriteBatch)
         {
+            // Vykreslení lodě
             spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
+
+            // Vykreslení kanónů
+            foreach (var canon in canons)
+            {
+                canon.Render(spriteBatch);
+            }
+
+            // Vykreslení generátorů
+            foreach (var generator in generators)
+            {
+                generator.Render(spriteBatch);
+            }
+
+            // Vykreslení rozšíření
+            foreach (var extension in extensions)
+            {
+                extension.Render(spriteBatch);
+            }
         }
+
     }
 }
 
