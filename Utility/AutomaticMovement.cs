@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;  // Pro použití Vector2
+﻿using Microsoft.Xna.Framework;  // Pro použití Vector2
 
 namespace WoS.Utility
 {
@@ -25,7 +20,6 @@ namespace WoS.Utility
          float Shield               // Aktuální hodnota štítu objektu
          float ShieldMax            // Maximální hodnota štítu objektu
 
-
 *** Přehled vlastností a metod třídy MovementBase ***
 
          Texture2D
@@ -39,9 +33,7 @@ namespace WoS.Utility
          Vector2    Target           // Cíl lodi pro pohyb
          Vector2    SpawnPlace       // Místo, kde se loď objevila
 
-
 *** Přehled vlastností a metod třídy CollisionDetection ***
-
 
         // metody
         bool       IsCollidingWith(ElementBase other)

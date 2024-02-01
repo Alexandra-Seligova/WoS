@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
 
 namespace WoS.Camera
 {
@@ -24,6 +24,7 @@ namespace WoS.Camera
             Target = Vector3.Zero;             // Kamera "kouká" na střed scény.
             Up = Vector3.Up;                   // Vertikální směr kamery je "nahoru".
         }
+
         // Přidejte tento konstruktor, pokud již nemáte nějaký podobný mechanismus pro načítání obsahu.
         public void LoadContent(ContentManager content, SpriteBatch spriteBatch)
         {
@@ -31,6 +32,7 @@ namespace WoS.Camera
 
             _font = content.Load<SpriteFont>("Font/arial");  // Nahraďte "YourFontAssetName" jménem svého fontového assetu.
         }
+
         public void Follow(Vector3 position)
         {
             Position = new Vector3(position.X, position.Y, Position.Z);  // Posun kamery v X a Y, ale zachovává stejnou vzdálenost v osách Z.
@@ -51,6 +53,7 @@ namespace WoS.Camera
 
             return Matrix.CreatePerspectiveFieldOfView(fieldOfView, aspectRatio, nearPlaneDistance, farPlaneDistance);
         }
+
         public void UpdateZoom()
         {
             MouseState mouseState = Mouse.GetState();
@@ -59,6 +62,7 @@ namespace WoS.Camera
             // Aktualizujte pozici kamery podle hodnoty změny kolečka myši.
             Position += new Vector3(0, 0, wheelChange * _zoomSpeed);
         }
+
         public void DrawAxis(GraphicsDevice graphicsDevice, SpriteFont font)
         {
             BasicEffect basicEffect = new BasicEffect(graphicsDevice);
@@ -88,12 +92,9 @@ namespace WoS.Camera
                 graphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, vertices, 0, 3);
             }
 
-
             _spriteBatch.DrawString(font, "X", new Vector2(xAxisEnd.X, xAxisEnd.Y), Color.Red);
             _spriteBatch.DrawString(font, "Y", new Vector2(yAxisEnd.X, yAxisEnd.Y), Color.Green);
             _spriteBatch.DrawString(font, "Z", new Vector2(zAxisEnd.X, zAxisEnd.Y), Color.Blue);
-
         }
-
     }
 }

@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using WoS.GUI.GuiBasic;
-
-
-
 
 namespace WoS.GUI
 {
@@ -29,6 +19,7 @@ namespace WoS.GUI
 
         // Stavy aktivace pro každé GUI
         public bool GuiBasicIsActive { get; set; }
+
         public bool GuiBuildIsActive { get; set; }
         public bool GuiEditIsActive { get; set; }
         public bool GuiFleetIsActive { get; set; }
@@ -36,10 +27,8 @@ namespace WoS.GUI
         public bool GuiPlanetInfoIsActive { get; set; }
         public bool GuiStationIsActive { get; set; }
 
-
         public Vector2 WindowPosition { get; set; }
         public Vector2 WindowSize { get; set; }
-
 
         // Konstruktor
         public GuiManager(ContentManager content, Vector2 windowSize)
@@ -72,7 +61,6 @@ namespace WoS.GUI
             if (GuiImperiumIsActive) GuiImperium.Update(gameTime);
             if (GuiPlanetInfoIsActive) GuiPlanetInfo.Update(gameTime);
             if (GuiStationIsActive) GuiStation.Update(gameTime);
-
 
             // atd.
         }

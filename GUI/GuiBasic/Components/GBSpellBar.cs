@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
 
 namespace WoS.GUI
 {
@@ -23,7 +23,7 @@ namespace WoS.GUI
             for (int i = 0; i < SpellCount; i++)
             {
                 Vector2 slotPosition = new Vector2(Position.X + i * 100, Position.Y);
-                spellSlots.Add(new SpellSlot(i,slotPosition, content, font));
+                spellSlots.Add(new SpellSlot(i, slotPosition, content, font));
             }
         }
 
@@ -50,9 +50,9 @@ namespace WoS.GUI
                 }
             }
         }
-        public  void Update()
-        {
 
+        public void Update()
+        {
         }
 
         private class SpellSlot
@@ -123,6 +123,5 @@ namespace WoS.GUI
                 // Logika pro aktivaci tohoto konkrétního spellu
             }
         }
-
     }
 }

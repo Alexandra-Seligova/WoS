@@ -1,18 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using WoS.ship.components.extensions;
-using WoS.ship.components.extensions.weapons;
 using WoS.ship.components.extensions.generators;
 using WoS.ship.components.extensions.ShipExtensions;
+using WoS.ship.components.extensions.weapons;
 
 namespace WoS.ship.ShipTypes
 {
@@ -21,8 +13,6 @@ namespace WoS.ship.ShipTypes
         //  ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
         private const float SCALE_FACTOR = 0.2f; // 10% z původní velikosti
 
-
-
         public ShipBattleAlpha(ContentManager content, Vector2 startPosition)
             : base(content, startPosition)
         {
@@ -30,11 +20,9 @@ namespace WoS.ship.ShipTypes
             generatorsNumber = 3;
             extensionsNumber = 2;
 
-
             canons = new List<WeaponBase>();
             generators = new List<GeneratorBase>();
             extensions = new List<ShipExtensions1>();
-
 
             Texture = content.Load<Texture2D>("spaceShips/ShipBattleAlpha");
 
@@ -51,9 +39,6 @@ namespace WoS.ship.ShipTypes
             TargetPosition = startPosition;
         }
 
-
-
-
         public void CreateShipExtensions(ContentManager content, int weaponsNumber, int generatorsNumber, int extensionsNumber)
         {
             //  ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
@@ -69,7 +54,6 @@ namespace WoS.ship.ShipTypes
             extensions.Add(new ShipExtensions1(content, GetPositionOnShip("Extension", 1)));
         }
 
-
         public void CreatePositionsOnShip(int weaponsCount, int generatorsCount, int extensionsCount)
 
         {
@@ -82,7 +66,6 @@ namespace WoS.ship.ShipTypes
             WeaponsPosition[0] = new Vector2(0, 0);
             WeaponsPosition[1] = new Vector2(0, 0);
 
-
             // Vytváření pozic pro generátory
             GeneratorsPosition[0] = new Vector2(0, 0);
             GeneratorsPosition[1] = new Vector2(0, 0);
@@ -91,27 +74,26 @@ namespace WoS.ship.ShipTypes
             // Vytváření pozic pro rozšíření
             ExtensionsPosition[0] = new Vector2(0, 0);
             ExtensionsPosition[1] = new Vector2(0, 0);
-
         }
 
-        public void Update(Vector2 actualShipPosition, float atualRotation, Vector2 actualTarget)
+        public void Update(Vector2 actualShipPosition, float actualRotation, Vector2 actualTarget)
         {
             // Aktualizace pozice lodi
             PositionOnMap = actualShipPosition;
-            Rotation = atualRotation;
+            Rotation = actualRotation;
             TargetPosition = actualTarget;
 
             // Aktualizace kanónů
             foreach (var canon in canons)
             {
-                canon.PositionOnMap= PositionOnMap;
+                canon.PositionOnMap = PositionOnMap;
                 canon.Update();
             }
 
             // Aktualizace generátorů
             foreach (var generator in generators)
             {
-                generator.PositionOnMap= PositionOnMap;
+                generator.PositionOnMap = PositionOnMap;
                 generator.Update();
             }
 
@@ -122,7 +104,6 @@ namespace WoS.ship.ShipTypes
                 extension.Update();
             }
         }
-
 
         public override void Render(SpriteBatch spriteBatch)
         {
@@ -152,20 +133,5 @@ namespace WoS.ship.ShipTypes
                 extension.Render(spriteBatch);
             }
         }
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

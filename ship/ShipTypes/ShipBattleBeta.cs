@@ -1,16 +1,7 @@
-﻿
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using WoS.ship.components.extensions;
 using WoS.ship.components.extensions.generators;
 using WoS.ship.components.extensions.ShipExtensions;
 using WoS.ship.components.extensions.weapons;
@@ -22,8 +13,6 @@ namespace WoS.ship.ShipTypes
         // ShipBattleBeta  [Reaktor 1, Pohon 3, MaláZbraň 2,StředníZbraň 1, Štít 2, Rozšíření 4]
         private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
 
-
-
         public ShipBattleBeta(ContentManager content, Vector2 startPosition)
             : base(content, startPosition)
         {
@@ -31,11 +20,9 @@ namespace WoS.ship.ShipTypes
             generatorsNumber = 6;
             extensionsNumber = 4;
 
-
             canons = new List<WeaponBase>();
             generators = new List<GeneratorBase>();
             extensions = new List<ShipExtensions1>();
-
 
             Texture = content.Load<Texture2D>("spaceShips/ShipBattleBeta");
 
@@ -52,18 +39,14 @@ namespace WoS.ship.ShipTypes
             TargetPosition = startPosition;
         }
 
-
-
-
         public void CreateShipExtensions(ContentManager content, int weaponsNumber, int generatorsNumber, int extensionsNumber)
         {
             // ShipBattleBeta  [Reaktor 1, Pohon 3, MaláZbraň 2,StředníZbraň 1, Štít 2, Rozšíření 4]
             generators[0] = new AlphaReactor(content, GetPositionOnShip("Generator", 0));
 
             canons[0] = new BalisticCanon(content, GetPositionOnShip("Weapon", 0), 1);
-            canons[1] = new BalisticCanon(content, GetPositionOnShip("Weapon", 1)   , 1);
-            canons[2] = new BalisticCanon(content, GetPositionOnShip("Weapon", 2)   , 2);
-
+            canons[1] = new BalisticCanon(content, GetPositionOnShip("Weapon", 1), 1);
+            canons[2] = new BalisticCanon(content, GetPositionOnShip("Weapon", 2), 2);
 
             generators[1] = new AlphaEngine(content, GetPositionOnShip("Generator", 1));
             generators[2] = new AlphaEngine(content, GetPositionOnShip("Generator", 2));
@@ -76,7 +59,6 @@ namespace WoS.ship.ShipTypes
             extensions[2] = new ShipExtensions1(content, GetPositionOnShip("Extension", 2));
             extensions[3] = new ShipExtensions1(content, GetPositionOnShip("Extension", 3));
         }
-
 
         public void CreatePositionsOnShip(int weaponsCount, int generatorsCount, int extensionsCount)
 
@@ -104,11 +86,7 @@ namespace WoS.ship.ShipTypes
             ExtensionsPosition[1] = new Vector2(0, 0);
             ExtensionsPosition[2] = new Vector2(0, 0);
             ExtensionsPosition[3] = new Vector2(0, 0);
-
         }
-
-
-
 
         public override void Render(SpriteBatch spriteBatch)
         {

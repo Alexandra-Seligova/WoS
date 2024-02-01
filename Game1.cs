@@ -2,36 +2,25 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using WoS.Camera;
-using WoS.map;
-using WoS.ship;
 using WoS.Database;
-using uPLibrary.Networking.M2Mqtt;
-using uPLibrary.Networking.M2Mqtt.Messages;
-using System;
-using System.Text;
-using static WoS.Database.Database;
-using WoS.GUI.GuiBasic;
 using WoS.GUI;
+using WoS.map;
 
 namespace WoS
 {
     public class Game1 : Game
     {
-        bool isGUIInteraction = false;  // Toto by měl být přepínač, který kontroluje, zda je aktivní interakce s GUI
+        private bool isGUIInteraction = false;  // Toto by měl být přepínač, který kontroluje, zda je aktivní interakce s GUI
 
         private GuiManager Gui; // Přidání instance GuiBasic
         private GraphicsDeviceManager graphics;
         private SpriteBatch _spriteBatch;
-        SpriteFont myFont;
-        Camera2D camera;
+        private SpriteFont myFont;
+        private Camera2D camera;
 
+        private MapAlpha mapAlpha;              // Instance vaší mapy
 
-        MapAlpha mapAlpha;              // Instance vaší mapy
-
-        Vector2 WindowPosition;         // Pozice okna GUI
-
-
-
+        private Vector2 WindowPosition;         // Pozice okna GUI
 
         public Game1()
         {
@@ -45,13 +34,7 @@ namespace WoS
             graphics.ApplyChanges();
             IsMouseVisible = true;
             camera = new Camera2D(GraphicsDevice.Viewport);
-
         }
-
-
-
-
-
 
         protected override void Initialize()
         {
@@ -66,36 +49,20 @@ namespace WoS
             base.Initialize();
         }
 
-
-
-
-
-
         protected override void LoadContent()
         {
-
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             myFont = Content.Load<SpriteFont>("Font/arial");
             //camera.LoadContent(Content, _spriteBatch);
 
-
-
             //Mapa
             mapAlpha = new MapAlpha(1, new Vector2(0, 0), Content);      // Inicializace mapy
-
-
         }
-
-
-
-
-
 
         protected override void Update(GameTime gameTime)
         {
             camera.UpdateZoom();
             WindowPosition = mapAlpha.UserFleets.ElementsList[0].ship.Position;
-
 
             Gui.Update(gameTime, WindowPosition); // Aktualizace GuiBasic
             if (!isGUIInteraction)
@@ -108,34 +75,21 @@ namespace WoS
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
-
                 // Získání aktuální pozice myši
                 MouseState mouseState = Mouse.GetState();
-
-
 
                 Vector2 mousePosition = new Vector2(mouseState.X, mouseState.Y);
 
                 // Nastavení cílové pozice lodi na základě pozice myši
                 //Mapa.MapElementGroup.elementInFleet[0] = ship;
                 mapAlpha.UserFleets.ElementsList[0].ship.SetMouseTarget(mousePosition, new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), camera.Position);
-
             }
-
-
 
             mapAlpha.UpdateMap(gameTime);
             // Aktualizace lodi
 
-
-
             base.Update(gameTime);
         }
-
-
-
-
-
 
         protected override void Draw(GameTime gameTime)
         {
@@ -151,7 +105,6 @@ namespace WoS
 
             Gui.Draw(_spriteBatch); // Vykreslení GuiBasic
 
-
             // Resetování SpriteBatch zpět na původní pozici
             _spriteBatch.End();
             // _spriteBatch.Begin(transformMatrix: Matrix.CreateTranslation(new Vector3(0, 0, 0)));
@@ -159,6 +112,5 @@ namespace WoS
             // _spriteBatch.End();
             base.Draw(gameTime);
         }
-
     }
 }

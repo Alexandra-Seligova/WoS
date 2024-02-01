@@ -1,36 +1,25 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using WoS.ship.components.extensions.weapons;
-using WoS.Utility;
 using WoS.ship.components.extensions.generators;
 using WoS.ship.components.extensions.ShipExtensions;
 using WoS.ship.components.extensions.weapons;
 
-
-
-
-
 namespace WoS.ship
 {
-
-
     public abstract class ShipBase : MovementBase
     {
-
         // Moduly a vybavení lodě
         public int generatorsNumber;                // Počet doplňků (standardní moduly)
+
         public int weaponsNumber;                 // Počet zbraní (útočné moduly)
         public int extensionsNumber;              // Počet rozšíření (defenzivní moduly)
 
         // Ostatní
         public bool prvni_spusteni = true;     // Pro nastavení prvního statusu
+
         public string msg;                     // Zpráva
         public int seq;                        // Sekvenční číslo
         public int casOmezovac = 0;            // Časový omezovač
@@ -40,17 +29,13 @@ namespace WoS.ship
         // List<Munice> municeList;        // Seznam munice lodě
         // List<Anime> animaceList;        // Seznam animací lodě
 
-
         public List<WeaponBase> canons;
         public List<GeneratorBase> generators;
         public List<ShipExtensions1> extensions;
 
-
-
         public Vector2[] WeaponsPosition;
         public Vector2[] GeneratorsPosition;
         public Vector2[] ExtensionsPosition;
-
 
         public ShipBase(ContentManager content, Vector2 startPosition)
         : base() // Volání konstruktoru z třídy ElementBase pro nastavení pozice
@@ -74,6 +59,7 @@ namespace WoS.ship
             Vector2 direction = TargetPosition - PositionOnMap;
             Rotation = (float)Math.Atan2(direction.Y, direction.X) + MathHelper.PiOver2; // +PiOver2, protože chceme, aby vrch lodi byl směrován k cíli
         }
+
         public void SetMouseTarget(Vector2 mousePosition, Vector2 screenSize, Vector2 cameraPosition)
         {
             // Převede místní pozici myši na obrazovce na globální pozici na mapě
@@ -85,7 +71,6 @@ namespace WoS.ship
 
         public override void Update()
         {
-
             if (Vector2.Distance(PositionOnMap, TargetPosition) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
             {
                 Vector2 direction = Vector2.Normalize(TargetPosition - PositionOnMap);
@@ -102,8 +87,6 @@ namespace WoS.ship
             }
 
             UpdateShipExtensions();
-
-
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
@@ -117,15 +100,17 @@ namespace WoS.ship
             {
                 case "Weapon":
                     return WeaponsPosition[number];
+
                 case "Generator":
                     return GeneratorsPosition[number];
+
                 case "Extension":
                     return ExtensionsPosition[number];
+
                 default:
                     throw new ArgumentException("Neplatný typ komponenty");
             }
         }
-
 
         public void UpdateShipExtensions()
         {
@@ -156,14 +141,6 @@ namespace WoS.ship
                     extensions[i].Update(actualShipPosition, atualRotation, actualTarget);
                 }
             }
-
-
-
-
-
-
         }
-
-
     }
 }

@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using WoS;
-
 
 namespace WoS.GUI.GuiBasic.Components
 {
@@ -18,8 +10,10 @@ namespace WoS.GUI.GuiBasic.Components
     public sealed class GBName : GuiComponentBase
     {
         private const float SCALE_FACTOR = 0.18f; // 10% z původní velikosti
+
         // Pole
         private string UserName;
+
         private Vector2 UserNamePosition;
         private int UserLevel;
         private Vector2 UserLevelPosition;
@@ -30,7 +24,6 @@ namespace WoS.GUI.GuiBasic.Components
             Position = position;
             LoadTexture2D("GUI/GBName", content);
             SetComponentConfig();
-
         }
 
         // Nastavení specifické konfigurace komponenty
@@ -59,7 +52,6 @@ namespace WoS.GUI.GuiBasic.Components
                 spriteBatch.Draw(Texture, Position, null, Color.White, 0, new Vector2(0, 0), SCALE_FACTOR, SpriteEffects.None, 0);
                 ComponentDraw(spriteBatch);
             }
-
         }
 
         // Vykreslení specifických vlastností komponenty

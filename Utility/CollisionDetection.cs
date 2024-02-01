@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using WoS;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.Utility
 {
@@ -27,7 +20,6 @@ namespace WoS.Utility
                  float Shield               // Aktuální hodnota štítu objektu
                  float ShieldMax            // Maximální hodnota štítu objektu
 
-
         *** Přehled vlastností a metod třídy MovementBase ***
 
                  Texture2D
@@ -43,24 +35,22 @@ namespace WoS.Utility
 
         */
 
-
-
         // Konstruktor pro inicializaci pozice.
         //    public CollisionDetection(Vector2 position)
         //   {
         //       Position = position;
         //   }
 
-
         public override void Update()
         {
-
             // Implementation of method to update the planet
         }
+
         public override void Render(SpriteBatch spriteBatch)
         {
             // Implementation of method to draw the planet
         }
+
         public virtual bool IsCollidingWith(ElementBase other)
         {
             if (Position.X + Width > other.Position.X &&
@@ -72,6 +62,7 @@ namespace WoS.Utility
             }
             return false;
         }
+
         // Další metody a vlastnosti týkající se detekce kolize můžete přidat sem...
     }
 }
@@ -92,7 +83,6 @@ namespace WoS.Utility
          float Shield               // Aktuální hodnota štítu objektu
          float ShieldMax            // Maximální hodnota štítu objektu
 
-
 *** Přehled vlastností a metod třídy MovementBase ***
 
          Texture2D
@@ -106,9 +96,7 @@ namespace WoS.Utility
          Vector2    Target           // Cíl lodi pro pohyb
          Vector2    SpawnPlace       // Místo, kde se loď objevila
 
-
 *** Přehled vlastností a metod třídy CollisionDetection ***
-
 
         // metody
         bool       IsCollidingWith(ElementBase other)

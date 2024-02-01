@@ -1,16 +1,7 @@
-﻿
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using WoS.ship.components.extensions;
 using WoS.ship.components.extensions.generators;
 using WoS.ship.components.extensions.ShipExtensions;
 using WoS.ship.components.extensions.weapons;
@@ -23,8 +14,6 @@ namespace WoS.ship.ShipTypes
 
         private const float SCALE_FACTOR = 0.1f; // 10% z původní velikosti
 
-
-
         public ShipTransportBeta(ContentManager content, Vector2 startPosition)
             : base(content, startPosition)
         {
@@ -32,11 +21,9 @@ namespace WoS.ship.ShipTypes
             generatorsNumber = 2;
             extensionsNumber = 2;
 
-
             canons = new List<WeaponBase>();
             generators = new List<GeneratorBase>();
             extensions = new List<ShipExtensions1>();
-
 
             Texture = content.Load<Texture2D>("spaceShips/ShipTransportBeta");
 
@@ -53,9 +40,6 @@ namespace WoS.ship.ShipTypes
             TargetPosition = startPosition;
         }
 
-
-
-
         public void CreateShipExtensions(ContentManager content, int weaponsNumber, int generatorsNumber, int extensionsNumber)
         {
             //ShipTransporterBeta  [Reaktor 1, Pohon 1, MaláZbraň 2, StředníZbraň 0,Štít 2, Rozšíření 4]
@@ -70,7 +54,6 @@ namespace WoS.ship.ShipTypes
             extensions[1] = new ShipExtensions1(content, GetPositionOnShip("Extension", 1));
         }
 
-
         public void CreatePositionsOnShip(int weaponsCount, int generatorsCount, int extensionsCount)
 
         {
@@ -82,7 +65,6 @@ namespace WoS.ship.ShipTypes
             // Vytváření pozic pro zbraně
             WeaponsPosition[0] = new Vector2(0, 0);
 
-
             // Vytváření pozic pro generátory
             GeneratorsPosition[0] = new Vector2(0, 0);
             GeneratorsPosition[1] = new Vector2(0, 0);
@@ -90,11 +72,7 @@ namespace WoS.ship.ShipTypes
             // Vytváření pozic pro rozšíření
             ExtensionsPosition[0] = new Vector2(0, 0);
             ExtensionsPosition[1] = new Vector2(0, 0);
-
         }
-
-
-
 
         public override void Render(SpriteBatch spriteBatch)
         {

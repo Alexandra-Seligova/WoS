@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WoS.Quests
 {
@@ -27,6 +23,7 @@ namespace WoS.Quests
         // Metody pro správu úkolů (Přidání, Odebrání, Získání stavu úkolů atd.)
     }
 }
+
 /*
 
 var explorationQuest = new ExplorationQuest("Prozkoumejte Asteroid", "Prozkoumejte asteroid XY-123.", "XY-123");

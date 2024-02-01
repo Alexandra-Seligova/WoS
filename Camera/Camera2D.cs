@@ -1,11 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WoS.Camera
 {
@@ -14,7 +9,9 @@ namespace WoS.Camera
     {
         // Vektor pozice kamery v 2D prostoru.
         public Vector2 Position { get; private set; }
+
         private const float ZoomSpeed = 0.01f;
+
         // Zoom kamery. 1.0f je normální velikost, menší hodnoty přibližují a větší hodnoty oddalují.
         public float Zoom { get; set; }
 

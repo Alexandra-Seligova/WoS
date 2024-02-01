@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using WoS.Utility;
 
 namespace WoS
@@ -23,30 +22,29 @@ namespace WoS
                  float ShieldMax            // Maximální hodnota štítu objektu
 
         */
+
         // Název či označení lodi
         public string Designation { get; set; }
 
         // Fyzikální parametry lodi
         public Vector2 Velocity { get; set; }          // Aktuální rychlost lodi
+
         public float Acceleration { get; set; } = 50;  // Zrychlení lodi
         public int MaxSpeed { get; set; }              // Maximální rychlost lodi
 
         // Velikost lodi
         public float ShipWidth { get; set; }           // Šířka lodi
-        public float ShipHeight { get; set; }          // Výška lodi
 
+        public float ShipHeight { get; set; }          // Výška lodi
 
         // Cíl lodi pro pohyb
         public Vector2 TargetPosition { get; set; }
 
         // Místo, kde se loď objevila
         public Vector2 SpawnPlace { get; set; }
-
-
     }
-
-
 }
+
 /*
  *** Přehled vlastností a metod třídy ElementBase ***
          Texture2D Texture          // Textura pro objekt
@@ -62,7 +60,6 @@ namespace WoS
          float HpMax                // Maximální zdraví objektu
          float Shield               // Aktuální hodnota štítu objektu
          float ShieldMax            // Maximální hodnota štítu objektu
-
 
 *** Přehled vlastností a metod třídy MovementBase ***
 

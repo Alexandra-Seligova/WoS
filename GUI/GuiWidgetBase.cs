@@ -1,33 +1,23 @@
-﻿using System;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Content;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+
 namespace WoS.GUI
 {
     public abstract class GuiWidgetBase
     {
-
         public string Name { get; set; }
         public string Description { get; set; }
 
         // Seznam komponent
         public List<GuiComponentBase> components;
 
-
-
-
-
-
         public GuiWidgetBase(ContentManager content)
         {
             components = new List<GuiComponentBase>();
         }
+
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             foreach (var component in components)
@@ -37,8 +27,6 @@ namespace WoS.GUI
                     component.Draw(spriteBatch);
                 }
             }
-
-
         }
 
         public virtual void Update(GameTime gameTime)

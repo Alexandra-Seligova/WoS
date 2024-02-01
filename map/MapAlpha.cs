@@ -1,34 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using System.Xml.Linq;
-using System.Diagnostics;
-using Microsoft.Xna.Framework.Graphics;
-using WoS.map.Box;
-using WoS.map.Planet;
-using WoS.map.Sun;
-using WoS.npc;
-using WoS.map.moon;
-using WoS.Fleet;
-using WoS.map.Asteroids;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.map
 {
     public class MapAlpha : MapBase
     {
-
         private Random _random = new Random();
+
         // Konstruktor pro MapAlpha s předdefinovanými hodnotami
-        public MapAlpha( int id, Vector2 position, ContentManager content)
+        public MapAlpha(int id, Vector2 position, ContentManager content)
         : base(id, position, content)
         {
-
             backgroundTexture = Content.Load<Texture2D>("maps/background/map1");     // Načtení textury pro mapu;
-
 
             Id = id;
             Status = 1;
@@ -48,10 +34,8 @@ namespace WoS.map
             this.Position = new Vector2(0, 0);
 
             // Zde můžete přidat další konkrétní nastavení pro MapAlpha, pokud je potřebujete
-
-
-
         }
+
         public void Config()
         {
             SunsTypeCount[0] = 1;
@@ -69,8 +53,6 @@ namespace WoS.map
             //EnemyFleetsTypeCount[0] = 0;
             MoonsTypeCount[0] = 10;
 
-
-
             SunsPosition = new[] { new Vector2(MapWidth / 2, MapHeight / 2) };
             PlanetsPosition = InitializePositions(PlanetsTypeCount.Sum());
             BoxesPosition = InitializePositions(BoxesTypeCount.Sum());
@@ -79,10 +61,7 @@ namespace WoS.map
             UserFleetsPosition = InitializePositions(UserFleetsTypeCount.Sum());
             //EnemyFleetsPosition = InitializePositions(EnemyFleetsTypeCount.Sum());
             MoonsPosition = InitializePositions(MoonsTypeCount.Sum());
-
-
         }
-
 
         public void LoadConfigFromDb()
         {
@@ -94,7 +73,6 @@ namespace WoS.map
         {
             // Aktualizace jednotlivých prvků hry
             UpdateAll(gameTime);
-
         }
 
         // Metoda pro vykreslení mapy
@@ -103,8 +81,6 @@ namespace WoS.map
             // Vykreslení jednotlivých prvků hry
             RenderBackeground(spriteBatch);
             RenderAll(spriteBatch);
-
-
         }
     }
 }

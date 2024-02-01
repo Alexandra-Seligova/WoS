@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;  // Potřebné pro Vector2 a další třídy
+﻿using Microsoft.Xna.Framework;  // Potřebné pro Vector2 a další třídy
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using WoS.map.Planet;
 
 namespace WoS.map.Box
 {
@@ -21,16 +15,16 @@ namespace WoS.map.Box
             PositionOnMap = position;
             Rotation = 0;
             Texture = content.Load<Texture2D>("Planets/pla1");
-
         }
+
         public override void Update()
         {
             // Implementation of method to update the planet
         }
+
         public override void Render(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
-
         }
     }
 }

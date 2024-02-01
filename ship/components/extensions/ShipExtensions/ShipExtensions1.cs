@@ -1,20 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using WoS.ship.components.extensions.weapons;
-using WoS.Utility;
 
 namespace WoS.ship.components.extensions.ShipExtensions
 {
     public class ShipExtensions1 : ShipExtensionBase
     {
-
         public ShipExtensions1(ContentManager content, Vector2 position) : base()
         {
         }
@@ -23,6 +14,7 @@ namespace WoS.ship.components.extensions.ShipExtensions
         {
             // Implementation of method to update the planet
         }
+
         public override void Render(SpriteBatch spriteBatch)
         {
             // Implementation of method to draw the planet

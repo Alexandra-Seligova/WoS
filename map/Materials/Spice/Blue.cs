@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WoS.map.Materials.Spice
+﻿namespace WoS.map.Materials.Spice
 {
     internal class Blue
     {

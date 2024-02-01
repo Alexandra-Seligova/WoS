@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WoS.map.Station
+﻿namespace WoS.map.Station
 {
     internal class StationBase
     {
@@ -17,6 +11,5 @@ public int Height { get; set; }               // Výška objektu
 public bool SupportsCollision { get; set; }   // Podpora pro detekci kolize
 public bool HasAutomaticMovement { get; set; } // Podpora pro automatický pohyb
 */
-
     }
 }

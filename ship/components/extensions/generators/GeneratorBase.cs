@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+
 namespace WoS.ship.components.extensions.generators
 {
     public abstract class GeneratorBase : ShipExtensionBase
@@ -27,26 +21,16 @@ float ShieldMax            // Maximální hodnota štítu objektu
 
 *** Přehled vlastností a metod třídy shipExtensionBase ***
 
-
 */
 
-
-        public void Update( Vector2 actualShipPosition,float atualRotation, Vector2 actualTarget)
+        public void Update(Vector2 actualShipPosition, float atualRotation, Vector2 actualTarget)
         {
             //  Rotation = atualRotation;
 
             // Implementation of method to update the planet
         }
-
-
-
     }
-
 }
-
-
-
-
 
 /*
  *** Přehled vlastností a metod třídy ElementBase ***
@@ -66,7 +50,5 @@ float ShieldMax            // Maximální hodnota štítu objektu
 *** Přehled vlastností a metod třídy shipExtensionBase ***
 
 *** Přehled vlastností a metod třídy GeneratorBase ***
-
-
 
 */

@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-
 using Microsoft.Xna.Framework;
-using static WoS.map.MapBase;
-using WoS.Fleet;
-using WoS.map.Asteroids;
-using WoS.map.Box;
-using WoS.map.moon;
-using WoS.map.Planet;
-using WoS.map.Sun;
-using WoS.npc;
-using WoS.map;
+using Newtonsoft.Json;
 
 namespace WoS.Database
 {
@@ -26,6 +16,7 @@ namespace WoS.Database
             public List<Vector2> Positions { get; set; }
             public List<int> Types { get; set; }
             public string json { get; set; }
+
             public MapConfig(int id, string name, int count, List<Vector2> positions, List<int> types)
             {
                 Positions = new List<Vector2>();
@@ -37,35 +28,35 @@ namespace WoS.Database
                 Types = types;
                 json = ToJson();
             }
+
             public string ToJson()
             {
                 return JsonConvert.SerializeObject(this, Formatting.Indented);
             }
+
             public static MapConfig FromJson(string json)
             {
                 return JsonConvert.DeserializeObject<MapConfig>(json);
             }
         }
 
-        Database Db = new Database();
+        private Database Db = new Database();
 
-        int Id { get; set; } // Id mapy
-        string Name { get; set; } // Jméno mapy
+        private int Id { get; set; } // Id mapy
+        private string Name { get; set; } // Jméno mapy
         public float MapWidth { get; set; }  // Šířka mapy
         public float MapHeight { get; set; }  // Výška mapy
 
         private Random _random = new Random();
 
-
         private List<MapConfig> Configs { get; set; }
-
 
         // počítadla pro jednotlivé typy objektů
         private List<int> Types { get; set; }
+
         private List<Vector2> Positions { get; set; }
         private int elementCounts { get; set; }
         private int numberOfPeaces { get; set; }
-
 
         public CreateMap()
         {
@@ -82,29 +73,26 @@ namespace WoS.Database
             Name = "AlphaMap";
         }
 
-
         public void CreateMapAndInsertToDatabase()
         {
             createMapConfigs();
-            Db.InsertMapConfig(Id,  Name, Configs);
+            Db.InsertMapConfig(Id, Name, Configs);
         }
-
 
         public void createMapConfigs()
         {
-
             configSuns();
             configPlanets(new int[] { 5, 5 });
             configBoxes(new int[] { 5, 5 });
             configNpcs(new int[] { 5, 5 });
             configAsteroids(new int[] { 5, 5 });
-            configUserFleets(new int[] { 1});
+            configUserFleets(new int[] { 1 });
             configUEnemyFleets(new int[] { 1 });
             configMoons(new int[] { 5, 5 });
         }
 
-
         #region CreateConfigElements
+
         private void configSuns()
         {
             elementCounts = 0;
@@ -119,7 +107,6 @@ namespace WoS.Database
             resetPocitadel();
         }
 
-
         private void configPlanets(int[] types)
         {
             elementCounts = 0;
@@ -132,8 +119,6 @@ namespace WoS.Database
 
             resetPocitadel();
         }
-
-
 
         private void configBoxes(int[] types)
         {
@@ -161,7 +146,6 @@ namespace WoS.Database
             resetPocitadel();
         }
 
-
         private void configAsteroids(int[] types)
         {
             elementCounts = 0;
@@ -187,6 +171,7 @@ namespace WoS.Database
 
             resetPocitadel();
         }
+
         private void configUEnemyFleets(int[] types)
         {
             elementCounts = 0;
@@ -199,6 +184,7 @@ namespace WoS.Database
 
             resetPocitadel();
         }
+
         private void configMoons(int[] types)
         {
             elementCounts = 0;
@@ -211,6 +197,7 @@ namespace WoS.Database
 
             resetPocitadel();
         }
+
         #endregion CreateConfigElements
 
         #region Metody
@@ -245,7 +232,7 @@ namespace WoS.Database
         {
             for (int i = 0; i < TypesCount.Length; i++)
             {
-                Types.Add(TypesCount[i ]); //typ 1 obsahuje počet 1
+                Types.Add(TypesCount[i]); //typ 1 obsahuje počet 1
             }
             return Types;
         }
@@ -268,6 +255,7 @@ namespace WoS.Database
         {
             return JsonConvert.DeserializeObject<MapConfig>(json);
         }
+
         #endregion Metody
     }
 }

@@ -1,12 +1,7 @@
-﻿using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WoS.map.Planet;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.map.Planet
 {
@@ -22,7 +17,6 @@ namespace WoS.map.Planet
             Rotation = 0;
             Texture = content.Load<Texture2D>("Planets/pla2");
 
-
             PlanetElementList = new List<PlanetElement>();
             PopulateElementList();
         }
@@ -31,10 +25,10 @@ namespace WoS.map.Planet
         {
             // Implementation of method to update the planet
         }
+
         public override void Render(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), SCALE_FACTOR, SpriteEffects.None, 0);
-
         }
     }
 }

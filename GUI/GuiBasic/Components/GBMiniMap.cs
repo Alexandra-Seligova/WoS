@@ -1,8 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
 
 namespace WoS.GUI.GuiBasic.Components
 {
@@ -20,6 +19,7 @@ namespace WoS.GUI.GuiBasic.Components
         private float ScaleFactor;
         private float ScaleFactorbackgroundTexture;
         private float ScaleFactorshipTexture;
+
         public GBMiniMap(int id, Vector2 position, ContentManager content) : base(id, position, content)
 
         {
@@ -70,16 +70,19 @@ namespace WoS.GUI.GuiBasic.Components
                 obj.Draw(spriteBatch);
             }
         }
+
         public override void OnClick()
         {
             // Zpracování události kliknutí na tlačítko
             //        }
         }
+
         public void AddMapObject(Vector2 worldPosition, string texturePath, ContentManager content)
         {
             MapObject newObject = new MapObject(worldPosition, content, texturePath);
             mapObjects.Add(newObject);
         }
+
         private class Button
         {
             private const float SCALE_FACTOR = 0.01f;
@@ -112,6 +115,7 @@ namespace WoS.GUI.GuiBasic.Components
                 return false; // Příklad
             }
         }
+
         public class MapObject
         {
             public Vector2 WorldPosition { get; private set; }

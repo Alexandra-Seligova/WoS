@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-using System.Resources;
-using Newtonsoft.Json.Linq; // Používá Newtonsoft.Json
-using System.IO;
 
 namespace WoS.GUI.ComponentBase
 {
@@ -22,7 +18,6 @@ namespace WoS.GUI.ComponentBase
         private string ConfigurationButtonText;
         private string BuildingButtonText;
 
-
         public GBMainButton(int id, Vector2 position, ContentManager content) : base(id, position, content)
         {
             Position = position;
@@ -37,6 +32,7 @@ namespace WoS.GUI.ComponentBase
             ConfigurationButtonText = Localization.Instance.GetText("GBMainButton", "ConfigurationButtonText");        //configuration
             BuildingButtonText = Localization.Instance.GetText("GBMainButton", "BuildingButtonText");                  //build
         }
+
         private void LoadButtons(ContentManager content)
         {
             // Tady nastavíte pozice tlačítek relativně k `Position`
@@ -103,6 +99,5 @@ namespace WoS.GUI.ComponentBase
                 return false; // Příklad
             }
         }
-
     }
 }

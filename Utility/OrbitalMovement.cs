@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;          // Pro Vector2 a další třídy z Xna.Framework
-using Microsoft.Xna.Framework.Graphics; // Pro Texture2D a další třídy z Xna.Framework.Graphics
-using WoS;                             // Pro přístup k třídě MovementBase
-
-namespace WoS.Utility
+﻿namespace WoS.Utility
 {
     public abstract class OrbitalMovement : MovementBase
     {
@@ -27,7 +18,6 @@ namespace WoS.Utility
          float Shield               // Aktuální hodnota štítu objektu
          float ShieldMax            // Maximální hodnota štítu objektu
 
-
 *** Přehled vlastností a metod třídy MovementBase ***
 
          Texture2D
@@ -41,16 +31,11 @@ namespace WoS.Utility
          Vector2    Target           // Cíl lodi pro pohyb
          Vector2    SpawnPlace       // Místo, kde se loď objevila
 
-
 *** Přehled vlastností a metod třídy CollisionDetection ***
-
 
         // metody
         bool       IsCollidingWith(ElementBase other)
 */
-
-
-
 
         // Zde můžete inicializovat vlastnosti specifické pro OrbitalMovement
 

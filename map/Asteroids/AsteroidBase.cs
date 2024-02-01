@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 using WoS.Utility; // Předpokládá se, že OrbitalMovement je v tomto namespace
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace WoS.map.Asteroids
 {
     public abstract class AsteroidBase : OrbitalMovement
     {
-        public AsteroidBase(Vector2 position) {
-        this.Position = position;
+        public AsteroidBase(Vector2 position)
+        {
+            this.Position = position;
         }
 
         // Zde můžete přidat specifické vlastnosti a metody pro AsteroidBase
@@ -26,6 +21,5 @@ public int Height { get; set; }               // Výška objektu
 public bool SupportsCollision { get; set; }   // Podpora pro detekci kolize
 public bool HasAutomaticMovement { get; set; } // Podpora pro automatický pohyb
 */
-
     }
 }

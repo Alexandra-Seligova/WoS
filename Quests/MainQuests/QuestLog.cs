@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WoS.Quests
 {
@@ -49,6 +46,7 @@ namespace WoS.Quests
         // Metody pro získání informací o úkolech, jako je seznam všech úkolů, aktuální aktivní úkol atd.
     }
 }
+
 /*
 var questLog = new QuestLog();
 questLog.ActivateQuest("Explore Alpha Sector");

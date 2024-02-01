@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace WoS.GUI.GuiBasic.Components
 {
@@ -10,6 +10,7 @@ namespace WoS.GUI.GuiBasic.Components
         private const float SCALE_FACTOR = 0.08f;
         private Dictionary<int, Texture2D> Textures;
         private int FuelPercentage; // Palivo v procentech
+
         //private SpriteFont myFont;
         private Vector2 FuelCountPosition;
 
@@ -38,10 +39,12 @@ namespace WoS.GUI.GuiBasic.Components
         {
             FuelPercentage = MathHelper.Clamp(newFuelPercentage, 10, 100);
         }
+
         public override void OnClick()
         {
             throw new System.NotImplementedException();
         }
+
         public override void SetComponentConfig()
         {
             FuelPercentage = 100;

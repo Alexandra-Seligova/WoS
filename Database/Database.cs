@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using Dapper;
-using Microsoft.Identity.Client;
-using Newtonsoft.Json;
 using static WoS.Database.CreateMap;
 
 namespace WoS.Database
@@ -35,7 +31,6 @@ namespace WoS.Database
                 var EnemyFleetsJson = configs[6].json;
                 var MoonsJson = configs[7].json;
 
-
                 // ... Stejným způsobem konvertujte další konfigurace ...
 
                 var query = @"
@@ -59,6 +54,7 @@ namespace WoS.Database
                 });
             }
         }
+
         #endregion createMap
 
         public MapConfigData GetMapConfigData(int idMap)
@@ -84,6 +80,5 @@ namespace WoS.Database
             public string EnemyFleets { get; set; }
             public string Moons { get; set; }
         }
-
     }
 }
