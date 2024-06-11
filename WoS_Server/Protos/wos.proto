@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "WoS_Server";
+
+package wos;
+
+service WoSService {
+    rpc GetUser (GetUserRequest) returns (GetUserResponse);
+}
+
+message GetUserRequest {
+    int32 userId = 1;
+}
+
+message GetUserResponse {
+    int32 id = 1;
+    bool isLocked = 2;
+    string nickname = 3;
+    string email = 4;
+    // Add other fields as necessary
+}

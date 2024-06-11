@@ -160,7 +160,7 @@ namespace WoS.map
         }
 
         #endregion Create
-
+        /*
         public void create(MapConfigData configData)  //config z db
         {
             // Deserializujeme JSON řetězce z databáze
@@ -213,8 +213,7 @@ namespace WoS.map
 
             // Zde můžeš pokračovat ve vytváření prvků mapy na základě dat z databáze
             // ...
-        }
-
+        }*/
         public void loadConfigFromDb(int idMap)
         {
             //    MapConfigData configData = db.GetMapConfigData(idMap);
@@ -326,7 +325,7 @@ public void CreateEnemyFleets(int piece)
         private void CreateElements<T>(MapElementGroup<T> group, int piece, Func<int, T> createElementFunc, string logName) where T : class
         {
             Console.WriteLine($"vytvarim {logName}");
-            for (int i = 0; i < piece; i++)
+            for(int i = 0; i < piece; i++)
             {
                 group.ElementsList.Add(createElementFunc(i));
                 Console.WriteLine($"pridavam {logName.ToLower()}: {i}");
@@ -335,10 +334,10 @@ public void CreateEnemyFleets(int piece)
 
         public void CreateElements<T>(MapElementGroup<T> group, Func<T> createElementFunc) where T : class
         {
-            for (int i = 0; i < group.TypeCount.Length; i++)
+            for(int i = 0; i < group.TypeCount.Length; i++)
             {
                 int count = group.TypeCount[i];
-                for (int j = 0; j < count; j++)
+                for(int j = 0; j < count; j++)
                 {
                     group.ElementsList.Add(createElementFunc());
                 }
@@ -355,7 +354,7 @@ public void CreateEnemyFleets(int piece)
 
         public void UpdateElements<T>(MapElementGroup<T> group) where T : ElementBase
         {
-            foreach (var element in group.ElementsList)
+            foreach(var element in group.ElementsList)
             {
                 element.Update();
             }
@@ -363,7 +362,7 @@ public void CreateEnemyFleets(int piece)
 
         public void RenderElements<T>(SpriteBatch spriteBatch, MapElementGroup<T> group) where T : ElementBase
         {
-            foreach (var element in group.ElementsList)
+            foreach(var element in group.ElementsList)
             {
                 element.Render(spriteBatch);
             }
@@ -372,7 +371,7 @@ public void CreateEnemyFleets(int piece)
         public Vector2[] InitializePositions(int count)
         {
             Vector2[] positions = new Vector2[count];
-            for (int i = 0; i < count; i++)
+            for(int i = 0; i < count; i++)
             {
                 positions[i] = new Vector2(_random.Next(0, (int)MapWidth), _random.Next(0, (int)MapHeight));
             }

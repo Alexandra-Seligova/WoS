@@ -16,9 +16,9 @@ namespace WoS.ship.ShipTypes
         public ShipTransportAlpha(ContentManager content, Vector2 startPosition)
             : base(content, startPosition)
         {
-            weaponsNumber = 1;
-            generatorsNumber = 3;
-            extensionsNumber = 2;
+            weaponsCount = 1;
+            generatorsCount = 3;
+            extensionsCount = 2;
 
             canons = new List<WeaponBase>();
             generators = new List<GeneratorBase>();
@@ -31,8 +31,8 @@ namespace WoS.ship.ShipTypes
             HpMax = 700;
             MaxSpeed = 500;
 
-            CreatePositionsOnShip(weaponsNumber, generatorsNumber, extensionsNumber);
-            CreateShipExtensions(content, weaponsNumber, generatorsNumber, extensionsNumber);
+            CreatePositionsOnShip(weaponsCount, generatorsCount, extensionsCount);
+            CreateShipExtensions(content, weaponsCount, generatorsCount, extensionsCount);
 
             PositionOnMap = startPosition;
             Rotation = 0;

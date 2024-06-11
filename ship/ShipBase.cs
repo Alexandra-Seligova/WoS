@@ -9,37 +9,47 @@ using WoS.ship.components.extensions.weapons;
 
 namespace WoS.ship
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Intrinsics.Arm;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+    using WoS.ammunition;
+    using WoS.Animation;
+
     public abstract class ShipBase : MovementBase
     {
         // Moduly a vybavení lodě
-        public int generatorsNumber;                // Počet doplňků (standardní moduly)
+        public int GeneratorsCount => Generators?.Count ?? 0; // Počet doplňků (standardní moduly)
+        public int WeaponsCount => Canons?.Count ?? 0; // Počet zbraní (útočné moduly)
+        public int ExtensionsCount => Extensions?.Count ?? 0; // Počet rozšíření (defenzivní moduly)
 
-        public int weaponsNumber;                 // Počet zbraní (útočné moduly)
-        public int extensionsNumber;              // Počet rozšíření (defenzivní moduly)
+        public int AmmosCount => Ammos?.Count ?? 0;
+        public int AnimationsCount => Animations?.Count ?? 0;
 
         // Ostatní
-        public bool prvni_spusteni = true;     // Pro nastavení prvního statusu
+        public bool FirstRun { get; set; } = true; // Pro nastavení prvního statusu
+        public string Message { get; set; } // Zpráva
+        public int Seq { get; set; } // Sekvenční číslo
 
-        public string msg;                     // Zpráva
-        public int seq;                        // Sekvenční číslo
-        public int casOmezovac = 0;            // Časový omezovač
+        // Seznamy modulů a dalších komponent
+        public List<WeaponBase> Canons { get; set; } // canons, ArrayList_Kanony
+        public List<GeneratorBase> Generators { get; set; } // generators
+        public List<ShipExtensions1> Extensions { get; set; } // extensions
+        public List<AmmunitionBase> Ammos { get; set; } // ArrayList_Munice
+        public List<EffectBase> Animations { get; set; } // ArrayList_Animace
 
-        // Seznamy pro různé komponenty lodě
-        // List<Kanon> kanonyList;         // Seznam kanónů lodě
-        // List<Munice> municeList;        // Seznam munice lodě
-        // List<Anime> animaceList;        // Seznam animací lodě
+        // Pozice modulů
+        public Vector2[] WeaponsPosition { get; set; } // WeaponsPosition
+        public Vector2[] GeneratorsPosition { get; set; } // GeneratorsPosition
+        public Vector2[] ExtensionsPosition { get; set; } // ExtensionsPosition
 
-        public List<WeaponBase> canons;
-        public List<GeneratorBase> generators;
-        public List<ShipExtensions1> extensions;
-
-        public Vector2[] WeaponsPosition;
-        public Vector2[] GeneratorsPosition;
-        public Vector2[] ExtensionsPosition;
-
+        // Konstruktor
         public ShipBase(ContentManager content, Vector2 startPosition)
-        : base() // Volání konstruktoru z třídy ElementBase pro nastavení pozice
+            : base() // Volání konstruktoru z třídy ElementBase pro nastavení pozice
         {
+            PositionOnMap = startPosition;
         }
 
         public void SetTargetPosition(Vector2 newTarget)
@@ -64,23 +74,20 @@ namespace WoS.ship
         {
             // Převede místní pozici myši na obrazovce na globální pozici na mapě
             Vector2 globalMousePosition = mousePosition + cameraPosition - (screenSize * 0.5f);
-
             TargetPosition = globalMousePosition;
             Rotation = (float)Math.Atan2(TargetPosition.Y - PositionOnMap.Y, TargetPosition.X - PositionOnMap.X) + MathHelper.PiOver2;
         }
 
         public override void Update()
         {
-            if (Vector2.Distance(PositionOnMap, TargetPosition) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
+            if(Vector2.Distance(PositionOnMap, TargetPosition) > 1.0f)  // Pokud je loď dostatečně daleko od cíle
             {
                 Vector2 direction = Vector2.Normalize(TargetPosition - PositionOnMap);
                 Vector2 velocity = direction * MaxSpeed * (float)0.01;
-                //Vector2 velocity = direction * MaxSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 PositionOnMap += velocity;
 
                 // Pokud je loď velmi blízko cíli, nastavte její pozici přímo na cíl
-                if (Vector2.Distance(PositionOnMap, TargetPosition) < MaxSpeed * 0.01)
-                // if (Vector2.Distance(PositionOnMap, Target) < MaxSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds)
+                if(Vector2.Distance(PositionOnMap, TargetPosition) < MaxSpeed * 0.01)
                 {
                     PositionOnMap = TargetPosition;
                 }
@@ -93,54 +100,75 @@ namespace WoS.ship
         {
             spriteBatch.Draw(Texture, PositionOnMap, null, Color.White, Rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), 1.0f, SpriteEffects.None, 0);
         }
-
         public Vector2 GetPositionOnShip(string type, int number)
         {
-            switch (type)
+            switch(type)
             {
                 case "Weapon":
-                    return WeaponsPosition[number];
+                return WeaponsPosition[number];
 
                 case "Generator":
-                    return GeneratorsPosition[number];
+                return GeneratorsPosition[number];
 
                 case "Extension":
-                    return ExtensionsPosition[number];
+                return ExtensionsPosition[number];
 
                 default:
-                    throw new ArgumentException("Neplatný typ komponenty");
+                throw new ArgumentException("Neplatný typ komponenty");
             }
         }
-
         public void UpdateShipExtensions()
         {
-            float atualRotation = Rotation;
+            float actualRotation = Rotation;
             Vector2 actualShipPosition = PositionOnMap;
             Vector2 actualTarget = TargetPosition;
 
-            for (int i = 0; i < canons.Count; i++)
+            for(int i = 0; i < Canons.Count; i++)
             {
-                if (canons[i] != null)
+                if(Canons[i] != null)
                 {
-                    canons[i].Update(actualShipPosition, atualRotation, actualTarget);
+                    Canons[i].Update(actualShipPosition, actualRotation, actualTarget);
                 }
             }
 
-            for (int i = 0; i < generators.Count; i++)
+            for(int i = 0; i < Generators.Count; i++)
             {
-                if (generators[i] != null)
+                if(Generators[i] != null)
                 {
-                    generators[i].Update(actualShipPosition, atualRotation, actualTarget);
+                    Generators[i].Update(actualShipPosition, actualRotation, actualTarget);
                 }
             }
 
-            for (int i = 0; i < extensions.Count; i++)
+            for(int i = 0; i < ExtensionsCount; i++)
             {
-                if (extensions[i] != null)
+                if(Extensions[i] != null)
                 {
-                    extensions[i].Update(actualShipPosition, atualRotation, actualTarget);
+                    Extensions[i].Update(actualShipPosition, actualRotation, actualTarget);
                 }
             }
+
+            for(int i = 0; i < AmmosCount; i++)
+            {
+                if(Ammos[i] != null)
+                {
+                    Ammos[i].Update(actualShipPosition, actualRotation, actualTarget);
+                }
+            }
+
+            for(int i = 0; i < AnimationsCount; i++)
+            {
+                if(Animations[i] != null)
+                {
+                    Animations[i].Update(actualShipPosition, actualRotation, actualTarget);
+                }
+            }
+
+
         }
     }
+
 }
+
+/*
+
+   */

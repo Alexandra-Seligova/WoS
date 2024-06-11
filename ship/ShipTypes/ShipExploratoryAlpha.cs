@@ -16,9 +16,9 @@ namespace WoS.ship.ShipTypes
         public ShipExploratoryAlpha(ContentManager content, Vector2 startPosition)
             : base(content, startPosition)
         {
-            weaponsNumber = 2;
-            generatorsNumber = 5;
-            extensionsNumber = 3;
+            weaponsCount = 2;
+            generatorsCount = 5;
+            extensionsCount = 3;
 
             canons = new List<WeaponBase>();
             generators = new List<GeneratorBase>();
@@ -31,8 +31,8 @@ namespace WoS.ship.ShipTypes
             HpMax = 700;
             MaxSpeed = 500;
 
-            CreatePositionsOnShip(weaponsNumber, generatorsNumber, extensionsNumber);
-            CreateShipExtensions(content, weaponsNumber, generatorsNumber, extensionsNumber);
+            CreatePositionsOnShip(weaponsCount, generatorsCount, extensionsCount);
+            CreateShipExtensions(content, weaponsCount, generatorsCount, extensionsCount);
 
             PositionOnMap = startPosition;
             Rotation = 0;

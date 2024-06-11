@@ -1,6 +1,6 @@
 ﻿namespace WoS.ammunition
 {
-    internal class AmmunitionBase
+    public class AmmunitionBase
     {
     }
 }

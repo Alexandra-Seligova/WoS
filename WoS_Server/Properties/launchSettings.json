@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WoS_Server": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
