@@ -90,7 +90,7 @@
 
         }
     }
-
+    /*
     public class BorgSphere : Borg
     {
         public BorgSphere(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth, float levelMultiplier)
@@ -113,5 +113,5 @@
             : base(idGlobal, idUser, spawnPlace, width, height, depth, BorgType.Diamond, levelMultiplier)
         {
         }
-    }
+    }*/
 }

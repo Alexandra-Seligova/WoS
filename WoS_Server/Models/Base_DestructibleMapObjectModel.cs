@@ -5,14 +5,18 @@
 
     public class Base_DestructibleMapObjectModel : Base_Module
     {
-        private float _hp;
-        private float _maxHP;
-        private float _armor;
-        private float _maxArmor;
-        private float _structuralIntegrity;
-        private float _maxStructuralIntegrity;
-        private float _shield;
-        private float _maxShield;
+        public int Id_User { get; set; } = 0; // id 
+        public int Id_Destructible { get; set; }   // Unikátní identifikátor 
+        public int Id_Destructible_Type { get; set; }  // Typ 
+
+        int _hp;
+        int _maxHP;
+        int _armor;
+        int _maxArmor;
+        int _structuralIntegrity;
+        int _maxStructuralIntegrity;
+        int _shield;
+        int _maxShield;
 
         public Dictionary<ResourceType, int> InitialCostResource { get; set; } // nákupní cena
         public Dictionary<ResourceType, int> CurrentCostResource { get; set; } // získatelná cena při zničení

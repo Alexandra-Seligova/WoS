@@ -1,6 +1,5 @@
 ﻿namespace WoS_Server.Models
 {
-    using Google.Protobuf.WellKnownTypes;
     using Microsoft.Xna.Framework;
 
     /// <summary>

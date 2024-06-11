@@ -8,15 +8,15 @@
     using Microsoft.Xna.Framework;
     using WoS_Server.Models;
 
-    public class SpaceGateModel : Base_Building
+    public class SpaceGateModel /*: Base_Building*/
     {
         public SpaceGateType SpaceGateModuleType { get; set; }
-
-        public SpaceGateModel(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth, SpaceGateType spaceStationModuleType)
-            : base(idGlobal, idUser, spawnPlace, width, height, depth)
-        {
-            SpaceGateModuleType = spaceStationModuleType;
-        }
+        /*
+                public SpaceGateModel(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth, SpaceGateType spaceStationModuleType)
+                    : base(idGlobal, idUser, spawnPlace, width, height, depth)
+                {
+                    SpaceGateModuleType = spaceStationModuleType;
+                }*/
     }
 
 

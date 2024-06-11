@@ -1,24 +1,38 @@
-﻿namespace WoS_Server.Models
+﻿namespace WoS_Server.DataModel
 {
-    using System;
     using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
 
     public abstract class Base_Building : Base_DestructibleMapObjectModel
     {
-        public int Level { get; set; }
-        public Dictionary<ResearchType, int> RequirementsResearch { get; set; }
-        public bool IsRequirementsMet { get; set; }
-        public Dictionary<ResourceType, int> ActualCostResource { get; set; }
-        public bool IsCostMet { get; set; }
+        /*
+          public int Id_User { get; set; } = 0; // id
+          public int Id_Map { get; set; } = 1;  // Unikátní identifikátor mapy
 
-        // Constructor
-        protected Base_Building(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
-            : base(idGlobal, idUser, spawnPlace, width, height, depth)
-        {
-            RequirementsResearch = new Dictionary<ResearchType, int>();
-            ActualCostResource = new Dictionary<ResourceType, int>();
-        }
+          public int Id_Destructible { get; set; }   // Unikátní identifikátor
+          public int Id_Destructible_Type { get; set; }  // Typ
+
+
+          public int Level { get; set; }
+
+          int _hp;
+          int _maxHP;
+          int _armor;
+          int _maxArmor;
+          int _structuralIntegrity;
+          int _maxStructuralIntegrity;
+          int _shield;
+          int _maxShield;
+
+          bool canBeDestroyed;
+
+          public Dictionary<ResourceType, int> InitialCostResource { get; set; } // nákupní cena
+          public Dictionary<ResourceType, int> CurrentCostResource { get; set; } // získatelná cena při zničení
+          public float DepreciationRate { get; set; } = 0.6f; // Procentuální pokles ceny při zničení o 60%
+        */
+
+        public int Id_Building { get; set; }  // Typ mapy
+        public int Id_Building_Type { get; set; }  // Typ mapy
+        public Dictionary<ResearchType, int> RequirementsResearch { get; set; }
     }
 
     public enum BuildingType
@@ -98,7 +112,4 @@
         HolographicSimulator = 59, // Holografický simulátor
         TemporalResearchLab = 60, // Laboratoř temporálního výzkumu
     }
-
 }
-
-

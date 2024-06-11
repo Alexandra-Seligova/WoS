@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 using Microsoft.EntityFrameworkCore;
-using WoS_Server.Models;
-using WoS_Server.Models.ActiveObjects;
-using WoS_Server.Models.MapObjects;
+using WoS_Server.DataModel;
 
 namespace WoS_Server.Data
 {
@@ -16,7 +14,7 @@ namespace WoS_Server.Data
 
         public DbSet<ShipModel> Ships { get; set; }
         public DbSet<DroneModel> Drones { get; set; }
-        public DbSet<NpcModel> Npcs { get; set; }
+        public DbSet<NpcsModel> Npcs { get; set; }
 
 
         public DbSet<MapModel> Maps { get; set; }
@@ -37,12 +35,10 @@ namespace WoS_Server.Data
         public DbSet<DefenseBuilding> DefenseBuildings { get; set; }
         public DbSet<Factory> Factories { get; set; }
         public DbSet<MiningBuilding> MiningBuildings { get; set; }
-        public DbSet<SpaceStationModule> SpaceStationModules { get; set; }
         public DbSet<StorageBuilding> StorageBuildings { get; set; }
         public DbSet<BoxModel> Boxes { get; set; }
         public DbSet<AmmunitionModel> Ammunitions { get; set; }
         public DbSet<ArtifactModel> Artifacts { get; set; }
-        public DbSet<RuinModel> Ruins { get; set; }
         public DbSet<SpaceGateModel> SpaceGates { get; set; }
         public DbSet<SpaceStationModel> SpaceStations { get; set; }
         /*
@@ -69,12 +65,12 @@ namespace WoS_Server.Data
                 // aktivní objekty mapy
 
                 public DbSet<ShipModel> Ships { get; set; }
-                public DbSet<Base_NpcsModel> Npcs { get; set; }
+                public DbSet<NpcsModel> Npcs { get; set; }
                 public DbSet<DroneModel> Drons { get; set; }
                 public DbSet<AmmunitionModel> Ammunitions { get; set; }
                 public DbSet<BoxModel> Boxes { get; set; }
 
-                public DbSet<SpaceStationModule> SpaceStations { get; set; }
+                public DbSet<SpaceStationModel> SpaceStations { get; set; }
                 public DbSet<SpaceGateModel> SpaceGates { get; set; }
                 public DbSet<RuinModel> Ruins { get; set; }
                 public DbSet<ArtifactModel> Artifacts { get; set; }
@@ -126,6 +122,7 @@ namespace WoS_Server.Data
                 entity.Property(e => e.Id_Research_Type).IsRequired();                  // Typ výzkumu je povinný
                 entity.Property(e => e.Research_level).IsRequired();                    // Úroveň výzkumu je povinná
             });
+            /*
             // Konfigurace modelu pro UserModel
             modelBuilder.Entity<UserModel>(entity =>
             {
@@ -142,7 +139,7 @@ namespace WoS_Server.Data
                 entity.OwnsOne(e => e.Boosters); // Boostery uživatele
                 entity.OwnsOne(e => e.Flags); // Flagy uživatele
             });
-
+            */
             // Konfigurace pro UserResources
             modelBuilder.Entity<UserResources>(entity =>
             {
@@ -169,7 +166,7 @@ namespace WoS_Server.Data
 
 
 
-
+            /*
             // Configuring the relationships between MapModel and its related entities
             modelBuilder.Entity<MapModel>()
                 .HasMany(m => m.Suns)
@@ -295,7 +292,7 @@ namespace WoS_Server.Data
                 .HasMany(m => m.SpaceStations)
                 .WithOne()
                 .HasForeignKey(ss => ss.MapModelId);
-
+            */
             // Additional configurations for other entities can be added here
         }
     }

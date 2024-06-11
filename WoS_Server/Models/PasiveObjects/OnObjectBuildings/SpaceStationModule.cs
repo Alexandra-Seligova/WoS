@@ -1,15 +1,54 @@
-﻿namespace WoS_Server.Models
+﻿namespace WoS_Server.DataModel
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public class SpaceStationModule : Base_Building
+    public class SpaceStationModulexx : Base_Building
     {
+        /*
+          public int Id_User { get; set; } = 0; // id
+          public int Id_Map { get; set; } = 1;  // Unikátní identifikátor mapy
+
+
+          public int Id_Destructible { get; set; }   // Unikátní identifikátor
+          public int Id_Destructible_Type { get; set; }  // Typ
+
+
+        public int Id_Building_Type { get; set; }  // Typ mapy
+
+
+          public int Level { get; set; }
+
+          int _hp;
+          int _maxHP;
+          int _armor;
+          int _maxArmor;
+          int _structuralIntegrity;
+          int _maxStructuralIntegrity;
+          int _shield;
+          int _maxShield;
+
+          bool canBeDestroyed;
+
+          public Dictionary<ResourceType, int> InitialCostResource { get; set; } // nákupní cena
+          public Dictionary<ResourceType, int> CurrentCostResource { get; set; } // získatelná cena při zničení
+          public float DepreciationRate { get; set; } = 0.6f; // Procentuální pokles ceny při zničení o 60%
+
+
+          public Dictionary<ResearchType, int> RequirementsResearch { get; set; }
+
+
+        */
+
+
+
+        public int Id_SpaceStationBuilding { get; set; }  // Unikátní identifikátor mapy
+        public int Id_SpaceStationBuilding_Type { get; set; }  // Typ mapy
         public BuildingType BuildingType { get; set; }
         public string NameBuildingType { get; set; }
         public string DescriptionBuildingType { get; set; }
-
-        public SpaceStationModule(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth, BuildingType buildingType)
+        /*
+        public SpaceStationModel(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth, BuildingType buildingType)
             : base(idGlobal, idUser, spawnPlace, width, height, depth)
         {
             BuildingType = buildingType;
@@ -27,10 +66,43 @@
                 { ResourceType.Crystals, 15 * Level },
                 { ResourceType.Deuterium, 5 * Level }
             };
-        }
+        }*/
     }
 
-    public class BasicReactor : SpaceStationModule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    public class BasicReactor : SpaceStationModel
     {
         public BasicReactor(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
             : base(idGlobal, idUser, spawnPlace, width, height, depth, BuildingType.BasicReactor)
@@ -47,7 +119,7 @@
         }
     }
 
-    public class TradeModule : SpaceStationModule
+    public class TradeModule : SpaceStationModel
     {
         public TradeModule(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
             : base(idGlobal, idUser, spawnPlace, width, height, depth, BuildingType.TradeModule)
@@ -64,7 +136,7 @@
         }
     }
 
-    public class ScienceModule : SpaceStationModule
+    public class ScienceModule : SpaceStationModel
     {
         public ScienceModule(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
             : base(idGlobal, idUser, spawnPlace, width, height, depth, BuildingType.ScienceModule)
@@ -81,7 +153,7 @@
         }
     }
 
-    public class DefenseModule : SpaceStationModule
+    public class DefenseModule : SpaceStationModel
     {
         public DefenseModule(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
             : base(idGlobal, idUser, spawnPlace, width, height, depth, BuildingType.DefenseModule)
@@ -96,5 +168,5 @@
             ActualCostResource[ResourceType.Metal] += 1200 * Level;
             ActualCostResource[ResourceType.Crystals] += 600 * Level;
         }
-    }
+    }*/
 }
