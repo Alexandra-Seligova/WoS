@@ -36,6 +36,8 @@
 
   <ItemGroup>
     <Folder Include="Models\ActiveObjects\ShipTypes\" />
+    <Folder Include="DataModelAdvanced\" />
+    <Folder Include="Game_Models\" />
   </ItemGroup>
 
 </Project>

@@ -5,9 +5,8 @@ namespace WoS_Server
     using System;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.EntityFrameworkCore;
-    using WoS_Server.Models;
+    using WoS_Server.DataModel;
     using WoS_Server.Data;
-    using static Google.Protobuf.Reflection.FieldOptions.Types;
     using Microsoft.Xna.Framework;
 
     class Program
@@ -151,7 +150,7 @@ namespace WoS_Server
             using(var context = serviceProvider.GetService<WoS_Db_Context>())
             {
                 // Vytvoření nové instance NPC
-                var newNpc = new NpcModel
+                var newNpc = new NpcsModel
                 {
                     Id = id,
                     NpcType = npcType,
@@ -195,3 +194,28 @@ namespace WoS_Server
         }
     }
 }
+
+
+/*
+Tabulka aplikace vylepšení a aktuálních prvků:
+Vylepšení / Aktuální Prvky  DataModel   DatamodelInsert DataModelMiddle Konečné Modely (herní logika)
+Použití rozhraní (Interfaces)   Navrženo    Navrženo    Navrženo    Navrženo
+Závislostí (Dependency Injection)   Navrženo    Navrženo    Navrženo    Navrženo
+Oddělení logiky do samostatných služeb  Ne  Ne  Navrženo    Navrženo
+DTOs (Data Transfer Objects) a AutoMapper   Ne  Ne  Navrženo    Navrženo
+Unit a Integration Testy    Navrženo    Navrženo    Navrženo    Navrženo
+Implementace CQRS a MediatR Ne  Ne  Navrženo    Navrženo
+Entity Framework    Aktuálně implementováno Aktuálně implementováno Aktuálně implementováno Aktuálně implementováno
+Property reprezentující tabulky Ano Ano Ano Ano
+Konstruktor pro inicializaci objektů    Ano Ano Ano Ano
+Metody pro CRUD operace Ano Ano Ano Ano
+Modely herní logiky Ne  Ne  Částečně    Ano
+Validace dat    Částečně    Částečně    Navrženo    Navrženo
+Vysvětlení tabulky:
+Entity Framework: Aktuálně implementováno na všech úrovních pro přístup k databázi.
+Property reprezentující tabulky: Definované vlastnosti pro tabulky jsou přítomny ve všech úrovních modelu.
+Konstruktor pro inicializaci objektů: Konstruktor pro inicializaci objektů je přítomen na všech úrovních modelu.
+Metody pro CRUD operace: Metody pro Create, Read, Update, Delete jsou přítomny na všech úrovních modelu.
+Modely herní logiky: Herní logika je aktuálně implementována hlavně v konečných modelech.
+Validace dat: Validace dat je částečně implementována na nižších úrovních a je navrženo pro vyšší úrovně.
+*/
