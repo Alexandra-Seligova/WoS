@@ -6,9 +6,22 @@ namespace WoS_Server.Data
 {
     public class WoS_Db_Context : DbContext
     {
+        // DbSety pro jednotlivé modely
         public DbSet<UserModel> Users { get; set; }
+        // Sloupce: Id_User, Id_User_Type, Id_User_Focus, Status, IsLocked, Nickname, PasswordHash, Email, Id_List_UserShips, Id_SelectedShip, Id_List_UserDrones, Id_List_SelectedDrones
+
         public DbSet<UserResources> Resources { get; set; }
+        // Sloupce: Id_User, XP, Honor, Credits, SpaceCoin, Metal, Crystals, Minerals, Deuterium, Antimatter, DarkMatter, Prom, Endu, Terb, Prom2, Endu2, Terb2, Xenomit, Palladium, Seprom, Osmium,
+        // SpiceRed, SpiceYellow, SpiceBlue, SpicePurple, SpiceGreen, SpiceDark
+
         public DbSet<UserBoosters> Boosters { get; set; }
+        // Sloupce: Id_User, Speed, Attack, Defense, Colonization, Construction, IndustrialProduction
+
+        public DbSet<UserPermisions> Permissions { get; set; }
+        // Sloupce: Id_User, IsAdmin, IsPremium, IsBanned
+
+
+
         public DbSet<ResearchModel> Researches { get; set; }//ok
 
 
@@ -37,55 +50,11 @@ namespace WoS_Server.Data
         public DbSet<MiningBuilding> MiningBuildings { get; set; }
         public DbSet<StorageBuilding> StorageBuildings { get; set; }
         public DbSet<BoxModel> Boxes { get; set; }
-        public DbSet<AmmunitionModel> Ammunitions { get; set; }
+        public DbSet<AmmoModel> Ammunitions { get; set; }
         public DbSet<ArtifactModel> Artifacts { get; set; }
         public DbSet<SpaceGateModel> SpaceGates { get; set; }
         public DbSet<SpaceStationModel> SpaceStations { get; set; }
-        /*
-                #region User
-                public DbSet<UserModel> Users { get; set; }
-                public DbSet<UserResources> Resources { get; set; }
-                public DbSet<UserBoosters> Boosters { get; set; }
-                #endregion
 
-                #region Map
-                public DbSet<MapModel> Maps { get; set; }
-                // neživé objekty mapy
-                public DbSet<SunModel> Suns { get; set; }
-                public DbSet<PlanetModel> Planets { get; set; }
-                public DbSet<DwarfPlanetModel> DwarfPlanets { get; set; }
-                public DbSet<CometModel> Comets { get; set; }
-                public DbSet<AsteroidModel> Asteroids { get; set; }
-                public DbSet<MeteoroidModel> Meteoroids { get; set; }
-                public DbSet<BlackHoleModel> BlackHoles { get; set; }
-                public DbSet<EnergyFieldModel> EnergyFields { get; set; }
-                public DbSet<NebulaModel> Nebulas { get; set; }
-                public DbSet<QuasarModel> Quasars { get; set; }
-
-                // aktivní objekty mapy
-
-                public DbSet<ShipModel> Ships { get; set; }
-                public DbSet<NpcsModel> Npcs { get; set; }
-                public DbSet<DroneModel> Drons { get; set; }
-                public DbSet<AmmunitionModel> Ammunitions { get; set; }
-                public DbSet<BoxModel> Boxes { get; set; }
-
-                public DbSet<SpaceStationModel> SpaceStations { get; set; }
-                public DbSet<SpaceGateModel> SpaceGates { get; set; }
-                public DbSet<RuinModel> Ruins { get; set; }
-                public DbSet<ArtifactModel> Artifacts { get; set; }
-
-
-                // Pasivní objekty mapy budovy
-
-                #endregion
-
-                public DbSet<ShipModel> Ships { get; set; } // Přidání DbSet pro lodě
-                public DbSet<DroneModel> Drones { get; set; } // Přidání DbSet pro drony
-                public DbSet<NpcModel> Npcs { get; set; } // Přidání DbSet pro NPC
-                public DbSet<Contract> Contracts { get; set; } // Přidání DbSet pro kontrakty
-                public DbSet<Research> Researches { get; set; } // Přidání DbSet pro výzkumy
-        */
 
 
         #region Ship
@@ -106,7 +75,52 @@ namespace WoS_Server.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+            // Konfigurace pro UserModel
+            modelBuilder.Entity<UserModel>(entity =>
+            {
+                entity.HasKey(e => e.Id_User);
+                entity.Property(e => e.Id_User).IsRequired();
+                entity.Property(e => e.Id_User_Type).IsRequired();
+                entity.Property(e => e.Id_User_Focus).HasMaxLength(100);
+                entity.Property(e => e.Status).IsRequired();
+                entity.Property(e => e.IsLocked).IsRequired();
+                entity.Property(e => e.Nickname).IsRequired().HasMaxLength(255);
+                entity.Property(e => e.PasswordHash).IsRequired().HasMaxLength(255);
+                entity.Property(e => e.Email).IsRequired().HasMaxLength(255);
+            });
+
+            // Konfigurace pro UserResources
+            modelBuilder.Entity<UserResources>(entity =>
+            {
+                entity.HasKey(e => e.Id_User);
+                entity.Property(e => e.Id_User).IsRequired();
+                // Další konfigurace pro zdroje uživatele mohou být přidány zde
+            });
+
+            // Konfigurace pro UserBoosters
+            modelBuilder.Entity<UserBoosters>(entity =>
+            {
+                entity.HasKey(e => e.Id_User);
+                entity.Property(e => e.Id_User).IsRequired();
+                // Další konfigurace pro boostery uživatele mohou být přidány zde
+            });
+
+            // Konfigurace pro UserPermisions
+            modelBuilder.Entity<UserPermisions>(entity =>
+            {
+                entity.HasKey(e => e.Id_User);
+                entity.Property(e => e.Id_User).IsRequired();
+                // Další konfigurace pro flagy uživatele mohou být přidány zde
+            });
+        }
+
+
+
+        /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -139,9 +153,9 @@ namespace WoS_Server.Data
                 entity.OwnsOne(e => e.Boosters); // Boostery uživatele
                 entity.OwnsOne(e => e.Flags); // Flagy uživatele
             });
-            */
-            // Konfigurace pro UserResources
-            modelBuilder.Entity<UserResources>(entity =>
+            
+        // Konfigurace pro UserResources
+        modelBuilder.Entity<UserResources>(entity =>
             {
                 // Zde můžete přidat konfigurace pro UserResources
             });
@@ -166,7 +180,7 @@ namespace WoS_Server.Data
 
 
 
-            /*
+            
             // Configuring the relationships between MapModel and its related entities
             modelBuilder.Entity<MapModel>()
                 .HasMany(m => m.Suns)
@@ -292,8 +306,8 @@ namespace WoS_Server.Data
                 .HasMany(m => m.SpaceStations)
                 .WithOne()
                 .HasForeignKey(ss => ss.MapModelId);
-            */
+            
             // Additional configurations for other entities can be added here
-        }
+        }*/
     }
 }

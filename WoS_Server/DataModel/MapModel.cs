@@ -38,7 +38,7 @@ namespace WoS_Server.DataModel
         public ICollection<ShipModel> Ships { get; set; }
         public ICollection<DroneModel> Drones { get; set; }
         public ICollection<BoxModel> Boxes { get; set; }
-        public ICollection<AmmunitionModel> Ammunitions { get; set; }
+        public ICollection<AmmoModel> Ammunitions { get; set; }
         public ICollection<ArtifactModel> Artifacts { get; set; }
         public ICollection<SpaceGateModel> SpaceGates { get; set; }
         public ICollection<SpaceStationModel> SpaceStations { get; set; }
@@ -68,7 +68,7 @@ namespace WoS_Server.DataModel
             Ships = new List<ShipModel>();
             Drones = new List<DroneModel>();
             Boxes = new List<BoxModel>();
-            Ammunitions = new List<AmmunitionModel>();
+            Ammunitions = new List<AmmoModel>();
             Artifacts = new List<ArtifactModel>();
             SpaceGates = new List<SpaceGateModel>();
             SpaceStations = new List<SpaceStationModel>();

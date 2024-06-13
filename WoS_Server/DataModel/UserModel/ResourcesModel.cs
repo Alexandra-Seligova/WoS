@@ -2,48 +2,21 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
-    public enum ResourceType
+
+
+
+    public class ResourcesModel
     {
-        XP = 1,             // 1
-        Honor = 2,          // 2
-        Credits = 3,        // 3
-        SpaceCoin = 4,      // 4
+        [Key]
+        [Required(ErrorMessage = "Toto pole je povinné.")]
+        public int Id_User { get; set; } // id uživatele - Primární klíč
+        public int Id_Resources { get; set; } // id uživatele - Primární klíč
 
-        Metal = 5,          // 5
-        Crystals = 6,       // 6
-        Minerals = 7,       // 7
-        Deuterium = 8,      // 8
-        Antimatter = 9,     // 9
-        DarkMatter = 10,    // 10
-
-
-        Prom = 11,          // 11
-        Endu = 12,          // 12
-        Terb = 13,          // 13
-        Prom2 = 14,         // 14
-        Endu2 = 15,         // 15
-        Terb2 = 16,         // 16
-        Xenomit = 17,       // 17
-        Palladium = 18,     // 18
-        Seprom = 19,        // 19
-        Osmium = 20,        // 20
-
-
-        SpiceRed = 21,      // 21
-        SpiceYellow = 22,   // 22
-        SpiceBlue = 23,     // 23
-        SpicePurple = 24,   // 24
-        SpiceGreen = 25,    // 25
-        SpiceDark = 26      // 26
-    }
-
-
-    public class Base_ResourcesModel
-    {
         // Zkušenostní body
         public int XP { get; set; }
 

@@ -7,10 +7,24 @@
     using System.Threading.Tasks;
     using WoS_Server.Models;
     using Microsoft.Xna.Framework;
+    using System.ComponentModel.DataAnnotations;
 
-    public class AmmunitionModel : Base_Module
+    public class AmmoModel : Base_Module
     {
-        public int Id { get; set; } // Unikátní identifikátor munice
+        public int Id_User { get; set; } // id serveru
+        public int Id_Fleet { get; set; } // Identifikátor letky, ke které dron patří
+
+        [Key]
+        public int Id_Ammo { get; set; } // Unikátní identifikátor munice
+
+        public int Id_Ammo_Type { get; set; } // Unikátní identifikátor munice
+
+        public int Id_Ammo_Penetration_Type { get; set; } // Unikátní identifikátor munice
+
+
+
+
+
 
         // Pozice
         public Vector2 Position { get; set; } = new Vector2(0, 0); // Pozice munice
@@ -23,13 +37,13 @@
 
         // Vlastnosti munice
         public float Size { get; set; } = 5; // Velikost munice
-        public AmmunitionType Type { get; set; } // Typ munice
         public int Damage { get; set; } // Poškození způsobené municí
         public int Range { get; set; } // Dostřel munice
-        public int UserId { get; set; } // ID uživatele, který munici vystřelil
+
+        public AmmunitionType Type { get; set; } // Typ munice
         public PenetrationType Penetration { get; set; } // Typ průraznosti
 
-        public AmmunitionModel(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
+        public AmmoModel(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
          : base(idGlobal, idUser, spawnPlace, width, height, depth)
         {
             // Default constructor logic here
