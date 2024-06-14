@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public abstract class Base_Building : Base_DestructibleMapObjectModel
+    public abstract class Base_Building : Base_DestructibleObjectModel
     {
         /*
           public int Id_User { get; set; } = 0; // id

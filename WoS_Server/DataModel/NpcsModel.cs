@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
 
-    public class NpcsModel : Base_DestructibleMapObjectModel
+    public class NpcsModel : Base_DestructibleObjectModel
     {
         /*
   public int Id_User { get; set; } = 0; // id

@@ -16,6 +16,7 @@
 
         public int Id_User { get; set; } // id serveru
         public int Id_Fleet { get; set; } // Identifikátor letky, ke které loď patří
+
         public int Id_Fleet_Formation { get; set; } // Formace letky
         public int Id_Fleet_FormationPosition { get; set; } // Pozice lodi ve formaci
 
@@ -26,7 +27,7 @@
 
         /// <summary>Název objektu.</summary>
         public string Name { get; set; }
-
+        public int Level { get; set; }
         /// <summary>Označení objektu. Výchozí hodnota je "Ship".</summary>
         public string Designation { get; set; } = "Ship";
 
@@ -181,6 +182,8 @@
         [Required]
         [MaxLength(255)]
         public string Ship_Name { get; set; }
+
+        public bool CanBeDestroyed { get; set; } = true; // Výchozí hodnota je true, což znamená, že objekt může být zničen.
 
         /// <summary>Místo, kde se objekt objevil ve 3D prostoru.</summary>
         public Vector3 SpawnPlace { get; set; }
