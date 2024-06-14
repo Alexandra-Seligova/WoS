@@ -36,25 +36,6 @@
             EscortShips = new List<ShipModel>();
         }
 
-        public void Attack()
-        {
-            // Hlavní loď útočí
-            MainShip.ActualParameters.CurrentAttackPower = MainShip.StaticParameters.MaxAttackPower;
-            MainShip.Attack();
-
-            // Drony útočí
-            foreach(var drone in Drones)
-            {
-                drone.Attack();
-            }
-
-            // Doprovodné lodě útočí
-            foreach(var ship in EscortShips)
-            {
-                ship.ActualParameters.CurrentAttackPower = ship.StaticParameters.MaxAttackPower;
-                ship.Attack();
-            }
-        }
     }
 
     public enum ShipType
@@ -94,28 +75,5 @@
         Line,       // Linie
         Custom      // Vlastní formace
     }
-
-    // Měl by obsahovat nastavení letky jako typ hlavní uživatelovy ship, 
-    /* public class FleetModel
-     {
-         [Key]
-         [Required(ErrorMessage = "Toto pole je povinné.")]
-         public int Id_User { get; set; } // id uživatele - Primární klíč
-
-         // jaké typy lodí má hráč k dispozici
-         public List<ShipType> AvailableShips { get; set; }
-
-         public FleetModel()
-         {
-             AvailableShips = new List<ShipType>();
-         }
-
-         public void SetShip(ShipType shipType)
-         {
-             // Metoda pro nastavení vybrané lodi
-             // Implementace logiky pro nastavení vybrané lodi
-         }
-     }*/
-
 
 }

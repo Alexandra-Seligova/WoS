@@ -27,52 +27,22 @@ namespace WoS_Server.DataModel
         public ICollection<NebulaModel> Nebulas { get; set; }
         public ICollection<QuasarModel> Quasars { get; set; }
 
-        public ICollection<AdditionalBuilding> AdditionalBuildings { get; set; }
-        public ICollection<DefenseBuilding> DefenseBuildings { get; set; }
-        public ICollection<Factory> Factories { get; set; }
-        public ICollection<MiningBuilding> MiningBuildings { get; set; }
-        public ICollection<StorageBuilding> StorageBuildings { get; set; }
-
-        public ICollection<NpcsModel> Npcs { get; set; }
 
         public ICollection<ShipModel> Ships { get; set; }
         public ICollection<DroneModel> Drones { get; set; }
-        public ICollection<BoxModel> Boxes { get; set; }
+        public ICollection<NpcsModel> Npcs { get; set; }
         public ICollection<AmmoModel> Ammunitions { get; set; }
-        public ICollection<ArtifactModel> Artifacts { get; set; }
+
+        public ICollection<Base_Building> Buildings { get; set; }
         public ICollection<SpaceGateModel> SpaceGates { get; set; }
         public ICollection<SpaceStationModel> SpaceStations { get; set; }
 
-        // Konstruktor
-        public MapModel()
-        {
-            Suns = new List<SunModel>();
-            Planets = new List<PlanetModel>();
-            DwarfPlanets = new List<DwarfPlanetModel>();
-            Comets = new List<CometModel>();
-            Asteroids = new List<AsteroidModel>();
-            Meteoroids = new List<MeteoroidModel>();
-            BlackHoles = new List<BlackHoleModel>();
-            EnergyFields = new List<EnergyFieldModel>();
-            Nebulas = new List<NebulaModel>();
-            Quasars = new List<QuasarModel>();
 
-            AdditionalBuildings = new List<AdditionalBuilding>();
-            DefenseBuildings = new List<DefenseBuilding>();
-            Factories = new List<Factory>();
-            MiningBuildings = new List<MiningBuilding>();
-            StorageBuildings = new List<StorageBuilding>();
+        public ICollection<BoxModel> Boxes { get; set; }
 
-            Npcs = new List<NpcsModel>();
+        public ICollection<ArtifactModel> Artifacts { get; set; }
 
-            Ships = new List<ShipModel>();
-            Drones = new List<DroneModel>();
-            Boxes = new List<BoxModel>();
-            Ammunitions = new List<AmmoModel>();
-            Artifacts = new List<ArtifactModel>();
-            SpaceGates = new List<SpaceGateModel>();
-            SpaceStations = new List<SpaceStationModel>();
-        }
+
     }
 }
 /*

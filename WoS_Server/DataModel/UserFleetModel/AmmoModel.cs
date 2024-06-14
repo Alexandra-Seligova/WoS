@@ -19,29 +19,13 @@
 
         public int Id_Ammo_Type { get; set; } // Unikátní identifikátor munice
 
-        public int Id_Ammo_Penetration_Type { get; set; } // Unikátní identifikátor munice
+
+
+        public StaticParameters StaticParameters { get; set; } // Statické parametry lodi
+        public ActualParameters ActualParameters { get; set; } // Dynamické parametry lodi
 
 
 
-
-
-
-        // Pozice
-        public Vector2 Position { get; set; } = new Vector2(0, 0); // Pozice munice
-        public Vector2 Velocity { get; set; } = new Vector2(0, 0); // Rychlost munice
-        public Vector2 PreviousPosition { get; set; } = new Vector2(0, 0); // Předchozí pozice munice
-
-        // Cíl munice
-        public Vector2 Target { get; set; } // Cílová pozice munice
-        public float Rotation { get; set; } // Rotace munice
-
-        // Vlastnosti munice
-        public float Size { get; set; } = 5; // Velikost munice
-        public int Damage { get; set; } // Poškození způsobené municí
-        public int Range { get; set; } // Dostřel munice
-
-        public AmmunitionType Type { get; set; } // Typ munice
-        public PenetrationType Penetration { get; set; } // Typ průraznosti
 
         public AmmoModel(int idGlobal, int idUser, Vector3 spawnPlace, int width, int height, int depth)
          : base(idGlobal, idUser, spawnPlace, width, height, depth)
@@ -71,5 +55,24 @@
         Orange,      // Oranžová
         Purple,       // Fialová
         Red
+    }
+
+    public class AmmoConfigurations
+    {
+
+        public int Id_User { get; set; } // id serveru
+        public int Id_Ship { get; set; } // Unikátní identifikátor lodi
+        [Key]
+        public int Id_Ammo { get; set; } // Unikátní identifikátor munice
+
+        // Vlastnosti munice
+        public float Size { get; set; } = 5; // Velikost munice
+        public int Damage { get; set; } // Poškození způsobené municí
+        public int Range { get; set; } // Dostřel munice
+
+        public AmmunitionType Type { get; set; } // Typ munice
+        public PenetrationType Penetration { get; set; } // Typ průraznosti
+
+
     }
 }

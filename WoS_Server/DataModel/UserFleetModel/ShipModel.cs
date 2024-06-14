@@ -31,9 +31,9 @@
         /// <summary>Označení objektu. Výchozí hodnota je "Ship".</summary>
         public string Designation { get; set; } = "Ship";
 
-        public ShipStaticParameters StaticParameters { get; set; } // Statické parametry lodi
+        public StaticParameters StaticParameters { get; set; } // Statické parametry lodi
 
-        public ShipActualParameters ActualParameters { get; set; } // Dynamické parametry lodi
+        public ActualParameters ActualParameters { get; set; } // Dynamické parametry lodi
 
         public ShipConfigurations Configurations { get; set; } // Dynamické parametry lodi
 
@@ -103,70 +103,6 @@
         Animation    // Animace
     }
 
-    // Třída reprezentující dynamické vlastnosti lodi, které se mění během hry
-    public class ShipActualParameters
-    {
-
-        public int Id_User { get; set; } // id serveru
-        /// <summary>Unikátní identifikátor lodi.</summary>
-        [Key]
-        public int Id_Ship { get; set; }
-
-        public int Id_Ship_ActualParameters { get; set; } // Unikátní identifikátor komponenty
-
-
-        /// <summary>Pozice objektu ve 3D prostoru.</summary>
-        public Vector3 Position { get; set; }
-
-        /// <summary>Globální pozice objektu na mapě.</summary>
-        public Vector2 PositionOnMap { get; set; }
-
-        /// <summary>Cílová pozice objektu.</summary>
-        public Vector2 TargetPosition { get; set; }
-
-        public bool IsTarget { get; set; }
-
-        /// <summary>Rotace objektu v prostoru.</summary>
-        public float Rotation { get; set; }
-
-        /// <summary>Rychlost objektu.</summary>
-        public Vector2 Velocity { get; set; }
-
-        /// <summary>Zrychlení objektu.</summary>
-        public float Acceleration { get; set; }
-
-        /// <summary>Aktuální zdraví objektu.</summary>
-        public int HP { get; set; }
-
-        /// <summary>Aktuální útočná síla objektu.</summary>
-        public int Armor { get; set; }
-
-
-        public int StructuralIntegrity { get; set; }
-
-        public int Shield { get; set; }
-        public int ShieldLeft { get; set; }
-        public int ShieldRight { get; set; }
-        public int ShieldFront { get; set; }
-        public int ShieldBack { get; set; }
-
-        /// <summary>Maximální rychlost lodi.</summary>
-        public float Speed { get; set; }
-
-
-
-
-
-        public ShipActualParameters()
-        {
-            Position = Vector3.Zero;
-            PositionOnMap = Vector2.Zero;
-            TargetPosition = Vector2.Zero;
-            Rotation = 0f;
-            Velocity = Vector2.Zero;
-            Acceleration = 0f;
-        }
-    }
 
     // Třída reprezentující statické vlastnosti lodi, které jsou konstantní
     public class ShipStaticParameters
