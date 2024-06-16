@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ObjectModel\Objects_On_Map\" />
+    <Folder Include="ObjectModel\Ship\" />
+    <Folder Include="ObjectModel\Ship_Ammo\" />
+    <Folder Include="ObjectModel\User\" />
+  </ItemGroup>
+
+</Project>

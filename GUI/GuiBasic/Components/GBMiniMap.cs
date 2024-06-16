@@ -30,7 +30,7 @@ namespace WoS.GUI.GuiBasic.Components
             shipPosition = new Vector2(0, 0); // Příklad
             shipRotation = 0f;
 
-            openMapButton = new Button(Position + new Vector2(-150, -155), "Open Map", content); // Předpokládáme, že máte třídu Button
+            openMapButton = new Button(Position + new Vector2(-150, -155), "Open Map_ViewModel", content); // Předpokládáme, že máte třídu Button
             controlButtons = new List<Button>()
             {
                 new Button(Position+new Vector2(90, -155), "Zoom In", content),

@@ -1,4 +1,4 @@
-﻿namespace WoS_Server.ObjectModel.Map_Objects
+﻿namespace WoS_Server.ObjectModel
 {
     using System;
     using System.Collections;
@@ -11,7 +11,7 @@
 
 
 
-    public class Map : MapModel
+    public class Map_ViewModel : MapModel
     {
         /*
                 public int Id_Map { get; set; }
@@ -59,7 +59,7 @@
 
 
 
-        public Map(int idMap, int idMapType, int idGalaxyPosition, int idMapObjectConfig, string name)
+        public Map_ViewModel(int idMap, int idMapType, int idGalaxyPosition, int idMapObjectConfig, string name)
         {
             Id_Map = idMap;
             Id_Map_Type = idMapType;
@@ -158,7 +158,7 @@
 
 
         }
-
+        #region Map Makers
 
         private void SunMaker(int element)
         {
@@ -219,11 +219,6 @@
 
 
         }
-
-
-
-
-
 
 
         private void MapBoxesMaker(int element, int idObjectType, int idBox, int idCargo, string name)
@@ -336,7 +331,16 @@
             MapCargo.Add(new CargoModel(Id_Box
 
         }
+
+        #endregion
+
+
     }
+
+
+
+
+
 
 
 
