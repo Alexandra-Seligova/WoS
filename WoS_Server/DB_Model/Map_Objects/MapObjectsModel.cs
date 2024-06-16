@@ -22,7 +22,14 @@
             Id_Position = idPosition;
             Id_MapObjectConfig = idMapObjectConfig;
         }
-
+        public MapObjectsModel(int idMap, int idObject, int idObjectType, int idPosition)
+        {
+            Id_Map = idMap;
+            Id_Object = idObject;
+            Id_ObjectType = idObjectType;
+            Id_Position = idPosition;
+            Id_MapObjectConfig = 0;
+        }
         // Výchozí konstruktor
         public MapObjectsModel() { }
     }

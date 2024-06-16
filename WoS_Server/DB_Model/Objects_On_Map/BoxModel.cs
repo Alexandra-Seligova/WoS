@@ -25,10 +25,19 @@
 
 
 
-
         public BoxModel()
-
         {
+        }
+
+        public BoxModel(int idMap, int idUser, int idObject, int idBox, int idObjectType, int idBoxType, int idPosition, int idBoxConfig, int idCargo)
+        {
+            Id_Map = idMap;
+            Id_MapType = 11; // Předpoklad, že MapType je vždy 11 pro Boxík
+            Id_Box = idBox;
+            Id_BoxType = idBoxType;
+            Id_Position = idPosition;
+            Id_BoxConfig = idBoxConfig;
+            Id_Cargo = idCargo;
         }
     }
 
