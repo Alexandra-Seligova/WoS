@@ -35,8 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataModelAdvanced\" />
-    <Folder Include="Game_Models\" />
+    <Folder Include="ObjectModel\User\" />
+    <Folder Include="ObjectModel\Ship_Ammo\" />
+    <Folder Include="ObjectModel\Ship\" />
+    <Folder Include="ObjectModel\Objects_On_Map\" />
   </ItemGroup>
 
 </Project>
