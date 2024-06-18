@@ -7,7 +7,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class SpaceBuildings
+    public class SpaceBuildingsModel
     {
 
         public int Id_Map { get; set; } // Unikátní identifikátor boxu

@@ -38,24 +38,27 @@
         public List<MapObjectConfigModel> MapObjectConfigs = new List<MapObjectConfigModel>();
 
         public List<BoxModel> MapBoxes = new List<BoxModel>();
-        public List<BoxConfigModel> MapBoxConfigs = new List<BoxConfigModel>();
+        public List<BoxConfigModel> MapBoxConfig = new List<BoxConfigModel>();
 
 
         public List<ArtifactModel> MapArtifacts = new List<ArtifactModel>();
-        public List<ArtifactConfigModel> MapArtifactConfigs = new List<ArtifactConfigModel>();
+        public List<ArtifactConfigModel> MapArtifactConfig = new List<ArtifactConfigModel>();
 
 
-        public List<SpaceBuildingModel> MapSpaceBuildings = new List<SpaceBuildingModel>();
-        public List<SpaceBuildingConfigModel> MapSpaceBuildingConfigs = new List<SpaceBuildingConfigModel>();
+        public List<SpaceBuildingsModel> MapSpaceBuildings = new List<SpaceBuildingsModel>();
+        public List<SpaceBuildingConfigModel> MapSpaceBuildingConfig = new List<SpaceBuildingConfigModel>();
 
 
-        public List<NpcModel> MapNpcs = new List<NpcModel>();
-        public List<NpcConfigModel> MapNpcConfigMapNpcConfigs = new List<NpcConfigModel>();
+        public List<NpcsModel> MapNpcs = new List<NpcsModel>();
+        public List<NpcConfigModel> MapNpcConfig = new List<NpcConfigModel>();
 
 
-        public List<AiShipModel> MapAiShips = new List<AiShipModel>();
-        public List<AiShipConfigModel> MapAiShipConfigs = new List<AiShipConfigModel>();
+        public List<AiShipsModel> MapAiShips = new List<AiShipsModel>();
+        public List<AiShipConfigModel> MapAiShipConfig = new List<AiShipConfigModel>();
 
+
+
+        public List<CargoModel> MapCargo = new List<CargoModel>();
 
 
 
@@ -239,8 +242,8 @@
             mapObjectsModels.Add(new MapObjectsModel(idMap, idObject, idObjectType, idPosition));
             MapPositions.Add(new MapPositionModel(idMap, idUser, idObject, idObjectType, idPosition, name, 0, 0, 0, 0, 0, 0, 0));
             MapBoxes.Add(new BoxModel(idMap, idUser, idObject, Id_Box, idObjectType, Id_BoxType, idPosition, Id_BoxConfig, Id_Cargo));
-            MapBoxConfig.Add(new BoxConfig(Id_Box
-            MapCargo.Add(new CargoModel(Id_Box
+            MapBoxConfig.Add(new BoxConfigModel());
+            MapCargo.Add(new CargoModel());
         }
         private void MapArtifactMaker(int element, int idObjectType, string name, int width)
         {
@@ -258,8 +261,8 @@
             // ADD
             mapObjectsModels.Add(new MapObjectsModel(idMap, idObject, idObjectType, idPosition, idMapObjectConfig));
             MapPositions.Add(new MapPositionModel(idMap, idUser, idObject, idObjectType, idPosition, name, 0, 0, 0, 0, 0, 0, 0));
-            MapArtifactConfig.Add(new ArtifactConfig(Id_Box
-            MapCargo.Add(new CargoModel(Id_Box
+            MapArtifactConfig.Add(new ArtifactConfigModel());
+            MapCargo.Add(new CargoModel());
 
 
         }
@@ -290,8 +293,8 @@
             MapPositions.Add(new MapPositionModel(idMap, idUser, idObject, idObjectType, idPosition, name, 0, 0, 0, 0, 0, 0, 0));
             MapObjectConfigs.Add(new MapObjectConfigModel(idUser, idObject, idObjectType, idMapObjectConfig, name, width, height, diameter, solarMassWeight,
                 gravity, orbit, orbitalPeriod, rotationPeriod, hasAtmosphere, habitable, age));
-            MapSpaceBuildingConfig.Add(new SpaceBuildingConfig(Id_Box
-            MapSpaceBuildingCargo.Add(new SpaceBuildingCargo(Id_Box
+            MapSpaceBuildingConfig.Add(new SpaceBuildingConfigModel());
+            MapCargo.Add(new CargoModel());
 
         }
         private void MapNpcMaker(int element, int idObjectType, string name, int width)
@@ -309,8 +312,8 @@
             // ADD Sun
             mapObjectsModels.Add(new MapObjectsModel(idMap, idObject, idObjectType, idPosition, idMapObjectConfig));
             MapPositions.Add(new MapPositionModel(idMap, idUser, idObject, idObjectType, idPosition, name, 0, 0, 0, 0, 0, 0, 0));
-            MapNpcConfig.Add(new NpcConfig(Id_Box
-            MapCargo.Add(new CargoModel(Id_Box
+            MapNpcConfig.Add(new NpcConfigModel());
+            MapCargo.Add(new CargoModel());
 
         }
         private void MapAiShipMaker(int element, int idObjectType, string name, int width)
@@ -327,8 +330,8 @@
             mapObjectsModels.Add(new MapObjectsModel(idMap, idObject, idObjectType, idPosition, idMapObjectConfig));
             MapPositions.Add(new MapPositionModel(idMap, idUser, idObject, idObjectType, idPosition, name, 0, 0, 0, 0, 0, 0, 0));
 
-            MapAiShipConfig.Add(new AiShipConfig(Id_Box
-            MapCargo.Add(new CargoModel(Id_Box
+            MapAiShipConfig.Add(new AiShipConfigModel());
+            MapCargo.Add(new CargoModel());
 
         }
 
