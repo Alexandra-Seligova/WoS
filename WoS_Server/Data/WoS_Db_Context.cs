@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.Contracts;
 using Microsoft.EntityFrameworkCore;
-using WoS_Server.DataModel;
 
-namespace WoS_Server.Data
+
+namespace WoS_Server.DB_Model
 {
     public class WoS_Db_Context : DbContext
     {
