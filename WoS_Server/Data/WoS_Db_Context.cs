@@ -6,108 +6,108 @@ namespace WoS_Server.DB_Model
 {
     public class WoS_Db_Context : DbContext
     {
-        #region Map
+        // #region Map
+        /*
+                public DbSet<MapModel> Maps { get; set; }                      // Načtu z DB mapu a její nastavení
+                // Id_User, Id_Server, Id_Map, Id_Map_Type, Name, Width, Height
 
-        public DbSet<MapModel> Maps { get; set; }                      // Načtu z DB mapu a její nastavení
-        // Id_User, Id_Server, Id_Map, Id_Map_Type, Name, Width, Height
+                public DbSet<SunModel> Suns { get; set; }                      //
+                // Base_StaticObjectModel => Id_User, Id_Map, Name, Width, Height, Diameter, SolarMassWeight, Gravity, OrbitalPeriod, RotationPeriod,HasAtmosphere,Habitable,Age
+                //                           Id_Sun, Id_Sun_Type,
+                public DbSet<PlanetModel> Planets { get; set; }                //
+                // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
+                public DbSet<DwarfPlanetModel> DwarfPlanets { get; set; }      //
+                // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
+                public DbSet<CometModel> Comets { get; set; }                  //
+                // Base_StaticObjectModel => Id_Comet, Id_Comet_Type, CometTailLength
 
-        public DbSet<SunModel> Suns { get; set; }                      //
-        // Base_StaticObjectModel => Id_User, Id_Map, Name, Width, Height, Diameter, SolarMassWeight, Gravity, OrbitalPeriod, RotationPeriod,HasAtmosphere,Habitable,Age
-        //                           Id_Sun, Id_Sun_Type,
-        public DbSet<PlanetModel> Planets { get; set; }                //
-        // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
-        public DbSet<DwarfPlanetModel> DwarfPlanets { get; set; }      //
-        // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
-        public DbSet<CometModel> Comets { get; set; }                  //
-        // Base_StaticObjectModel => Id_Comet, Id_Comet_Type, CometTailLength
-
-        public DbSet<AsteroidModel> Asteroids { get; set; }            //
-        // Base_StaticObjectModel => Id_Planet, Id_Asteroid_Type,
-        public DbSet<MeteoroidModel> Meteoroids { get; set; }          //
-        // Base_StaticObjectModel => Id_Planet, Id_Meteoroid_Type,
-        public DbSet<BlackHoleModel> BlackHoles { get; set; }          //
-        // Base_StaticObjectModel => Id_Planet, Id_BlackHole_Type,
-        public DbSet<EnergyFieldModel> EnergyFields { get; set; }      //
-        // Base_StaticObjectModel => Id_Planet, Id_EnergyField_Type,
-        public DbSet<NebulaModel> Nebulas { get; set; }                //
-        // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
-        public DbSet<QuasarModel> Quasars { get; set; }                //
-        // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
-
-
-
-
-        public DbSet<BoxModel> Boxes { get; set; }                     //
-        // Id_Map, Id_Box, Position, Size, Type, Contents
-
-        public DbSet<ArtifactModel> Artifacts { get; set; }            //
-
-        public DbSet<SpaceBuildingModel> SpaceBuildings { get; set; }  //
-
-        public DbSet<NpcsModel> Npcs { get; set; }                     //
-                                                                       // DbSet pro modely lodí
-        public DbSet<ShipModel> User_AutomaticShips { get; set; }       // transportéry mezi planetama, obranné stíhačky atd
-
-
-
-        #endregion
-
-
-        #region User
-
-        // DbSety pro jednotlivé modely
-        public DbSet<UserModel> Users { get; set; }
-        // Sloupce: Id_User, Id_User_Type, Id_User_Focus, Status, IsLocked, Nickname, PasswordHash, Email,
-        // Id_List_UserShips, Id_SelectedShip, Id_List_UserDrones, Id_List_SelectedDrones
-
-        public DbSet<ResourcesModel> Resources { get; set; }
-        // Sloupce: Id_User, XP, Honor, Credits, SpaceCoin, Metal, Crystals, Minerals, Deuterium, Antimatter, DarkMatter, Prom, Endu, Terb, Prom2, Endu2, Terb2, Xenomit, Palladium, Seprom, Osmium,
-        // SpiceRed, SpiceYellow, SpiceBlue, SpicePurple, SpiceGreen, SpiceDark
-
-        public DbSet<UserBoostersModel> Boosters { get; set; }
-        // Sloupce: Id_User, Speed, Attack, Defense, Colonization, Construction, IndustrialProduction
-
-        public DbSet<PermisionsModel> Permissions { get; set; }
-        // Sloupce: Id_User, IsAdmin, IsPremium, IsBanned
-        public DbSet<UserResearchModel> Research { get; set; }
-        // Sloupce: Id_User, IsAdmin, IsPremium, IsBanned
-        public DbSet<FleetModel> fleet { get; set; }
-        // Sloupce: Id_User, IsAdmin, IsPremium, IsBanned
-
-        #endregion
-
-
-
-        #region Ship
-
-        // DbSet pro modely lodí
-        public DbSet<ShipModel> Ships { get; set; }
-        // Sloupce: Id_User, Id_Fleet, Id_Fleet_Formation, Id_Fleet_FormationPosition, Id_Ship, Id_Ship_Type, Name, Level, Designation, StaticParametersModel, ActualParametersModel, Configurations
-
-        public DbSet<AmmoModel> Ammunitions { get; set; }              //
-        // Id_User, Id_Ammo, Id_Ammo_Type, StaticParametersModel() , ActualParametersModel(), AmmoConfigurations()
-
-        public DbSet<ShipConfigurations> ShipConfigurations { get; set; }
-        // Sloupce: Id_User, Id_Ship, Generators, Weapons, Extensions, Ammos, Animations
-
-        public DbSet<ShipComponentModel> ShipComponents { get; set; }
-        // Sloupce: Id_User, Id_Ship, Id_Ship_Component, Id_Ship_Component_Type, Name, Type, PositionOnShip
-
-        public DbSet<StaticParameters> StaticParameters { get; set; }
-        // Sloupce: Id_User, Id_Ship, Id_StaticParameters, Name, CanBeDestroyed, SpawnPlace, MaxHP, MaxArmor, MaxStructuralIntegrity, MaxShield, MaxShieldLeft, MaxShieldRight, MaxShieldFront, MaxShieldBack, MaxSpeed, MaxHealth, MaxAttackPower, Description
-
-        public DbSet<ActualParametersModel> ActualParameters { get; set; }
-        // Sloupce: Id_User, Id_Ship, Id_Ammo_ActualParameters, Id_Ammo_Target, Id_Ammo_TargetType, Position, PositionOnMap, TargetPosition, IsTarget, IsAutomaticTarget, Rotation, Velocity, Acceleration, HP, Armor, StructuralIntegrity, Shield, ShieldLeft, ShieldRight, ShieldFront, ShieldBack, Speed
-
-        public DbSet<DroneModel> Drones { get; set; }
-
-        #endregion
+                public DbSet<AsteroidModel> Asteroids { get; set; }            //
+                // Base_StaticObjectModel => Id_Planet, Id_Asteroid_Type,
+                public DbSet<MeteoroidModel> Meteoroids { get; set; }          //
+                // Base_StaticObjectModel => Id_Planet, Id_Meteoroid_Type,
+                public DbSet<BlackHoleModel> BlackHoles { get; set; }          //
+                // Base_StaticObjectModel => Id_Planet, Id_BlackHole_Type,
+                public DbSet<EnergyFieldModel> EnergyFields { get; set; }      //
+                // Base_StaticObjectModel => Id_Planet, Id_EnergyField_Type,
+                public DbSet<NebulaModel> Nebulas { get; set; }                //
+                // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
+                public DbSet<QuasarModel> Quasars { get; set; }                //
+                // Base_StaticObjectModel => Id_Planet, Id_Planet_Type,
 
 
 
 
+                public DbSet<BoxModel> Boxes { get; set; }                     //
+                // Id_Map, Id_Box, Position, Size, Type, Contents
+
+                public DbSet<ArtifactModel> Artifacts { get; set; }            //
+
+                public DbSet<SpaceBuildingModel> SpaceBuildings { get; set; }  //
+
+                public DbSet<NpcsModel> Npcs { get; set; }                     //
+                                                                               // DbSet pro modely lodí
+                public DbSet<ShipModel> User_AutomaticShips { get; set; }       // transportéry mezi planetama, obranné stíhačky atd
 
 
+
+                #endregion
+
+
+                #region User
+
+                // DbSety pro jednotlivé modely
+                public DbSet<UserModel> Users { get; set; }
+                // Sloupce: Id_User, Id_User_Type, Id_User_Focus, Status, IsLocked, Nickname, PasswordHash, Email,
+                // Id_List_UserShips, Id_SelectedShip, Id_List_UserDrones, Id_List_SelectedDrones
+
+                public DbSet<ResourcesModel> Resources { get; set; }
+                // Sloupce: Id_User, XP, Honor, Credits, SpaceCoin, Metal, Crystals, Minerals, Deuterium, Antimatter, DarkMatter, Prom, Endu, Terb, Prom2, Endu2, Terb2, Xenomit, Palladium, Seprom, Osmium,
+                // SpiceRed, SpiceYellow, SpiceBlue, SpicePurple, SpiceGreen, SpiceDark
+
+                public DbSet<UserBoostersModel> Boosters { get; set; }
+                // Sloupce: Id_User, Speed, Attack, Defense, Colonization, Construction, IndustrialProduction
+
+                public DbSet<PermisionsModel> Permissions { get; set; }
+                // Sloupce: Id_User, IsAdmin, IsPremium, IsBanned
+                public DbSet<UserResearchModel> Research { get; set; }
+                // Sloupce: Id_User, IsAdmin, IsPremium, IsBanned
+                public DbSet<FleetModel> fleet { get; set; }
+                // Sloupce: Id_User, IsAdmin, IsPremium, IsBanned
+
+                #endregion
+
+
+
+                #region Ship
+
+                // DbSet pro modely lodí
+                public DbSet<ShipModel> Ships { get; set; }
+                // Sloupce: Id_User, Id_Fleet, Id_Fleet_Formation, Id_Fleet_FormationPosition, Id_Ship, Id_Ship_Type, Name, Level, Designation, StaticParametersModel, ActualParametersModel, Configurations
+
+                public DbSet<AmmoModel> Ammunitions { get; set; }              //
+                // Id_User, Id_Ammo, Id_Ammo_Type, StaticParametersModel() , ActualParametersModel(), AmmoConfigurations()
+
+                public DbSet<ShipConfigurations> ShipConfigurations { get; set; }
+                // Sloupce: Id_User, Id_Ship, Generators, Weapons, Extensions, Ammos, Animations
+
+                public DbSet<ShipComponentModel> ShipComponents { get; set; }
+                // Sloupce: Id_User, Id_Ship, Id_Ship_Component, Id_Ship_Component_Type, Name, Type, PositionOnShip
+
+                public DbSet<StaticParameters> StaticParameters { get; set; }
+                // Sloupce: Id_User, Id_Ship, Id_StaticParameters, Name, CanBeDestroyed, SpawnPlace, MaxHP, MaxArmor, MaxStructuralIntegrity, MaxShield, MaxShieldLeft, MaxShieldRight, MaxShieldFront, MaxShieldBack, MaxSpeed, MaxHealth, MaxAttackPower, Description
+
+                public DbSet<ActualParametersModel> ActualParameters { get; set; }
+                // Sloupce: Id_User, Id_Ship, Id_Ammo_ActualParameters, Id_Ammo_Target, Id_Ammo_TargetType, Position, PositionOnMap, TargetPosition, IsTarget, IsAutomaticTarget, Rotation, Velocity, Acceleration, HP, Armor, StructuralIntegrity, Shield, ShieldLeft, ShieldRight, ShieldFront, ShieldBack, Speed
+
+                public DbSet<DroneModel> Drones { get; set; }
+
+                #endregion
+
+
+
+
+
+                */
 
 
 
@@ -118,7 +118,7 @@ namespace WoS_Server.DB_Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            /*
             #region User
             // Konfigurace pro UserModel
             modelBuilder.Entity<UserModel>(entity =>
@@ -316,8 +316,9 @@ namespace WoS_Server.DB_Model
                 entity.Property(e => e.ShieldBack).IsRequired();
                 entity.Property(e => e.Speed).IsRequired();
             });
-
+            
             #endregion
+            */
         }
 
 
@@ -512,4 +513,5 @@ namespace WoS_Server.DB_Model
             // Additional configurations for other entities can be added here
         }*/
     }
+
 }

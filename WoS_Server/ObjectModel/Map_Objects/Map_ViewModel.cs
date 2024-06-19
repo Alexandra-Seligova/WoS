@@ -100,8 +100,6 @@
             MapAstronomyObjectMaker(6, 2, "Planeta 5", 200);
             MapAstronomyObjectMaker(7, 2, "Planeta 6", 400);
 
-
-
             MapAstronomyObjectMaker(8, 3, "Trpasličí Planeta 1", 20);
             MapAstronomyObjectMaker(9, 3, "Trpasličí Planeta 2", 15);
             MapAstronomyObjectMaker(10, 3, "Trpasličí Planeta 3", 10);
@@ -110,54 +108,33 @@
             MapAstronomyObjectMaker(12, 4, "Kometa 1", 5);
             MapAstronomyObjectMaker(13, 4, "Kometa 2", 15);
 
+            MapAstronomyObjectMaker(14, 5, "Asteroid 1", 1);
+            MapAstronomyObjectMaker(15, 5, "Asteroid 2", 5);
 
-            MapAstronomyObjectMaker(14, 4, "Asteroid 1", 1);
-            MapAstronomyObjectMaker(15, 4, "Asteroid 2", 5);
+            MapAstronomyObjectMaker(16, 6, "Meteoroid 1", 3);
+            MapAstronomyObjectMaker(17, 6, "Meteoroid 2", 8);
 
+            MapAstronomyObjectMaker(18, 7, "Černá díra 1", 10);
+            MapAstronomyObjectMaker(19, 7, "Černá díra 2", 100);
 
+            MapAstronomyObjectMaker(20, 8, "Energetické pole 1", 1);
+            MapAstronomyObjectMaker(21, 8, "Energetické pole 2", 200);
 
+            MapAstronomyObjectMaker(22, 9, "Mlhovina 1", 5);
+            MapAstronomyObjectMaker(23, 9, "Mlhovina 1", 100);
 
-            MapAstronomyObjectMaker(16, 4, "Meteoroid 1", 3);
-            MapAstronomyObjectMaker(17, 4, "Meteoroid 2", 8);
-
-
-
-            MapAstronomyObjectMaker(18, 4, "Černá díra 1", 10);
-            MapAstronomyObjectMaker(19, 4, "Černá díra 2", 100);
-
-
-            MapAstronomyObjectMaker(20, 4, "Energetické pole 1", 1);
-            MapAstronomyObjectMaker(21, 4, "Energetické pole 2", 200);
+            MapAstronomyObjectMaker(24, 10, "Kvasar 1", 10);
 
 
-            MapAstronomyObjectMaker(22, 4, "Mlhovina 1", 5);
-            MapAstronomyObjectMaker(23, 4, "Mlhovina 1", 100);
+            MapBoxesMaker(25, 11, 1, 1, "Boxík 1");
 
+            MapArtifactMaker(26, 12, 2, "Artefakt 1");
 
-            MapAstronomyObjectMaker(24, 4, "Kvasar 1", 10);
+            MapSpaceBuildingMaker(27, 13, 3, "Vesmírná stanice 1", 1);
 
+            MapNpcMaker(28, 14, 4, "Npc 1");
 
-
-
-
-            MapBoxesMaker(25, 4, 1, 1, "Boxík 1");
-
-
-            MapArtifactMaker(26, 4, "Artefakt 1");
-
-
-            MapSpaceBuildingMaker(27, 4, "Vesmírná stanice 1");
-
-
-            MapNpcMaker(28, 4, "Npc 1");
-
-
-            MapAiShipMaker(29, 4, "AiShip 1");
-
-
-
-
-
+            MapAiShipMaker(29, 15, 5, "AiShip 1");
 
 
         }
@@ -245,7 +222,7 @@
             MapBoxConfig.Add(new BoxConfigModel());
             MapCargo.Add(new CargoModel());
         }
-        private void MapArtifactMaker(int element, int idObjectType, string name, int width)
+        private void MapArtifactMaker(int element, int idObjectType, int idCargo, string name)
         {
             int idMap=1;
             int idUser=0;
@@ -266,7 +243,7 @@
 
 
         }
-        private void MapSpaceBuildingMaker(int element, int idObjectType, string name, int width)
+        private void MapSpaceBuildingMaker(int element, int idObjectType, int idCargo, string name, int width)
         {
             int idMap=1;
             int idUser=0;
@@ -297,7 +274,7 @@
             MapCargo.Add(new CargoModel());
 
         }
-        private void MapNpcMaker(int element, int idObjectType, string name, int width)
+        private void MapNpcMaker(int element, int idObjectType, int idCargo, string name)
         {
             int idMap=1;
             int idUser=0;
@@ -316,7 +293,7 @@
             MapCargo.Add(new CargoModel());
 
         }
-        private void MapAiShipMaker(int element, int idObjectType, string name, int width)
+        private void MapAiShipMaker(int element, int idObjectType, int idCargo, string name)
         {
             int idMap=1;
             int idUser=0;

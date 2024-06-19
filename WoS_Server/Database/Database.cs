@@ -206,7 +206,7 @@ namespace WoS_Server
 
 
 
-        #region Execute
+        #region Execute [Insert,UPDATE,DELETE]
         public async Task<bool> ExecuteAmmoOperationAsync(AmmoModel ammo, SqlOperationType operationType)
         {
             return await ExecuteOperationAsync(new List<AmmoModel> { ammo }, operationType, "dbo.Ammo");
@@ -331,6 +331,12 @@ namespace WoS_Server
         {
             return await ExecuteOperationAsync(new List<UserResearchModel> { userResearch }, operationType, "dbo.User_Research");
         }
+        #endregion
+
+
+        #region Execute [Insert] with key  
+
+
         #endregion
 
     }
