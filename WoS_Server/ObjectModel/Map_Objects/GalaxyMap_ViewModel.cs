@@ -9,7 +9,7 @@
 
 
     // GalaxyMap obsahuje souřadnicový systém jednotlivých map v galaxii
-    public class GalaxyMap : GalaxyPosition
+    public class GalaxyMap_ViewModel : GalaxyPosition
     {
         /*
                 public int Id_Map { get; set; }

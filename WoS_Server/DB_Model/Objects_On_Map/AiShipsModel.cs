@@ -25,5 +25,14 @@
         public int Id_AiShips_ActualParameters { get; set; }
 
 
+
+        public MapPositionModel Position { get; set; }
+        public AiShipConfigModel AiShipConfig { get; set; }
+        public ShipComponentModel AiShipComponent { get; set; }
+        public FleetFormationModel FleetFormation { get; set; }
+        public ActualParametersModel ActualParameters { get; set; }
+        public StaticParametersModel StaticParameters { get; set; }
+        public CargoModel Cargo { get; set; }
+
     }
 }

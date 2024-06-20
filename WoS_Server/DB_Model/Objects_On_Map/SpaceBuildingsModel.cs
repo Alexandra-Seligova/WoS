@@ -24,5 +24,11 @@
 
 
 
+        public MapPositionModel Position { get; set; }
+        public ShipConfigModel Config { get; set; }
+        public ActualParametersModel ActualParameters { get; set; }
+        public StaticParametersModel StaticParameters { get; set; }
+        public CargoModel Cargo { get; set; }
+        public List<AmmoModel> ammos { get; set; }
     }
 }

@@ -23,6 +23,11 @@
         public int Id_BoxConfig { get; set; }
         public int Id_Cargo { get; set; }
 
+        public MapPositionModel Position { get; set; }
+        public BoxConfigModel BoxConfig { get; set; }
+
+        public StaticParametersModel StaticParameters { get; set; }
+        public CargoModel Cargo { get; set; }
 
 
         public BoxModel()

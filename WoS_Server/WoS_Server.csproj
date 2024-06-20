@@ -37,8 +37,4 @@
     <Protobuf Include="Protos\wos.proto" GrpcServices="Server" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ObjectModel\Ship_Ammo\" />
-  </ItemGroup>
-
 </Project>

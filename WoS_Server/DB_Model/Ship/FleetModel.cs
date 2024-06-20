@@ -21,6 +21,7 @@
         public int ID_MainShip { get; set; }
 
 
+        public MapPositionModel Position { get; set; }
 
         public FleetModel()
         {

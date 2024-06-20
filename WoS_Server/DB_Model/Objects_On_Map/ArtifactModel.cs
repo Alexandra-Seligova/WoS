@@ -22,6 +22,13 @@
         public int Id_Cargo { get; set; }
 
 
+        public MapPositionModel Position { get; set; }
+        public ArtifactConfigModel ArtifactConfig { get; set; }
+
+        public StaticParametersModel StaticParameters { get; set; }
+        public CargoModel Cargo { get; set; }
+
+
 
         public ArtifactModel()
 
