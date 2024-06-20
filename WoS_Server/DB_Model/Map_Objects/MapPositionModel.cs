@@ -46,6 +46,10 @@
             Target_Map_y = targetMapY;
             Target_Map_z = targetMapZ;
         }
+
+        public MapPositionModel()
+        {
+        }
         // Konstruktor s parametry
     }
 }
