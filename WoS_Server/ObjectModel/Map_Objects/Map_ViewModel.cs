@@ -30,36 +30,26 @@
         // Id_Map, Id_Object, Id_ObjectType, Id_Position, Id_MapObjectConfig
         public List<MapObjectsModel> mapObjectsModels = new List<MapObjectsModel>();
 
-
         // Id_Map, Id_User, Id_Object, Id_ObjectType, Id_Position, ObjectName, Velocity,    Map_x,Map_y, Map_z,  Target_Map_x,Target_Map_y,Target_Map_z
         public List<MapPositionModel> MapPositions = new List<MapPositionModel>();
+
 
         //Id_User, Id_Object, Id_ObjectType, Id_MapObjectConfig, Name, Width, Height, Diameter, SolarMassWeight, Gravity, OrbitalPeriod, RotationPeriod, HasAtmosphere, Habitable, Age
         public List<MapObjectConfigModel> MapObjectConfigs = new List<MapObjectConfigModel>();
 
-        public List<BoxModel> MapBoxes = new List<BoxModel>();
-        public List<BoxConfigModel> MapBoxConfig = new List<BoxConfigModel>();
-
-
-        public List<ArtifactModel> MapArtifacts = new List<ArtifactModel>();
-        public List<ArtifactConfigModel> MapArtifactConfig = new List<ArtifactConfigModel>();
-
-
-        public List<SpaceBuildingsModel> MapSpaceBuildings = new List<SpaceBuildingsModel>();
-        public List<SpaceBuildingConfigModel> MapSpaceBuildingConfig = new List<SpaceBuildingConfigModel>();
-
-
-        public List<NpcsModel> MapNpcs = new List<NpcsModel>();
-        public List<NpcConfigModel> MapNpcConfig = new List<NpcConfigModel>();
-
-
-        public List<AiShipsModel> MapAiShips = new List<AiShipsModel>();
-        public List<AiShipConfigModel> MapAiShipConfig = new List<AiShipConfigModel>();
-
-
 
         public List<CargoModel> MapCargo = new List<CargoModel>();
 
+
+
+        public List<Box_ViewModel> MapBoxes = new List<Box_ViewModel>();
+        public List<Artifact_ViewModel> MapArtifacts = new List<Artifact_ViewModel>();
+        public List<SpaceBuilding_ViewModel> MapSpaceBuildings = new List<SpaceBuilding_ViewModel>();
+        public List<Npc_ViewModel> MapNpcs = new List<Npc_ViewModel>();
+        public List<AiShip_ViewModel> MapAiShips = new List<AiShip_ViewModel>();
+
+        public List<Fleet_ViewModel> Fleets = new List<Fleet_ViewModel>();
+        public List<Ship_ViewModel> Ships = new List<Ship_ViewModel>();
 
 
         public Map_ViewModel(int idMap, int idMapType, int idGalaxyPosition, int idMapObjectConfig, string name)

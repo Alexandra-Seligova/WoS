@@ -17,7 +17,6 @@
 
         public int Id_Position { get; set; }
 
-        public string ObjectName { get; set; }
 
         public int Velocity { get; set; }
         public int Map_x { get; set; }

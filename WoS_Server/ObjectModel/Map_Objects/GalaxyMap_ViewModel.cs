@@ -1,4 +1,4 @@
-﻿namespace WoS_Server.ObjectModel.Map_Objects
+﻿namespace WoS_Server.ObjectModel
 {
     using System;
     using System.Collections.Generic;

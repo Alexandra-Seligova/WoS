@@ -1,4 +1,4 @@
-﻿namespace WoS_Server.ObjectModel.Ship_Ammo
+﻿namespace WoS_Server.ObjectModel
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class Ammo_ViewModel
+    public class Ammo_ViewModel
     {
     }
 }

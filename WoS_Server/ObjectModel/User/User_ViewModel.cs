@@ -1,4 +1,4 @@
-﻿namespace WoS_Server.ObjectModel.User
+﻿namespace WoS_Server.ObjectModel
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class User_ViewModel
+    public class User_ViewModel
     {
     }
 }

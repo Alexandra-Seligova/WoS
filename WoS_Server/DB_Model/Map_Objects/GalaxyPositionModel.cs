@@ -12,7 +12,7 @@
     public class GalaxyPosition
     {
         [Key]
-        public int Id_Map { get; set; }
+        public int Id_GalaxyMap { get; set; }
         public int Id_GalaxyPosition { get; set; }
 
         public int Id_Sector { get; set; }

@@ -1,5 +1,6 @@
 ﻿namespace WoS_Server.DB_Model
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     public class MapModel
     {
@@ -12,6 +13,7 @@
 
         public string Name { get; set; }
 
+        public string Designation { get; set; } = "Ship";
 
 
 
