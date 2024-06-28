@@ -1,4 +1,4 @@
-﻿namespace WoS_Server.ObjectModel
+﻿namespace WoS_Server.DB_Model
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Ammo_ObjectModel
+    public class BoxConfigModel
     {
     }
 }

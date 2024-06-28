@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoS", "WoS.csproj", "{D0A6E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoS_Server", "WoS_Server\WoS_Server.csproj", "{83DC016B-9C0E-4E69-B2DC-281B68942A31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoS.Common", "WoS.Common\WoS.Common.csproj", "{F65FCE4F-B6D2-435F-90E7-00464981BEE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{83DC016B-9C0E-4E69-B2DC-281B68942A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83DC016B-9C0E-4E69-B2DC-281B68942A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83DC016B-9C0E-4E69-B2DC-281B68942A31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65FCE4F-B6D2-435F-90E7-00464981BEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65FCE4F-B6D2-435F-90E7-00464981BEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65FCE4F-B6D2-435F-90E7-00464981BEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65FCE4F-B6D2-435F-90E7-00464981BEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,109 +4,109 @@
 Zdá se, že mechanismus je funkční a všechny potřebné funkce jsou implementovány.
 TODO: implementace načítání mapy z DB
 
-TODO:	Základní gui, gui pro znázornění ship statusu a štítů atd.
-		přidání ship a všeho okolo do UserFleets v MapElementGroup,
-		Přidání prvků do shipu (zbraně, generátory, atd..)
-		Pokud vystřelím a zničím např zbraň co se stane s lodí? Silný Laserový paprsek proti slabé lodi
+TODO:   Základní gui, gui pro znázornění ship statusu a štítů atd.
+        přidání ship a všeho okolo do UserFleets v MapElementGroup,
+        Přidání prvků do shipu (zbraně, generátory, atd..)
+        Pokud vystřelím a zničím např zbraň co se stane s lodí? Silný Laserový paprsek proti slabé lodi
 
 
 
-		Objekty na mapě?
-
-
-
-
-		Je potřeba mít obrázky nejlépe 3d:
-		Drony: LavaDron, DeluxeDron,AquaDron -- IceDron, FireDron, WindDron, EarthDron, ThunderDron, LightDron, DarkDron
-		Transporter: SmallTransporter, MediumTransporter, LargeTransporter, megaTransporter
+        Objekty na mapě?
 
 
 
 
+        Je potřeba mít obrázky nejlépe 3d:
+        Drony: LavaDron, DeluxeDron,AquaDron -- IceDron, FireDron, WindDron, EarthDron, ThunderDron, LightDron, DarkDron
+        Transporter: SmallTransporter, MediumTransporter, LargeTransporter, megaTransporter
 
 
 
 
-		Druhy zbraní pro ship: Canon, PulseCanon, BeamCanon, FastCanon
-		Kombinované zbraně: BallisticCanon, MiningLaser, PulseBeamLaser, LaserBeam,LaserCanon,
-
-	Technologie Zbraní: Balistické, fotonové, laser, plazmové, iontové,
-
-		Munice: Green, LightBlue, Purple, Orange, Steel, Silver, Gold
-		Raketa: SmallRocket, MediumRocket, LargeRocket, MegaRocket, NuclearRocket, AntiMatterRocket, PlasmaRocket, IonRocket, NeutronRocket, PositronRocket, ElectronRocket, ProtonRocket, PhotonRocket, GravitonRocket, DarkMatterRocket, BlackHoleRocket, WhiteHoleRocket, WormHoleRocket, QuasarRocket, PulsarRocket, SupernovaRocket, HypernovaRocket, NovaRocket, RedGiantRocket, BlueGiantRocket, YellowGiantRocket, WhiteGiantRocket, BlackGiantRocket, BrownGiantRocket, RedDwarfRocket, BlueDwarfRocket, YellowDwarfRocket, WhiteDwarfRocket, BlackDwarfRocket, BrownDwarfRocket, RedSupergiantRocket, BlueSupergiantRocket, YellowSupergiantRocket, WhiteSupergiantRocket, BlackSupergiantRocket, BrownSupergiantRocket, RedHypergiantRocket, BlueHypergiantRocket, YellowHypergiantRocket, WhiteHypergiantRocket, BlackHypergiantRocket, BrownHypergiantRocket, RedHypernovaRocket, BlueHypernovaRocket, YellowHypernovaRocket, WhiteHypernovaRocket, BlackHypernovaRocket, BrownHypernovaRocket, RedQuarkRocket, BlueQuarkRocket, YellowQuarkRocket, WhiteQuarkRocket, BlackQuarkRocket, BrownQuarkRocket, RedNeutronRocket, BlueNeutronRocket, YellowNeutronRocket, WhiteNeutronRocket, BlackNeutronRocket, BrownNeutronRocket, RedPositronRocket, BluePositronRocket, YellowPositronRocket, WhitePositronRocket, BlackPositronRocket, BrownPositronRocket, RedElectronRocket, BlueElectronRocket, YellowElectronRocket, WhiteElectronRocket, BlackElectronRocket, BrownElectronRocket, RedProtonRocket, BlueProtonRocket, YellowProtonRocket, WhiteProtonRocket, BlackProtonRocket, BrownProtonRocket, RedPhotonRocket, BluePhotonRocket, YellowPhotonRocket, WhitePhotonRocket, BlackPhotonRocket, BrownPhotonRocket, RedGravitonRocket, BlueGravitonRocket, YellowGravitonRocket, WhiteGravitonRocket, BlackGravitonRocket, BrownGravitonRocket, RedDarkMatterRocket, BlueDarkMatterRocket, YellowDarkMatterRocket, WhiteDarkMatterRocket, BlackDarkMatterRocket
-
-		Ship Druhy: obchodní, Průzkumné, Těžební, transportní, Bitevní
-		Ship Formace: Kruh, šipka, trojúhelník, kříž,
-
-		Generátory druhy: štít, pohon, energie
-
-
-		Boostery: štít, těžba, pohon, průmysl, zbraně, energie, výzkum,
-
-
-		Doplňky: Automatická střelba raket, Tank paliva, násobič skladového prostoru, těžební radar, radar, skok na domovskou planetu,
-				 těžební urychlovač, zaměřovač, opravovací robot, scanner krátký, scaner longrange
-
-		design:Ship, dron, zbraně, budovy, stanice
-
-
-		Typy map: volné, dungeon
 
 
 
-		Stavba budov na objektech: Asteroid velký, planeta, miniplaneta, měsíc, kometa
 
-		Typy budov: těžební - těžba různých surovin, postavena poblíž zdroje
-					rafinérie - zušlechtění materiálu na vyšší kvalitu
-					Továrna - na suroviny, na díly, na zbraně, na drony, na lodě, na budovy, na technologie
-					energetická - výroba energie
-					hangár - opravy lodí, dronů, zbraní, budov, technologií
-					obrana: laserová, plazmová, iontová, fotonová, balistická, raketová, protiraketová, štít
-					transport - mezi budovami, mezi městy, mezi planetární, mezihvězdná
-					sklad
-					laboratoř - výzkum technologií
-					observatoř - jak daleko je viditelná plocha (území)
+        Druhy zbraní pro ship: Canon, PulseCanon, BeamCanon, FastCanon
+        Kombinované zbraně: BallisticCanon, MiningLaser, PulseBeamLaser, LaserBeam,LaserCanon,
+
+    Technologie Zbraní: Balistické, fotonové, laser, plazmové, iontové,
+
+        Munice: Green, LightBlue, Purple, Orange, Steel, Silver, Gold
+        Raketa: SmallRocket, MediumRocket, LargeRocket, MegaRocket, NuclearRocket, AntiMatterRocket, PlasmaRocket, IonRocket, NeutronRocket, PositronRocket, ElectronRocket, ProtonRocket, PhotonRocket, GravitonRocket, DarkMatterRocket, BlackHoleRocket, WhiteHoleRocket, WormHoleRocket, QuasarRocket, PulsarRocket, SupernovaRocket, HypernovaRocket, NovaRocket, RedGiantRocket, BlueGiantRocket, YellowGiantRocket, WhiteGiantRocket, BlackGiantRocket, BrownGiantRocket, RedDwarfRocket, BlueDwarfRocket, YellowDwarfRocket, WhiteDwarfRocket, BlackDwarfRocket, BrownDwarfRocket, RedSupergiantRocket, BlueSupergiantRocket, YellowSupergiantRocket, WhiteSupergiantRocket, BlackSupergiantRocket, BrownSupergiantRocket, RedHypergiantRocket, BlueHypergiantRocket, YellowHypergiantRocket, WhiteHypergiantRocket, BlackHypergiantRocket, BrownHypergiantRocket, RedHypernovaRocket, BlueHypernovaRocket, YellowHypernovaRocket, WhiteHypernovaRocket, BlackHypernovaRocket, BrownHypernovaRocket, RedQuarkRocket, BlueQuarkRocket, YellowQuarkRocket, WhiteQuarkRocket, BlackQuarkRocket, BrownQuarkRocket, RedNeutronRocket, BlueNeutronRocket, YellowNeutronRocket, WhiteNeutronRocket, BlackNeutronRocket, BrownNeutronRocket, RedPositronRocket, BluePositronRocket, YellowPositronRocket, WhitePositronRocket, BlackPositronRocket, BrownPositronRocket, RedElectronRocket, BlueElectronRocket, YellowElectronRocket, WhiteElectronRocket, BlackElectronRocket, BrownElectronRocket, RedProtonRocket, BlueProtonRocket, YellowProtonRocket, WhiteProtonRocket, BlackProtonRocket, BrownProtonRocket, RedPhotonRocket, BluePhotonRocket, YellowPhotonRocket, WhitePhotonRocket, BlackPhotonRocket, BrownPhotonRocket, RedGravitonRocket, BlueGravitonRocket, YellowGravitonRocket, WhiteGravitonRocket, BlackGravitonRocket, BrownGravitonRocket, RedDarkMatterRocket, BlueDarkMatterRocket, YellowDarkMatterRocket, WhiteDarkMatterRocket, BlackDarkMatterRocket
+
+        Ship Druhy: obchodní, Průzkumné, Těžební, transportní, Bitevní
+        Ship Formace: Kruh, šipka, trojúhelník, kříž,
+
+        Generátory druhy: štít, pohon, energie
+
+
+        Boostery: štít, těžba, pohon, průmysl, zbraně, energie, výzkum,
+
+
+        Doplňky: Automatická střelba raket, Tank paliva, násobič skladového prostoru, těžební radar, radar, skok na domovskou planetu,
+                 těžební urychlovač, zaměřovač, opravovací robot, scanner krátký, scaner longrange
+
+        design:Ship, dron, zbraně, budovy, stanice
+
+
+        Typy map: volné, dungeon
+
+
+
+        Stavba budov na objektech: Asteroid velký, planeta, miniplaneta, měsíc, kometa
+
+        Typy budov: těžební - těžba různých surovin, postavena poblíž zdroje
+                    rafinérie - zušlechtění materiálu na vyšší kvalitu
+                    Továrna - na suroviny, na díly, na zbraně, na drony, na lodě, na budovy, na technologie
+                    energetická - výroba energie
+                    hangár - opravy lodí, dronů, zbraní, budov, technologií
+                    obrana: laserová, plazmová, iontová, fotonová, balistická, raketová, protiraketová, štít
+                    transport - mezi budovami, mezi městy, mezi planetární, mezihvězdná
+                    sklad
+                    laboratoř - výzkum technologií
+                    observatoř - jak daleko je viditelná plocha (území)
         Základna: slouží jako sklad, odemiká nové úrovně pro ostatní budovy, má vlastní obranu a štít
 
-		výzkum: základní - energetika, laser, iontová , hyperprostorová
-				pohony   -
-				pokročilý výzkum -špionážní, počítačové, astrofyzika, kvantová, gravitonová
-				bojové - balistické, fotonové, laserové, plazmové, iontové, raketové, protiraketové, štítové, hyperprostorové, pancíř
+        výzkum: základní - energetika, laser, iontová , hyperprostorová
+                pohony   -
+                pokročilý výzkum -špionážní, počítačové, astrofyzika, kvantová, gravitonová
+                bojové - balistické, fotonové, laserové, plazmové, iontové, raketové, protiraketové, štítové, hyperprostorové, pancíř
 
-		technologie - těžební, energetické, výrobní, výzkumné, obranné, transportní, komunikační, kolonizační, špionážní, počítačové, astrofyzika, kvantová, gravitonová, hyperprostorová, teleportační, telep
-
-
-
-		Prvky
-		-čistota, vlastnosti(strength 100, conductivity 50), reaktivita()
-
-
-		1. rafinace na vyšší kvalitu a čistotu
-
-		2. Sloučeniny více prvků v jeden
-
-		3. reakce na vytvoření nových prvků
-			- některé prvky jsou reaktivní
-
-		4. kombinace prvků v určitém pořadí
-
-		5. enchanting (očarování magií a zvýení určitých vlastností)
+        technologie - těžební, energetické, výrobní, výzkumné, obranné, transportní, komunikační, kolonizační, špionážní, počítačové, astrofyzika, kvantová, gravitonová, hyperprostorová, teleportační, telep
 
 
 
-		posbírání prvků na orbitě
-		Vytěžení na planetě
+        Prvky
+        -čistota, vlastnosti(strength 100, conductivity 50), reaktivita()
 
-		v rafinérii se zpracují na určitou čistotu (80-99%)
 
-		Slučování prvků v nové prvky
-		Reakce prvků na nové prvky
-		Kombinace prvků v určitém pořadí
-		enchanting (očarování magií a zvýení určitých vlastností)
+        1. rafinace na vyšší kvalitu a čistotu
 
-		výsledné materiály slouží ke stavbě součástek pro lodě atd.
+        2. Sloučeniny více prvků v jeden
 
-		Továrna - z prvků vytváří součástky
+        3. reakce na vytvoření nových prvků
+            - některé prvky jsou reaktivní
+
+        4. kombinace prvků v určitém pořadí
+
+        5. enchanting (očarování magií a zvýení určitých vlastností)
+
+
+
+        posbírání prvků na orbitě
+        Vytěžení na planetě
+
+        v rafinérii se zpracují na určitou čistotu (80-99%)
+
+        Slučování prvků v nové prvky
+        Reakce prvků na nové prvky
+        Kombinace prvků v určitém pořadí
+        enchanting (očarování magií a zvýení určitých vlastností)
+
+        výsledné materiály slouží ke stavbě součástek pro lodě atd.
+
+        Továrna - z prvků vytváří součástky
 
 
 
@@ -159,70 +159,70 @@ Postavení GUI
 
 GuiBase -> jedna stránka
 GuiBasic -> skládá se z komponent:
-			- GBName - Název hráče, level, rank, body, status
-				      - openBar
-			- GBName - úkoly a mise po levé straně
-			- GBMineralnBar - po otevření se zobrazí všechny suroviny a jejich počet
-			- GBMainButtons - Nastavení, Konfigurace, build
-			 - GBBuildMenu - menu pro stavbu budov (Vše, průmysl, těžba, výzkum, obrana, transport)
+            - GBName - Název hráče, level, rank, body, status
+                      - openBar
+            - GBName - úkoly a mise po levé straně
+            - GBMineralnBar - po otevření se zobrazí všechny suroviny a jejich počet
+            - GBMainButtons - Nastavení, Konfigurace, build
+             - GBBuildMenu - menu pro stavbu budov (Vše, průmysl, těžba, výzkum, obrana, transport)
 
 
-			- GBXpBar - spodní lajna s xp a levely
-			- GBSpellBar - spodní lajna s akčními tlačítky
-			- GBSpellBarConfig - změna mezi konfigurací tlačítek 1 a 2
-			- GBShipMode - útok, obrana, rychlost
-			- GBShipFuel - množství paliva
-			- GBShipView - zobrazení lodi, štítů, nastevených generátorů atd.
-			- GBMiniMap - minimapa tlačítka (přiblížení, oddálení, Velká mapa)
-								   zobrazení šipek směru , zobrazení lodí, zobrazení objektů, questů, misí
+            - GBXpBar - spodní lajna s xp a levely
+            - GBSpellBar - spodní lajna s akčními tlačítky
+            - GBSpellBarConfig - změna mezi konfigurací tlačítek 1 a 2
+            - GBShipMode - útok, obrana, rychlost
+            - GBShipFuel - množství paliva
+            - GBShipView - zobrazení lodi, štítů, nastevených generátorů atd.
+            - GBMiniMap - minimapa tlačítka (přiblížení, oddálení, Velká mapa)
+                                   zobrazení šipek směru , zobrazení lodí, zobrazení objektů, questů, misí
 
 - GuiEditShip - menu pro konfiguraci lodi (letky), designu
-		      -> skládá se z komponent:
-			     - GEShipConfigBar - nastavení / zobrazení komponent lodě
-				 - GBShipView - zobrazení lodě v trochu větší podobě např 150% s parametrama o lodi
-				 - GEShipDesign - design lodi vyzobrazení,seznam možných designů, bez parametrů o lodi
-				 - GEShipCargo -  seznam prvků na palubě lodi a jejich počet
-				 - GEBackButton
+              -> skládá se z komponent:
+                 - GEShipConfigBar - nastavení / zobrazení komponent lodě
+                 - GBShipView - zobrazení lodě v trochu větší podobě např 150% s parametrama o lodi
+                 - GEShipDesign - design lodi vyzobrazení,seznam možných designů, bez parametrů o lodi
+                 - GEShipCargo -  seznam prvků na palubě lodi a jejich počet
+                 - GEBackButton
 
 
 
 
 
 
-Ship -	ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
-		ShipBattleBeta  [Reaktor 1, Pohon 3, MaláZbraň 2,StředníZbraň 2, Štít 2, Rozšíření 2]
-		ShipBattleGama  [Reaktor 1, Pohon 4, MaláZbraň 6,StředníZbraň 2,Štít 2, Rozšíření 6]
+Ship -  ShipBattleAlpha [Reaktor 1, Pohon 2, MaláZbraň 2, Štít 0, Rozšíření 2]
+        ShipBattleBeta  [Reaktor 1, Pohon 3, MaláZbraň 2,StředníZbraň 2, Štít 2, Rozšíření 2]
+        ShipBattleGama  [Reaktor 1, Pohon 4, MaláZbraň 6,StředníZbraň 2,Štít 2, Rozšíření 6]
 
-		ShipExploratoryAlpha [Reaktor 1, Pohon 3, MaláZbraň 2, Štít 1, Rozšíření 3]
-		ShipExploratoryBeta  [Reaktor 1, Pohon 3, MaláZbraň 4, StředníZbraň 1,Štít 2, Rozšíření 4]
-		ShipExploratoryGamma [Reaktor 1, Pohon 4, MaláZbraň 6, StředníZbraň 2,Štít 2, Rozšíření 6]
+        ShipExploratoryAlpha [Reaktor 1, Pohon 3, MaláZbraň 2, Štít 1, Rozšíření 3]
+        ShipExploratoryBeta  [Reaktor 1, Pohon 3, MaláZbraň 4, StředníZbraň 1,Štít 2, Rozšíření 4]
+        ShipExploratoryGamma [Reaktor 1, Pohon 4, MaláZbraň 6, StředníZbraň 2,Štít 2, Rozšíření 6]
 
-		ShipTraderAlpha [Reaktor 1, Pohon 2, MaláZbraň 1, Štít 1, Rozšíření 3]
-		ShipTraderBeta  [Reaktor 1, Pohon 2, MaláZbraň 2, StředníZbraň 1,Štít 2, Rozšíření 4]
-		ShipTraderGamma [Reaktor 1, Pohon 3, MaláZbraň 6, StředníZbraň 2,Štít 2, Rozšíření 6]
+        ShipTraderAlpha [Reaktor 1, Pohon 2, MaláZbraň 1, Štít 1, Rozšíření 3]
+        ShipTraderBeta  [Reaktor 1, Pohon 2, MaláZbraň 2, StředníZbraň 1,Štít 2, Rozšíření 4]
+        ShipTraderGamma [Reaktor 1, Pohon 3, MaláZbraň 6, StředníZbraň 2,Štít 2, Rozšíření 6]
 
-		ShipTransporterAlpha [Reaktor 0, Pohon 2, MaláZbraň 1, Štít 1, Rozšíření 2]
-		ShipTransporterBeta  [Reaktor 1, Pohon 1, MaláZbraň 2, StředníZbraň 0,Štít 2, Rozšíření 4]
-		ShipTransporterGamma [Reaktor 1, Pohon 1, MaláZbraň 4, StředníZbraň 0,Štít 2, Rozšíření 8]
+        ShipTransporterAlpha [Reaktor 0, Pohon 2, MaláZbraň 1, Štít 1, Rozšíření 2]
+        ShipTransporterBeta  [Reaktor 1, Pohon 1, MaláZbraň 2, StředníZbraň 0,Štít 2, Rozšíření 4]
+        ShipTransporterGamma [Reaktor 1, Pohon 1, MaláZbraň 4, StředníZbraň 0,Štít 2, Rozšíření 8]
 
-		ShipMiningAlpha [Reaktor 0, Pohon 1, MaláZbraň 1, Štít 0, Rozšíření 0]
-		ShipMiningBeta  [Reaktor 0, Pohon 1, MaláZbraň 2, StředníZbraň 0,Štít 0, Rozšíření 1]
-		ShipMiningGamma [Reaktor 0, Pohon 2, MaláZbraň 4, StředníZbraň 0,Štít 2, Rozšíření 2]
+        ShipMiningAlpha [Reaktor 0, Pohon 1, MaláZbraň 1, Štít 0, Rozšíření 0]
+        ShipMiningBeta  [Reaktor 0, Pohon 1, MaláZbraň 2, StředníZbraň 0,Štít 0, Rozšíření 1]
+        ShipMiningGamma [Reaktor 0, Pohon 2, MaláZbraň 4, StředníZbraň 0,Štít 2, Rozšíření 2]
 
-Dron -	DronDeluxeAlpha	  [rychlost 100,štít 100, zbraňě 100]
-		DronDeluxeBeta
+Dron -  DronDeluxeAlpha   [rychlost 100,štít 100, zbraňě 100]
+        DronDeluxeBeta
 
-		DronBattleAlpha
-		DronBattleBeta
+        DronBattleAlpha
+        DronBattleBeta
 
-		DronLavaAlpha
-		DronLavaBeta
+        DronLavaAlpha
+        DronLavaBeta
 
-		DronElectroAlpha
-		DronElectroBeta
+        DronElectroAlpha
+        DronElectroBeta
 
-		DronAquaAlpha
-		DronAquaBeta
+        DronAquaAlpha
+        DronAquaBeta
 
 
 
