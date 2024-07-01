@@ -1,4 +1,4 @@
-﻿namespace WoS_Server.DB_Model.Map_Objects
+﻿namespace WoS_Server.DB_Model
 {
     using System;
     using System.Collections.Generic;
@@ -18,11 +18,11 @@
         public string Designation { get; set; } = "Ship";
 
 
-
+        /*
 
         list  GalaxyPositionModel
             list MapModel
-
+        */
     }
 
 
